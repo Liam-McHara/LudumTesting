@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float force = 3;
-    public Rigidbody rb;
+    Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
@@ -19,11 +19,12 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    // La funció FixedUpdate s'executa a intervals regulars (no com Update, que s'executa a cada frame) Es perfecta per fer 
     private void FixedUpdate()
     {
         float hInput = Input.GetAxis("Horizontal");
         float vInput = Input.GetAxis("Vertical");
-        Vector3 impulse = new Vector3(hInput, vInput, 0);
-        rb.AddForce(impulse);
+        Vector3 impulse = new Vector3(hInput, vInput, vInput);
+        rb.AddForce(impulse*force);
     }
 }
