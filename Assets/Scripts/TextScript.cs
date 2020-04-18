@@ -6,20 +6,24 @@ using UnityEngine.UI;
 public class TextScript : MonoBehaviour
 {
     Text textComponent;
+    PanelManager pm;
     public string text;
     [Range(0.01f, 0.03f)]
     public float timeLapse;
     float lastUpdate;
-    bool writing = false;
+    public bool writing = false;
 
     void Start()
     {
         textComponent = this.GetComponent<Text>();
+        pm = FindObjectOfType<PanelManager>();
+        textComponent.text = "";
         StartCoroutine(BuildText());
     }
 
     private IEnumerator BuildText()
     {
+        pm.HideOptions();   // oculta les opcions mentre s'escriu
         writing = true;
         int i = 0;
         while (i < text.Length & writing)
@@ -37,6 +41,7 @@ public class TextScript : MonoBehaviour
                 i++;
             }
         }
+        pm.ShowOptions();   // mostra les opcions un cop acaba d'escriure
         writing = false;
     }
 
