@@ -7,7 +7,7 @@ public class PanelManager : MonoBehaviour
 {
     public GameController gc;
     public TextScript ts;
-    public Image background;
+    public GameObject background;
     public GameObject[] optionButtons;
     public string[] options;
     public bool visible = true;
@@ -18,7 +18,7 @@ public class PanelManager : MonoBehaviour
 
     public void ShowPanel(string str)   // Mostra el panel amb el text que toqui
     {
-        background.enabled = true;
+        background.SetActive(true);
         ts.Clear();
         ts.Write(str);
         visible = true;
@@ -32,7 +32,7 @@ public class PanelManager : MonoBehaviour
 
     public void HidePanel()
     {
-        background.enabled = false;
+        background.SetActive(false);
         visible = false;
         HideOptions();
     }
@@ -41,6 +41,7 @@ public class PanelManager : MonoBehaviour
 
     public void ShowOptions()
     {
+        Debug.Log("SHOW OPTIONS");
         if (textInputOption)    // Si es un dels casos especials, mostra un text input en comptes de botons
         {
             specialOption1.SetActive(true);
@@ -50,6 +51,7 @@ public class PanelManager : MonoBehaviour
         {
             if (i <= opt)
             {
+                Debug.Log("Showing "+i);
                 optionButtons[i - 1].GetComponent<Text>().text = options[i - 1];    // Canvia el nom de la opció
                 optionButtons[i - 1].SetActive(true);   // Mostra la opció
             }

@@ -17,8 +17,10 @@ public class TextScript : MonoBehaviour
     {
         textComponent = this.GetComponent<Text>();
         pm = FindObjectOfType<PanelManager>();
+        
+        //TESTING
         //textComponent.text = "";
-        StartCoroutine(BuildText());
+        //StartCoroutine(BuildText());
     }
 
     private IEnumerator BuildText()
@@ -42,7 +44,6 @@ public class TextScript : MonoBehaviour
             }
         }
         pm.ShowOptions();   // mostra les opcions un cop acaba d'escriure
-        Debug.Log("SHOW OPTIONS");
         writing = false;
     }
 
