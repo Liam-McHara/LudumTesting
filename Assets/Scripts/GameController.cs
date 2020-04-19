@@ -147,7 +147,7 @@ public class GameController : MonoBehaviour
                 if (lastText == "001")
                 {
                     lastText = "002";       // < 002 >
-                    str = "a suspicious alleway. If I was a murderer of sunflowers, that’s clearly kind of play where I would hide to plot my evil plans. \nThe alleway was empty except for a dirty dog and some broken bottles. I was about to leave when I heard a mysterious voice that seemed to come from nowhere in particular.  \n“Pssst, you! Yeah, you! Do you know how many times the sun rose today?”";
+                    str = "a suspicious alleway. If I was a murderer of sunflowers, that’s clearly the kind of place where I would hide to plot my evil plans. \nThe alleway was empty except for a dirty dog and some broken bottles. I was about to leave when I heard a mysterious voice that seemed to come from nowhere in particular. \n“Pssst, you! Yeah, you! Do you know how many times the sun rose today?”";
                     pm.UpdateOptions(1);
                     pm.UpdateText(str);
                 }
