@@ -38,8 +38,7 @@ public class GameController : MonoBehaviour
     // Condicions temporals (es resetejen a cada bucle)
     public bool v7_001, v7_009 = false;     // passeig
 
-    // Flags conversa   (se resetean en cada fase/turno)
-    //public bool f7a1, f7b1, f7c1, f7a2, f7b2, f7a3, f7b3, f7c2 = false;
+    // Ultima part de narracio mostrada
     public string lastText;
 
 
@@ -49,10 +48,6 @@ public class GameController : MonoBehaviour
     {
         am = this.GetComponentInChildren<AudioManager>();
         pm = FindObjectOfType<PanelManager>();
-
-        //TESTING
-        //pm.HidePanel();
-        //pm.UpdateOptions("caca", "pipi", "Jeje");
     }
 
     // Update is called once per frame
@@ -69,7 +64,7 @@ public class GameController : MonoBehaviour
         Debug.Log("Going to CASA");
         place = 1;
 
-        pm.ShowPanel("a sdoif aoisdnf oansdfo nasdof nosdf osdnfo ndof nsadofn osdn foiadsof noasdnfo nasdofna sdfpmsadpf mas");
+        pm.ShowPanel("a sdoif aoisdnf oansdfo nasdof \nnosdf osdnfo ndof nsadofn osdn foiadsof noasdnfo nasdofna sdfpmsadpf mas");
     }
     public void GotoParque()
     {
@@ -140,6 +135,7 @@ public class GameController : MonoBehaviour
         pm.HidePanel();
     }
 
+
     // OPCIONES
     public void Option1()
     {
@@ -149,23 +145,33 @@ public class GameController : MonoBehaviour
             case 7: // PASSEIG
                 if (lastText == "001")
                 {
-                    lastText = "002";
+                    lastText = "002";       // < 002 >
                     string str = "a suspicious alleway. Si yo fuera un asesino de girasoles, sin duda esa es la clase de sitio en el que me escondería a maquinar planes malvados. \nEl callejón estaba desierto a excepción de un perro pulgoso y unas cuantas botellas rotas.Estaba a punto de marcharme, decepcionado, cuando de pronto he escuchado una voz misteriosa que parecía salir de ninguna parte. “Pssst, you!Yeah, you!Do you know how many times the sun rose today ?”";
 
                     pm.UpdateOptions(1);
                     pm.UpdateText(str);
-                }   // 2 is special
+                }
                 else if (lastText == "002b")
                 {
-                    lastText = "003";
+                    lastText = "003";       // < 003 >
                     string str = "“Well, I am quite worried about my sunflower”, I admitted. \n“Ah, and as well you should”, assured the Voice, seriously. “Remember you are not alone in your endeavor, noble Guardian.There are others like you, others who oppose the tyranny of the Destroyer of Suns. By their love of sunflowers you shall recognize them.And now go in peace, young Guardian.”";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "003")
                 {
-                    GotoMapa();
+                    lastText = "008";   //      < 008 > 
+                    string str = "After that came only silence, and I was left alone feeling quite unsure of what exactly had happened.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
                 }
+                else if (lastText == "004")
+                {
+                    lastText = "006";    //      < 006 >
+                    string str = "“I’d say you’re just an idiot hiding under a sewer door…” I replied, losing my temper. “Brother, you’re not really angry with me, but with yourself. Sunflowers, grant patience to this lost lamb. He’ll be back once he’s ready to hear the Truth”.";
+
+                }
+                else if (lastText == "008") GotoMapa(); 
                 break;
             default:
                 break;
