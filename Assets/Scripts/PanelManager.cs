@@ -55,7 +55,7 @@ public class PanelManager : MonoBehaviour
             int opt = options.Length;
             for (int i = 1; i <= 4; ++i)
             {
-                if (i <= opt)
+                if (i <= opt & options[i - 1] != "")
                 {
                     Debug.Log("Showing " + i);
                     optionButtons[i - 1].GetComponent<Text>().text = options[i - 1];    // Canvia el nom de la opció
