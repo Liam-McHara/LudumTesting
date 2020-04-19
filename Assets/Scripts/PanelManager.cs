@@ -26,13 +26,15 @@ public class PanelManager : MonoBehaviour
 
     public void UpdateText(string str)  // Actualitza el text del panel
     {
-        //ts.Clear();       // Activa o desactiva segons tipus de text
+        ts.Clear();       // Activa o desactiva segons tipus de text  <<<<<<<<<<<<<<<<<<< CANVIAR SI TEXT FLUID a lo 80 DAYS
+        HideOptions();
         ts.Write(str);
     }
 
     public void HidePanel()
     {
         background.SetActive(false);
+        ts.Clear();
         visible = false;
         HideOptions();
     }
@@ -42,18 +44,23 @@ public class PanelManager : MonoBehaviour
     public void ShowOptions()
     {
         Debug.Log("SHOW OPTIONS");
+
         if (textInputOption)    // Si es un dels casos especials, mostra un text input en comptes de botons
         {
             specialOption1.SetActive(true);
+            textInputOption = false;    // baixa el flag
         }
-        int opt = options.Length;
-        for (int i = 1; i <= 4; ++i)
+        else        // NORMALMENT: Mostra les opcions estàndar
         {
-            if (i <= opt)
+            int opt = options.Length;
+            for (int i = 1; i <= 4; ++i)
             {
-                Debug.Log("Showing "+i);
-                optionButtons[i - 1].GetComponent<Text>().text = options[i - 1];    // Canvia el nom de la opció
-                optionButtons[i - 1].SetActive(true);   // Mostra la opció
+                if (i <= opt)
+                {
+                    Debug.Log("Showing " + i);
+                    optionButtons[i - 1].GetComponent<Text>().text = options[i - 1];    // Canvia el nom de la opció
+                    optionButtons[i - 1].SetActive(true);   // Mostra la opció
+                }
             }
         }
     }
@@ -110,5 +117,11 @@ public class PanelManager : MonoBehaviour
             }
             
         }
+    }
+    
+    public void TextInput()     // Envia el text introduit al GameController
+    {
+        string ans = specialOption1.GetComponentInChildren<InputField>().text;
+        gc.TextOption(ans);
     }
 }

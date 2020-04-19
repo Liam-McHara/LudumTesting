@@ -155,7 +155,8 @@ MonoBehaviour:
   place: 0
   knowX: 0
   charAPath: 1
-  tempConA: 0
+  v7: 0
+  conv: 0
 --- !u!4 &36873366
 Transform:
   m_ObjectHideFlags: 0
@@ -301,7 +302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gc: {fileID: 36873364}
   ts: {fileID: 308458133}
-  background: {fileID: 353649253}
+  background: {fileID: 353649251}
   optionButtons:
   - {fileID: 793462943}
   - {fileID: 2065547183}
@@ -361,7 +362,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -702,7 +703,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 793462945}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 36873364}
+        m_MethodName: Option1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &793462947
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -923,7 +935,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1425048709}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 36873364}
+        m_MethodName: Option4
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &1425048711
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1090,7 +1113,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1564611013}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 327351243}
+        m_MethodName: SendMessage
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1564611013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1283,7 +1317,7 @@ GameObject:
   - component: {fileID: 1792232141}
   - component: {fileID: 1792232140}
   m_Layer: 5
-  m_Name: Casa
+  m_Name: PASSEIG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1352,7 +1386,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 36873364}
-        m_MethodName: GotoCasa
+        m_MethodName: GotoPasseig
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1510,7 +1544,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1845844412}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 36873364}
+        m_MethodName: Option3
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &1845844414
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1691,7 +1736,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1829,7 +1874,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2065547185}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 36873364}
+        m_MethodName: Option2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &2065547187
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -19,7 +19,7 @@ public class TextScript : MonoBehaviour
         pm = FindObjectOfType<PanelManager>();
         
         //TESTING
-        //textComponent.text = "";
+        textComponent.text = "";
         //StartCoroutine(BuildText());
     }
 
