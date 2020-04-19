@@ -79,7 +79,7 @@ public class PanelManager : MonoBehaviour
         specialOption1.SetActive(false);
     }
 
-    void HideMap()
+    public void HideMap()
     {
         for (int i = 1; i <= mapButtons.Length; ++i)
         {

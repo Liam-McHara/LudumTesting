@@ -5,15 +5,21 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    // TESTING
+    public bool showIntro = true;
     AudioManager am;
     PanelManager pm;
+    IntroManager im;
 
     
     // VARIABLES
     public int fase;    // fase del día (1 - 5)
     public int loop = 1;
 
+
+
     public string continueText = ">";
+    public string beginLoopText = "Start";
 
     /*  0 - mapa
      *  1 - casa
@@ -46,6 +52,9 @@ public class GameController : MonoBehaviour
     {
         am = this.GetComponentInChildren<AudioManager>();
         pm = FindObjectOfType<PanelManager>();
+        im = FindObjectOfType<IntroManager>();
+        
+        im.ShowIntro(loop);     //      < FIRST LOOP >
     }
 
     // Update is called once per frame
