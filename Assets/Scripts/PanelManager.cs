@@ -9,6 +9,7 @@ public class PanelManager : MonoBehaviour
     public TextScript ts;
     public GameObject background;
     public GameObject[] optionButtons;
+    public GameObject[] mapButtons;
     public string[] options;
     public bool visible = true;
 
@@ -19,6 +20,7 @@ public class PanelManager : MonoBehaviour
     public void ShowPanel(string str)   // Mostra el panel amb el text que toqui
     {
         background.SetActive(true);
+        HideMap();
         ts.Clear();
         ts.Write(str);
         visible = true;
@@ -34,6 +36,7 @@ public class PanelManager : MonoBehaviour
     public void HidePanel()
     {
         background.SetActive(false);
+        ShowMap();
         ts.Clear();
         visible = false;
         HideOptions();
@@ -55,11 +58,14 @@ public class PanelManager : MonoBehaviour
             int opt = options.Length;
             for (int i = 1; i <= 4; ++i)
             {
-                if (i <= opt & options[i - 1] != "")
+                if (i <= opt)
                 {
-                    Debug.Log("Showing " + i);
-                    optionButtons[i - 1].GetComponent<Text>().text = options[i - 1];    // Canvia el nom de la opció
-                    optionButtons[i - 1].SetActive(true);   // Mostra la opció
+                    if (options[i - 1] != "")
+                    {
+                        Debug.Log("Showing " + i);
+                        optionButtons[i - 1].GetComponent<Text>().text = options[i - 1];    // Canvia el nom de la opció
+                        optionButtons[i - 1].SetActive(true);   // Mostra la opció
+                    }
                 }
             }
         }
@@ -72,6 +78,22 @@ public class PanelManager : MonoBehaviour
         }
         specialOption1.SetActive(false);
     }
+
+    void HideMap()
+    {
+        for (int i = 1; i <= mapButtons.Length; ++i)
+        {
+            mapButtons[i - 1].SetActive(false);
+        }
+    }
+    public void ShowMap()
+    {
+        for (int i = 1; i <= mapButtons.Length; ++i)
+        {
+            mapButtons[i - 1].SetActive(true);
+        }
+    }
+
 
     // Actualitza les opcions disponibles
     public void UpdateOptions(string op1)

@@ -154,10 +154,12 @@ MonoBehaviour:
   loop: 1
   continueText: Continue
   place: 0
-  knowX: 0
-  charAPath: 1
+  infoCrash: 0
+  infoVistNena: 0
   v7_001: 0
   v7_009: 0
+  itemDeadGirl: 0
+  itemChocolate: 0
   lastText: 
 --- !u!4 &36873366
 Transform:
@@ -310,6 +312,9 @@ MonoBehaviour:
   - {fileID: 2065547183}
   - {fileID: 1845844410}
   - {fileID: 1425048707}
+  mapButtons:
+  - {fileID: 1792232138}
+  - {fileID: 1530216170}
   options: []
   visible: 1
   specialOption1: {fileID: 157352366}

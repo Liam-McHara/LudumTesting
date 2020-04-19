@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour
     
 
     // Variables de coneixement (permanents)
-    public bool infoCrash = false;
+    public bool infoCrash, infoVistNena = false;
 
     // Condicions temporals (es resetejen a cada bucle)
     public bool v7_001, v7_009, itemDeadGirl, itemChocolate = false;     // passeig
@@ -110,7 +110,11 @@ public class GameController : MonoBehaviour
         op1 = "...a suspicious alleway...";
         op2 = "";
         op3 = "...a chocolate store...";
-        if (fase > 3) op2 = "...an innocent looking girl...";
+        if (fase > 3)
+        {
+            op2 = "...an innocent looking girl...";
+            infoVistNena = true;
+        } 
         pm.UpdateOptions(op1, op2, op3);    // ...i les actualitza
         // Mostra el panell amb text i opcions corresponents
         pm.ShowPanel(str);
@@ -322,8 +326,12 @@ public class GameController : MonoBehaviour
                     str = "a chocolate store. What can I say - I may cherish sunflowers, but I have a love for all edible seeds, and chocolate is no exception. \nThe shop was well stocked, and the shopkeeper was a smiling old man with a bushy beard. I asked him for… ";
                     op1 = "...his favourite chocolate...";
                     op2 = "...his most expensive chocolate...";
-                    op3 = "...whatever a child might like...";
-                    pm.UpdateOptions(op1, op2, op3);
+                    if (infoVistNena)
+                    {
+                        op3 = "...whatever a child might like...";
+                        pm.UpdateOptions(op1, op2, op3);
+                    }
+                    else pm.UpdateOptions(op1, op2);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "002b")
