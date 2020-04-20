@@ -101,7 +101,7 @@ public class GameController : MonoBehaviour
         op2 = "...search for useful junk.";
         if (hobo) op3 = "...go talk to the hobo.";
         pm.UpdateOptions(op1, op2, op3);
-        pm.UpdateText(str);
+        pm.ShowPanel(str);
     }
     public void GotoAlmacen()
     {
