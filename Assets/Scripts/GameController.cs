@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour
 {
     // Variables de coneixement (permanents)
     public bool infoCrash, infoVistNena, infoGorra, infoWarehouse, infoLoop, infoNeighbour, infoSniper, infoEvilGirl, 
-        infoFinalboss, infoFermat, infoHoboSandwich = false;
+        infoFinalboss, infoFermat, infoHoboSandwich, infoAllergy, infoPoison, infoWeapon = false;
 
     // Condicions temporals (es resetejen a cada bucle)
     public bool item2b1, itemWater, itemFlowers, itemLove, itemKillLady = false;    // parc
@@ -216,8 +216,30 @@ public class GameController : MonoBehaviour
         switch (place)
         {
             case 1:                         //  >> CASA <<
+                if (lastText == "001")
+                {
+                    lastText = "002";       //      HOME < 002 >
+                    str = "write down all the clues I had found so far, to get a clearer picture of my progress.";
+                    if (infoGorra) str += " - I found a cap on some bushes next to the wharehouses. It had a sign resembling a sunflower.\n";
+                    if (infoWarehouse) str += " - I overheard the street sweeper talking over the phone about a warehouse on Roller Street.\n";
+                    if (infoHoboSandwich) str += " - I gave a sandwich to the hobo, which he ate.\n";
+                    if (infoCrash) str += " - I saw a car crashing against the mailbox in the main avenue on the afternoon.\n";
+                    if (infoVistNena) str += " - I saw a little girl playing around the main avenue on the afternoon and evening.\n";
+                    if (infoFermat) str += " - I saw Fermat looking away as I said ''sunflower''. He is hiding something!\n";
+                    if (infoEvilGirl) str += " - I infiltrated the school and read the little girl’s notebook. She’s the actual mastermind behind the murder of my sunflower.\n";
+                    if (infoNeighbour) str += " - I found out my neighbour is part of the complot. She will abseil down and immolate herself and the sunflower at midnight unless I stop her!\n";
+                    if (infoLoop) str += " - Crazy as it sounds, I think I’m trapped in a time loop, reliving the same 24 hours over and over.\n";
+                    if (infoAllergy) str += " - I saw my neighbour having an allergy attack because of some flowers. She and the street sweeper are lovers!\n";
+                    if (infoSniper) str += " - A sniper is going to shoot my sunflower if I don’t stop it!\n";
+                    if (infoPoison) str += " - Someone is going to poison my plant if I don’t stop it!\n";
+                    if (infoWeapon) str += " - The sniper’s weapon is hidden in the warehouse!\n";
+                    if (infoFinalboss) str += " - Even after I managed to dismantle all the her other plans, the Destroyer of Suns came herself to my flat at midnight, and murdered the sunflower. If only I found out her identity...\n";
+                    pm.UpdateOptions("","","",continueText);
+                    pm.UpdateText(str);
+                }
 
-                if (lastText == "001") Debug.Log("caca");
+
+
                 else
                 {
                     Debug.Log("Default caseA: Going to MAPA");
@@ -816,7 +838,51 @@ public class GameController : MonoBehaviour
         switch (place)
         {
             case 1:                         //  >> CASA <<
-
+                if (lastText == "001")
+                {
+                    lastText = "003";       //      HOME < 003 >
+                    str = "spy on my neighbour. She lives two floors up. I went out in my sleepers and";
+                    op1 = "Knocked on her door...";
+                    op2 = "Peeked through the keyhole…";
+                    pm.UpdateOptions(op1, op2);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "003")
+                {
+                    lastText = "005";       //      HOME < 005 >
+                    str = "";
+                    op1 = "";
+                    op2 = "";
+                    pm.UpdateOptions();
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "006")
+                {
+                    lastText = "007";       //      HOME < 007 >
+                    str = "";
+                    op1 = "";
+                    op2 = "";
+                    pm.UpdateOptions();
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "010")
+                {
+                    lastText = "012";       //      HOME < 012 >
+                    str = "";
+                    op1 = "";
+                    op2 = "";
+                    pm.UpdateOptions();
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "013")
+                {
+                    lastText = "015";       //      HOME < 015 >
+                    str = "";
+                    op1 = "";
+                    op2 = "";
+                    pm.UpdateOptions();
+                    pm.UpdateText(str);
+                }
                 break;
             case 2:                         //  >> PARC <<
                 if (lastText == "001")
@@ -1175,7 +1241,7 @@ public class GameController : MonoBehaviour
         switch (place)
         {
             case 1:                         //  >> CASA <<
-
+                
                 break;
             case 2:                         //  >> PARC <<
                 if (lastText == "001")
@@ -1400,7 +1466,16 @@ public class GameController : MonoBehaviour
         switch (place)
         {
             case 1:                         //  >> CASA <<
-
+                if (lastText == "001")
+                {
+                    lastText = "000";       //      HOME < 000 >
+                    str = "";
+                    op1 = "";
+                    op2 = "";
+                    pm.UpdateOptions();
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "002") GotoMapa();
                 break;
             case 2:                         //  >> PARC <<
                 if (lastText == "001" & t < 4)
