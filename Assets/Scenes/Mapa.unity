@@ -1628,7 +1628,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &867507502
 Transform:
   m_ObjectHideFlags: 0
@@ -2396,7 +2396,7 @@ GameObject:
   - component: {fileID: 1542027410}
   - component: {fileID: 1542027409}
   m_Layer: 5
-  m_Name: TextScript
+  m_Name: IntroTextScript
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2433,7 +2433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33037aec04fe7544694bbaa3982bba1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textComponent: {fileID: 0}
+  textComponent: {fileID: 1542027410}
   text: 
   timeLapse: 0.03
   writing: 0
