@@ -5,18 +5,25 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    // Variables de coneixement (permanents)
+    public bool infoCrash, infoVistNena, infoGorra, infoWarehouse = false;
+
+    // Condicions temporals (es resetejen a cada bucle)
+    public bool item2b1, itemWater, itemFlowers, itemLove, itemKillLady = false;    // parc
+    public bool v7_001, v7_009, itemDeadGirl, itemChocolate = false;     // passeig
+
+    // Hobo
+    bool hobo = false;
+
     // TESTING
     public bool showIntro = true;
+
     AudioManager am;
     PanelManager pm;
     IntroManager im;
 
-    
-    // VARIABLES
     public int t;    // turno del día (1 - 5)
     public int loop = 1;
-
-
 
     public string continueText = ">";
     public string beginLoopText = "Start";
@@ -32,23 +39,11 @@ public class GameController : MonoBehaviour
      *  8 - escola
      */
     public int place = 0;
-
     
-
-    // Variables de coneixement (permanents)
-    public bool infoCrash, infoVistNena, infoGorra, infoWarehouse = false;
-
-    // Condicions temporals (es resetejen a cada bucle)
-    public bool item2b1, itemWater, itemFlowers, itemLove = false;    // parc
-    public bool v7_001, v7_009, itemDeadGirl, itemChocolate = false;     // passeig
-
-    // Ultima part de narracio mostrada
-    public string lastText;
-
+    public string lastText;  // Ultima part de narracio mostrada
     string str, op1, op2, op3, op4;
 
 
-    // Start is called before the first frame update
     void Start()
     {
         am = this.GetComponentInChildren<AudioManager>();
@@ -57,6 +52,8 @@ public class GameController : MonoBehaviour
 
         if (showIntro) im.ShowIntro(loop);     //      < FIRST LOOP >
         else im.HideIntro();
+
+        hobo = Random.value > 0.5f; // Mou el hobo
     }
 
     // Update is called once per frame
@@ -83,7 +80,7 @@ public class GameController : MonoBehaviour
         str = "I decided to take a stroll through the town’s park, thinking that perhaps it would help me clear my thoughts. It was almost silent there, except for the refreshing sound of the wind through the leaves. I liked the park even though it had no sunflowers - I had looked.\nAs I was walking around, I spotted…";
         op1 = op2 = op3 = op4 = "";
         if (t < 5) op1 = "a gardener, tending to his plants.";
-        op2 = "a really old lady sitting on a bench.";
+        if (!itemKillLady) op2 = "a really old lady sitting on a bench.";
         op3 = "my favourite sitting spot.";
         if (t < 4 & !item2b1) op4 = "a street sweeper, cleaning the park avenue.";
         else if (t > 3) op4 = "a group of children chasing each other.";
@@ -96,7 +93,14 @@ public class GameController : MonoBehaviour
         place = 3;
         op1 = op2 = op3 = op4 = "";
         lastText = "001";       //      ABOCADOR < 001 >
-
+        str = "This town has always had this old dumpster full of junk. Piles of trash, car wheels, metal doors, and plastic. You can find almost anything in here if you search long enough, but almost no one comes here. That’s precisely why I figured this could be the perfect hiding place for the murderer.";
+        if (hobo) str = str + "\nI thought I’d be alone, but apparently I’ve got some company. I spot the town’s hobo leaning against a broken car, probably drunk. I wondered if it wouldn’t be best to just ignore him.";
+        str = str + "\nI decided to...";
+        op1 = "...find the murderer’s hideout.";
+        op2 = "...search for useful junk.";
+        if (hobo) op3 = "...go talk to the hobo.";
+        pm.UpdateOptions(op1, op2, op3);
+        pm.UpdateText(str);
     }
     public void GotoAlmacen()
     {
@@ -270,6 +274,7 @@ public class GameController : MonoBehaviour
                 {
                     lastText = "025";       //      PARC < 025 >
                     str = "“Err, I... no.”\n“Oh”, she said. “Oh. So who are you, then? Did you come for me at last, O Grim Reaper? Is that what this is? The time of my parting, the final curtain, the eternal rest finally embracing me in its soft arms, forever? Well, then, I am ready. Yes, I may have sinned, and not a little, but I regret nothing. Every ounce of joy, every inch of pleasure and rebellion I scraped out of this dull, gray world, it was all worth it. Mary Antoniette’s lips upon mine, and to hell with whatever they said. And her sister’s lips, later on. Ah, the orgies. The ecstasy. The bliss. Yes, it was all worth it. You may take me, O Death. Take me and do with this old body what you will, for my spirit has soared high as any other.”";
+                    itemKillLady = true;
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
@@ -494,7 +499,7 @@ public class GameController : MonoBehaviour
                 }
                 else if (lastText == "014")
                 {
-                    lastText = "024";       //      PARC < 016 >
+                    lastText = "016";       //      PARC < 016 >
                     str = "“You, uhm... what were you talking about just now?”, I tried to ask as casually as I could. \nHe was still startled, but he looked at me and sighed. \n“I, uh… it’s complicated,” he said.";
                     op1 = "“You’re right, I don’t wanna hear this”.";
                     op2 = "“I have time”.";
@@ -849,6 +854,7 @@ public class GameController : MonoBehaviour
         ++loop;   // Actualitza el contador de loops
         t = 1;   // Torna a la fase 1
 
+        hobo = Random.value > 0.5f; // Mou el hobo
 
         //Reseteja condicions temporals
         v7_001 = false;
