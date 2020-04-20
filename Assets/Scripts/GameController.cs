@@ -245,6 +245,41 @@ public class GameController : MonoBehaviour
                     pm.UpdateOptions(op1, op2);
                     pm.UpdateText(str);
                 }
+                else if (lastText == "014")
+                {
+                    lastText = "015";       //      PARC < 015 >
+                    str = "“You’re the sunflower murderer!”, I screamed in a fit of rage, and then I tackled him. I don’t recall the exact details of what happened next. There might have been a moment when I bit his finger off? I hope it was an finger and not an ear, but, to be honest, it’s hard to tell. All I’m certain of is that he managed to escape at some point, and that I by the time I regained my wits I had an awful lot of blood on my t-shirt. Most of which was probably not mine. \nPerhaps I should hone my diplomacy skills a bit.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "016")
+                {
+                    lastText = "017";       //      PARC < 017 >
+                    str = "“You’re right, I don’t wanna hear this”, I said, and I left. Humans are scary.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "018")
+                {
+                    lastText = "019";       //      PARC < 019 >
+                    str = "“Sure you can,” I said, not really knowing what I was talking about. All of my love has and shall always be for my sunflower. \n“Yeah, but what would happen then?”, he countered. “The world would be ruined. Everything would be lost. No, I just cannot do it. I can’t. It hurts and it’s unfair, but I have to suck it up and do what’s right”.\n”Uh...  okay”, I answered, not really knowing what else to say. And he left. What am I supposed to make of that that? This case needs someone who actually understands people…";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "024")
+                {
+                    lastText = "025";       //      PARC < 025 >
+                    str = "“Err, I... no.”\n“Oh”, she said. “Oh. So who are you, then? Did you come for me at last, O Grim Reaper? Is that what this is? The time of my parting, the final curtain, the eternal rest finally embracing me in its soft arms, forever? Well, then, I am ready. Yes, I may have sinned, and not a little, but I regret nothing. Every ounce of joy, every inch of pleasure and rebellion I scraped out of this dull, gray world, it was all worth it. Mary Antoniette’s lips upon mine, and to hell with whatever they said. And her sister’s lips, later on. Ah, the orgies. The ecstasy. The bliss. Yes, it was all worth it. You may take me, O Death. Take me and do with this old body what you will, for my spirit has soared high as any other.”";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "025")
+                {
+                    lastText = "025b";       //      PARC < 025b >
+                    str = "What was I supposed to do? I couldn’t just leave, not after that. I was left with no option but to give her what she was asking for. I tried to be gentle, but choking someone to death is never a walk in the park.\nOne way or another, though, in the end she got the rest she wanted.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
 
                 else
                 {
