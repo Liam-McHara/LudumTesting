@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
 
     // Condicions temporals (es resetejen a cada bucle)
     public bool item2b1, itemWater, itemFlowers, itemLove, itemKillLady = false;    // parc
+    public bool itemBarricade, itemSandWich, itemCrowbar = false;      // abocador
     public bool v7_001, v7_009, itemDeadGirl, itemChocolate = false;     // passeig
 
     // Hobo
@@ -311,76 +312,77 @@ public class GameController : MonoBehaviour
                 if (lastText == "001")
                 {
                     lastText = "002";       //      ABOCADOR < 002 >
-                    str = "";
-                    op1 = "";
-                    op2 = "";
-                    pm.UpdateOptions();
+                    str = "find the murderer’s hideout. \nThe dumpster was quite big, but I had plenty of time. After hours of searching, I found a cat feeding her kittens, a wild raccoon, and two scorpions. I found a nest of mockingbirds. I found a pair of socks which seemed quite warm and comfortable, too. But no hideout. In the end, I had no option but to face the truth and go home. The murderer simply wasn’t here.";
+                    pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "003")
                 {
                     lastText = "004";       //      ABOCADOR < 004 >
-                    str = "";
-                    op1 = "";
-                    op2 = "";
-                    pm.UpdateOptions();
+                    str = "a neat pile of wooden planks, along with some tools. Nails, a hammer, etc. They could be useful to barricade my house. Or to build anything I needed in my quest, so I decided to take them with me.";
+                    itemBarricade = true;
+                    pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "007")
                 {
                     lastText = "008";       //      ABOCADOR < 008 >
-                    str = "";
-                    op1 = "";
-                    op2 = "";
-                    pm.UpdateOptions();
+                    str = "I kept listening to him.\n“Yes! it is the new ...mumblemumble ... loophole...the most efficient arrangement … mumblemubmle.. quantum entanglement ...r(n) = √n  ... the Golden Angle ... φ = (1+√5)/2.. mimb... it is the only... 137,5°....the sunflower… AHHH! ike ike, one of a hundred ...mumblemumble... the Day finally has come...  the order of… mumble… fermat mumblmubmle ...the golden spiral… mumblemumb  how many times… need to find mumble… ”";
+                    op1 = "“Hey, hold on! What did you say about sunflowers?”";
+                    op2 = "“Hey, hold on! What was that loophole thing about?”";
+                    if (itemSandWich) op3 = "Hey, dude! Fancy a sandwich?";
+                    pm.UpdateOptions(op1, op2, op3);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "008")
                 {
                     lastText = "018";       //      ABOCADOR < 018 >
-                    str = "";
-                    op1 = "";
-                    op2 = "";
-                    pm.UpdateOptions();
+                    str = "“Hey dude! fancy a sandwich?” I handed him the sandwich. He ate it without a comment. After finishing it he took a sip of beer, eructed, and kept on mumbling. I decided to go home.";
+                    pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "009")
                 {
+                    lastText = "009b";       //      ABOCADOR < 009b >
+                    str = "Suddenly, I started hearing the voices once again. “Am I going crazy?” I thought. \n\n”...”\n\n “I must be dreaming all of this.”\n\n”...”\n\nMuch to my relief, I came back to reality when he suddenly spat out:\n“Sunflower.”\n“One of a hundred.”";
+                    op1 = "I kept listening.";
+                    op2 = "I went home.";
+                    pm.UpdateOptions(op1, op2);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "009b")
+                {
                     lastText = "010";       //      ABOCADOR < 010 >
-                    str = "";
-                    op1 = "";
-                    op2 = "";
-                    pm.UpdateOptions();
+                    str = "I kept listening, and he started vomiting words all over, shouting and moving his arms around. \n“will come the time and surely this time has come and past and come AGAIN till it passes away if only no one would PASS AWAY, y’know??\nplay would stop reap shot poison bomb the one we could keep doin keep gofin, keep moving forward! y'know? save it if you can save it yourself and don't waste my time, hey dude don’t waste my time, yesterday is gone tomorrow won't come just shut up SHUT UP and bend low bend down!!”";
+                    op1 = "I kept listening.";
+                    op2 = "I went home.";
+                    pm.UpdateOptions(op1, op2);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "010")
                 {
                     lastText = "011";       //      ABOCADOR < 011 >
-                    str = "";
-                    op1 = "";
-                    op2 = "";
-                    pm.UpdateOptions();
+                    str = "He sat silent, eyes closed. I bent down and closed my eyes as well. Completely alienated from the world of cars and  pedestrians passing by, I thought of my sunflower. That pacified my mind. Pacified my mind. Pacified my mind. When I opened my eyes again I found some ugly letters carved in the pavement. They read:\nTo save the sunflower you must\nControl the water\nStop war\nSteal the food\nMake love stay\nDrink the poison\nThe hobo looked at me with sparkly eyes. “I made up the last one, so don’t take it so seriously haha” He explained proudly, grinning his rotten teeth at me. “Want some?” And he offered me a glass bottle reeking of alcohol.";
+                    op1 = "“Sure.”";
+                    op2 = "”I’ll pass this time.”";
+                    pm.UpdateOptions(op1, op2);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "011")
                 {
                     lastText = "012";       //      ABOCADOR < 012 >
-                    str = "";
-                    op1 = "";
-                    op2 = "";
-                    pm.UpdateOptions();
+                    str = "“Sure” I said, accepting the booze and taking a long gulp. “Y’now” He said eventually “I wouldn't like to be in your position, much responsibility. Anyway, no hurry eh, me I just chillin man, just take it easy. Take your time. It is not like we are going anywhere.” He told me. For once I forgot about it all.";
+                    pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "014")
                 {
                     lastText = "016";       //      ABOCADOR < 016 >
-                    str = "";
-                    op1 = "";
-                    op2 = "";
-                    pm.UpdateOptions();
+                    str = "”Isn’t that your marker?” I asked\n”Well, that’s a really common marker,” he replied before falling soundly asleep. I went home.";
+                    pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
-
+                else if (lastText == "012") TimeTravel();   //  [ END LOOP ]
                 else
                 {
                     Debug.Log("Default caseA: Going to MAPA");
@@ -612,52 +614,51 @@ public class GameController : MonoBehaviour
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
+                else if (lastText == "007" | lastText == "010" | lastText == "009" | lastText == "009b")
+                {
+                    GotoCasa();
+                }
 
                 break;
             case 3:                         //  >> ABOCADOR <<
                 if (lastText == "001")
                 {
                     lastText = "003";       //      ABOCADOR < 003 >
-                    str = "";
-                    op1 = "";
-                    op2 = "";
-                    pm.UpdateOptions();
+                    str = "search for useful junk. \nIt wasn’t easy to find something I could use among the trash, but I persevered. As I was doing my third pass through the dumpster, I saw something that caught my eye. It was…";
+                    op1 = "…a neat pile of wooden planks…";
+                    op2 = "…a weird contraption…";
+                    op3 = "…a sturdy-looking crowbar…";
+                    pm.UpdateOptions(op1, op2, op3);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "003")
                 {
                     lastText = "005";       //      ABOCADOR < 005 >
-                    str = "";
-                    op1 = "";
-                    op2 = "";
-                    pm.UpdateOptions();
+                    str = "a weird contraption made of wool, glass and copper tubes. After examining more closely, I realized it was actually a weird musical instrument I had never seen before. I didn’t know what it could be useful for, but I decided to bring it home with me anyway.";
+                    pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "008")
                 {
                     lastText = "009";       //      ABOCADOR < 009 >
-                    str = "";
-                    op1 = "";
-                    op2 = "";
-                    pm.UpdateOptions();
+                    str = "“Hey, hold on! What did you say about sunflowers?” I asked without much hope. Surprisingly, he stopped his nonsense and kept silent for much longer than I thought possible. Not only he was silent. Everything was still.";
+                    op1 = "I kept listening.";
+                    op2 = "I went home.";
+                    pm.UpdateOptions(op1, op2);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "011")
                 {
                     lastText = "013";       //      ABOCADOR < 013 >
-                    str = "";
-                    op1 = "";
-                    op2 = "";
-                    pm.UpdateOptions();
+                    str = "Suddenly, I started hearing the voices once again. “Am I going crazy?” I thought. \n\n”...”\n\n “I must be dreaming all of this.”\n\n”...”\n\nMuch to my relief, I came back to reality when he suddenly spat out:\n“Sunflower.”\n“One of a hundred.”";
+                    pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "014")
                 {
                     lastText = "017";       //      ABOCADOR < 017 >
-                    str = "";
-                    op1 = "";
-                    op2 = "";
-                    pm.UpdateOptions();
+                    str = "“Isn’t that your handwritting?” I asked.\n“I have a very conventional handwritting,”he replied before falling soundly asleep.\nI went home.";
+                    pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
 
@@ -799,38 +800,35 @@ public class GameController : MonoBehaviour
                 if (lastText == "001")
                 {
                     lastText = "007";       //      ABOCADOR < 007 >
-                    str = "";
-                    op1 = "";
-                    op2 = "";
-                    pm.UpdateOptions();
+                    str = "go talk to the hobo. \nI figured that since he often sat in the middle of the street all day, probably drugged on God knows what, he would know better than anyone what was going on inside the human soul, and thus could help me uncover the murderer. I sat next to him, but he didn’t seem to notice me. He was mumbling something to himself and making strange drawings on the pavement. On a second thought, he was probably just nuts.";
+                    op1 = "I kept listening to him.";
+                    op2 = "I went home.";
+                    pm.UpdateOptions(op1, op2);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "003")
                 {
-                    lastText = "006";       //      ABOCADOR < 024 >
-                    str = "";
-                    op1 = "";
-                    op2 = "";
-                    pm.UpdateOptions();
+                    lastText = "006";       //      ABOCADOR < 006 >
+                    str = "a sturdy-looking crowbar, which I could probably use to open almost any locked door I encountered. Handy.";
+                    itemCrowbar = true;
+                    pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "008")
                 {
                     lastText = "014";       //      ABOCADOR < 014 >
-                    str = "";
-                    op1 = "";
-                    op2 = "";
-                    pm.UpdateOptions();
+                    str = "”Hey, hold on! What was that loophole thing about?”, I asked. \n“In a temporal loop let’s say you, particles cannot go back, the arrow of time won’t completely stop for them, follow me? if we think we are subatomic particles and because the quantum entanglement and the fractal nature of existence we can think that ‘kay? some things won’t reset every loop y‘know? as it is shown and revealed in this pictograms made by a sage.” \nA shaky finger and a broken nail pointed towards some ugly drawings made with a marker in a cardboard box.";
+                    op1 = "“Isn’t that your bed?”";
+                    op2 = "“Isn’t that your marker?”";
+                    op3 = "“Isn’t that your handwriting?”";
+                    pm.UpdateOptions(op1, op2, op3);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "014")
                 {
-                    lastText = "015";       //      ABOCADOR < 015
-                    >
-                    str = "";
-                    op1 = "";
-                    op2 = "";
-                    pm.UpdateOptions();
+                    lastText = "015";       //      ABOCADOR < 015 >
+                    str = "”Isn’t that your bed?” I asked.\n“Yes indeed! The pictograms appeared in my bed this morning. A time traveler must have made them,” he replied before falling soundly asleep. I went home.";
+                    pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
                 break;
