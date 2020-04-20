@@ -465,8 +465,129 @@ public class GameController : MonoBehaviour
                 }
                 break;
             case 4:                         //  >> MAGATZEM <<
+                if (lastText == "001")
+                {
+                    if (t == 5)
+                    {
+                        lastText = "002";       //  Abocador < 002 >
+                        str = "sat on this dusty old sofa and did nothing till the moon peeked through the clouds.\nThe world seemed to be turning just fine.";
+                    }
+                    if (t != 5)
+                    {
+                        lastText = "002";
+                        str = "sat on this dusty old sofa and did nothing for a while til the shadows moved.//\nThe world seemed to be turning just fine.";
+                    }
 
-                if (lastText == "001") Debug.Log("caca");
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "001" & t != 4)
+                {
+
+                    lastText = "005";       //  Abocador < 005 >
+                    str = "went to the Roller Street warehouse. It had just one door. It was hard, big and ugly. Probably nobody had ever loved it.";
+                    op1 = "I tried to open it by pushing against it.";
+                    op2 = "I smelled it";
+                    op3 = "I tried to open it with my crowbar";
+
+                    if (itemCrowbar) pm.UpdateOptions(op1, op2, op3);
+                    else { pm.UpdateOptions(op1, op2); }
+                    pm.UpdateText(str);
+                }
+
+                else if (lastText == "005" & t == 4)
+                {
+                    lastText = "006";       // WH  < 006 >
+                    str = "went to the Roller Street warehouse. Once I got there, I walked towards the door. It was hard, big, ugly and open.";
+                    op1 = "I walked in ";
+                    op2 = "I peeked through the door";
+                    op3 = "I smelled it";
+                    op4 = "";
+
+                    pm.UpdateOptions(op1, op2, op3);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "006")
+                {
+                    lastText = "007";       //  WH< 007 >
+                    str = "I walked in and stumbled upon the street sweeper.  The room was big and empty, and he was holding a gun!\n";
+                    op1 = "“Holy sunflowers! I hope you’re not gonna kill me with that…”";
+                    op2 = "“Uhm… I was just casually passing by…”";
+                    op3 = "“You’re the sunflower murderer!”";
+                    op4 = "“Yes! I knew something smelled fishy…”";
+
+                    infoWeapon = true;
+                    pm.UpdateOptions(op1, op2, op3, op4);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "007")
+                {
+                    lastText = "008";       // wh < 008 >
+                    str = "“Holly sunflowers, I hope you are not going to kill me with that!” I cried. He cried back.\n“Will you just chill down a second?I'm not killing anyone”\n";
+                    op1 = "What are you doing here?";
+                    op2 = "Why don’t you give me that weapon?";
+                    op3 = "What are you going to do with that?";
+                    op4 = "There must be a way I could open this door before this guy gets here";
+
+                    pm.UpdateOptions(op1, op2, op3, op4);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "008")
+                {
+                    lastText = "009";       // WH < 09 >
+                    str = "“What are you doing here?” I asked the guy.";
+                    op1 = "Are you dealing with weapons?.";
+                    op2 = "Are you planning to kill my neighbour?.";
+                    op3 = "Are you planning to kill my plant?";
+                    op4 = "I trust you won't do anything stupid";
+
+                    pm.UpdateOptions(op1, op2, op3, op4);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "009")
+                {
+                    lastText = "010";       // WH  < 10 >
+                    str = "''Are you dealing with weapons?'' I guessed stupidly. His face relaxed and he giggled in relief.\n''Of course I'm not. I don’t like weapons myself. I’m here to destroy it and fulfill my sacred duty within the Order and the Sunflower. There’s no need to worry, my brother. The sunflower is safe, now. You should go home and be with who you love most.'' He said, tears in his eyes. ";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "020")
+                {
+                    lastText = "009";       // WH < 21 >
+                    str = "I rushed in and stumbled upon him.";
+                    op1 = "Are you dealing with weapons?";
+                    op2 = "Are you planning to kill my neighbour?";
+                    op3 = "Are you planning to kill my plant?";
+                    op4 = "I trust you won't do anything stupid";
+
+                    pm.UpdateOptions(op1, op2, op3, op4);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "022")
+                {
+                    lastText = "023";       //  WH<023 >
+                    str = "I kept looking for a few more sweaty minutes. Eventually the guy managed to start a fire and destroy whatever artifact he had been holding. I left before he could stumble upon me by the door, feeling quite unsure about what exactly had happened there.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+
+                else if (lastText == "024")
+                {
+                    lastText = "025";       //  < 25 >
+                    str = "got the hell out of there before someone came and got the wrong idea.";
+
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+
+                else if (lastText == "005")
+                {
+                    lastText = "028";       //  < 028 >
+                    str = "I tried to open it by pushing against it, but the door was locked solid. There was nothing I could do here without better tools.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+
                 else
                 {
                     Debug.Log("Default caseA: Going to MAPA");
@@ -1017,7 +1138,120 @@ public class GameController : MonoBehaviour
 
                 break;
             case 4:                         //  >> MAGATZEM <<
+                if (lastText == "001")
+                {
+                    lastText = "003";       // WH  < 003 >
+                    str = "looked around for clues. After searching for a couple hours, I found a cap between some bushes. I didn’t think much of it until I realized its logo depicted the exact pattern of sunflower seeds. This couldn’t be a coincidence. Shaken to the core, I decided to go back home and think about the implications of such a reveal.";
+                    infoGorra = true;
 
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "009")
+                {
+                    lastText = "011";       //  wh<  11>
+                    str = "''Are you planning to kill my neighbour?'' I guessed. \n''Of course not! Why would I? I still love her!'' He yelled back, shaking and holding the shotgun tightly. ''I want to be alone. This is none of your bussiness. Your plant is safe now and that is all you need to know. Just go and forget you ever saw me.''";
+
+
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "008")
+                {
+                    lastText = "008";       // wh < 14 >
+                    str = "''Why don’t you give me that weapon?'' I asked reasonably.\n''No way, I have to destroyt it'' he said.\n";
+                    op1 = "What are you doing here?";
+                    op2 = "";
+                    op3 = "What are you going to do with that?";
+                    op4 = "There must be a way I could open this door before this guy gets here";
+
+                    pm.UpdateOptions(op1, op2, op3, op4);
+                    pm.UpdateText(str);
+
+                }
+
+                else if (lastText == "007")
+                {
+                    lastText = "007";       //  < 17 >
+                    str = "''Um… I was just casually passing by'' I told him innocently. \n''Don't lie to me.''\n";
+                    op1 = "Holy sunflowers! I hope you’re not gonna kill me with that…";
+                    op2 = "";
+                    op3 = "'You’re the sunflower murderer!''";
+                    op4 = "";
+
+                    pm.UpdateOptions(op1, op2, op3, op4);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "006")
+                {
+                    lastText = "020";       //  <020 >
+                    str = "I peeked through the door. The street sweeper was holding something, but I couldn’t see it clearly. ";
+                    op1 = "I rushed in!";
+                    op2 = "I held my breath";
+
+
+                    pm.UpdateOptions(op1, op2);
+                    pm.UpdateText(str);
+                }
+
+                else if (lastText == "020")
+                {
+                    lastText = "022";       // wh < 22 >
+                    str = "I held my breath and kept my eyes open. The street sweeper was manipulating the object awkwardly. Breathing heavily he was turning it around and examining it, looking at it from all sides. \n";
+                    op1 = "I kept looking";
+                    op2 = "I yelled out";
+                    op3 = "";
+                    op4 = "";
+
+                    pm.UpdateOptions(op1, op2);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "022")
+                {
+                    lastText = "024";       //  wh < 24 >
+                    str = " I yelled out of panic when a pigeon bumped against my back. Some other birds came out flying from their nests because of my scream, and then I heard a really loud ''BANG!'' echoing loudly. The street sweeper laid facing the ground in a pool of blood. The object he had been holding turned out to be a gun, and he had shoot himself by accident because of my noise. I…";
+                    op1 = "got the hell out of there";
+                    op2 = "went to check him up";
+
+                    infoWeapon = true;
+                    pm.UpdateOptions(op1, op2);
+                    pm.UpdateText(str);
+                }
+
+                else if (lastText == "024")
+                {
+                    lastText = "026";       //  < 26 >
+                    str = "went to check him up. He was dead. I felt guilty for a second, at least until I realized that he would probably be fine by tomorrow if the time loop reset itself, so I decided to pick his pockets. I found a wallet, two rusty nails, some oily fish, a few coins, some matchsticks, a folded piece of paper, and an emblem of the order of the Sunflower with the following inscription carved ''The Sun follows, the Flower guides''\n";
+                    op1 = "I opened the folded paper";
+                    op2 = "";
+                    op3 = "";
+                    op4 = "";
+
+                    pm.UpdateOptions(op2, op1);
+                    pm.UpdateText(str);
+                }
+
+                else if (lastText == "026")
+                {
+                    lastText = "026b";       //  < 026b  >
+                    str = "I opened the folded paper. It had some oil spots on it but I could still read it: \n''Darling, it is so sweet you finally decided to help me out with this. I want you to know that I really appreciate it. \nYou’ll find you-know-what behind some boxes, near the door. The target is located two balconies under mine, and you can easily hit it from the rooftop in the next building. I’ll be waiting for you. Love you''\nLooked like your typical cold-blooded murderer love letter. I got the idea that my neighbour was somehow involved in it. Anyway, she could do no harm anymore, so I took off before someone came and got the wrong idea. ";
+
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+
+                else if (lastText == "005")
+                {
+                    lastText = "005";       //  < 029 >
+                    str = "I smelled it. It stinked of fish";
+                    op1 = "I tried to open it by pushing against it…";
+                    op2 = "";
+                    if (itemCrowbar) op3 = "I tried to open it with my crowbar…";
+                    op4 = "";
+
+                    pm.UpdateOptions(op1, op2, op3);
+                    pm.UpdateText(str);
+                }
                 break;
             case 5:                         //  >> PIZZA <<
                 if (lastText == "002" | lastText == "003")
@@ -1327,7 +1561,84 @@ public class GameController : MonoBehaviour
                 }
                 break;
             case 4:                         //  >> MAGATZEM <<
+                if (lastText == "001")
+                {
+                    lastText = "004";       //  WH< 004 >
+                    if (itemSandWich)
+                    {
+                        str = " fed some cats I found lying around. Then I got bored of it went back home. ";
+                        itemSandWich = false;
+                    }
+                    else { str = "Or I should say I would have fed them, except I had no food on me and didn’t feel like being eaten alive yet."; }
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
 
+
+                else if (lastText == "009")
+                {
+                    lastText = "012";       //  WH< 012 >
+                    str = "''Are you planning to kill my plant?'' I asked full of accusation. \n''No, that’s not what I wanted! I was so confused..I was deeply in love, you see. But luckily I’ve come to my senses in time! Now I will destroy this firearm and save your sunflower from all danger. You should go home and be with who you love the most'' He said with tears in his eyes. What a sad story… but if his words were true, my sunflower was now safe.";
+
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+
+
+                else if (lastText == "008")
+                {
+                    lastText = "009";       // wh  <  15>
+                    str = "''What are you going to do with that?'' I asked. \n ";
+                    op1 = "Are you dealing with weapons?";
+                    op2 = "Are you planning to kill my neighbour?";
+                    op3 = "Are you planning to kill my plant?.";
+                    op4 = "I trust you won't do anything stupid";
+
+                    pm.UpdateOptions(op1, op2, op3, op4);
+                    pm.UpdateText(str);
+                }
+
+                else if (lastText == "007")
+                {
+                    lastText = "008";       // wh < 18 >
+                    str = "'You’re the sunflower murderer!!'' I shouted. \n''This is not true! It’s not what it seems...'' He looked down, ashamed.\n";
+                    op1 = "What are you doing here?";
+                    op2 = "Why don’t you give me that weapon?";
+                    op3 = "What are you going to do with that?";
+                    op4 = "There must be a way I could open this door before this guy gets here";
+
+                    pm.UpdateOptions(op1, op2, op3, op4);
+                    pm.UpdateText(str);
+                }
+
+                else if (lastText == "005")
+                {
+                    lastText = "005";       //  < 27 >
+                    str = "I smelled it. It smelled almost unbearably fishy.\n";
+                    op1 = "I tried to open it by pushing against it";
+                    op2 = "";
+                    if (itemCrowbar) op3 = "I tried to open it with my crowbar";
+                    op4 = "";
+
+                    pm.UpdateOptions(op1, op2, op3, op4);
+                    pm.UpdateText(str);
+                }
+
+
+                else if (lastText == "005")
+                {
+                    lastText = "30";       //  < 30 >
+                    str = " I tried to open it with my crowbar. I managed to injure myself with it and, much to my surprise, it worked. Inside the room I easily found the sniper’s gun hidden under a box. I picked it up and tossed it on a random potato field. Let the plants deal with it. My sunflower would be safe today.";
+
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+
+                else
+                {
+                    Debug.Log("Default caseA: Going to MAPA");
+                    GotoMapa();  //  [ RETURN ]
+                }
                 break;
             case 5:                         //  >> PIZZA <<
                 if (lastText == "002")
@@ -1506,7 +1817,71 @@ public class GameController : MonoBehaviour
                 }
                 break;
             case 3:                         //  >> ABOCADOR <<
+                if (lastText == "001" & t != 4)
+                {
+                    lastText = "005";       // WH < 005>
+                    str = "went to the Roller Street warehouse. It had just one door. It was hard, big and ugly. Probably nobody had ever loved it.";
+                    op1 = "I tried to open it by pushing against it";
+                    op2 = "I smelled it";
+                    if (itemCrowbar) op3 = "I tried to open it with my crowbar";
+                    op4 = "";
 
+                    pm.UpdateOptions(op1, op2, op3);
+                    pm.UpdateText(str);
+                }
+
+                else if (lastText == "001" & t == 4)
+                {
+                    lastText = "006";       // wh  <006  >
+                    str = "went to the Roller Street warehouse. Once I got there, I walked towards the door. It was hard, big, ugly and open.\n";
+                    op1 = "I walked in";
+                    op2 = "I peeked through the door";
+                    op3 = "I smelled it";
+                    op4 = "";
+
+                    pm.UpdateOptions(op1, op2, op3);
+                    pm.UpdateText(str);
+                }
+
+                else if (lastText == "009")
+                {
+                    lastText = "013";       //  <  13>
+                    str = "I trust you won't do anything stupid.'' I told him.\n He smiled. ''I won’t. I must destroy this instrument of evil for the sake of everyone... It’ll all be alright. You should go home and take it easy'' He replied calmly. ";
+                    op1 = "";
+                    op2 = "";
+                    op3 = "";
+                    op4 = "";
+
+                    pm.UpdateOptions(op1, op2, op3, op4);
+                    pm.UpdateText(str);
+                }
+
+                else if (lastText == "008")
+                {
+                    lastText = "008";       //  <  16 >
+                    str = "There must be a way I could open this door before this guy gets here'' I thought out loud.\n''Excuse me?'' He said, confused.\n";
+                    op1 = "What are you doing here?";
+                    op2 = "Why don’t you give me that weapon? ";
+                    op3 = "What are you going to do with that?";
+                    op4 = "";
+
+                    pm.UpdateOptions(op1, op2, op3);
+                    pm.UpdateText(str);
+                }
+
+
+                else if (lastText == "007")
+                {
+                    lastText = "007";       //  < 19 >
+                    str = "''Yes, I knew something smelled fishy!'' I said triumphantly. \n''You mean the cats?'' He duly answered. ''I feed them every day.'' \n";
+                    op1 = "Holy sunflowers! I hope you’re not gonna kill me with that…'";
+                    op2 = "";
+                    op3 = "You’re the sunflower murderer!";
+                    op4 = "";
+
+                    pm.UpdateOptions(op1, op2, op3);
+                    pm.UpdateText(str);
+                }
                 break;
             case 4:                         //  >> MAGATZEM <<
 
