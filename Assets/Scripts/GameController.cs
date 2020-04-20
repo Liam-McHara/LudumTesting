@@ -607,7 +607,95 @@ public class GameController : MonoBehaviour
                 break;
             case 6:                         //  >> AIGUA <<
 
-                if (lastText == "001") Debug.Log("caca");
+                if (lastText == "001" | !itemDeadGirl)
+                {
+                    lastText = "002";       //      AIGUA < 002 >
+                    str = "infiltrate the plant through the public entrance! Full of bravery and determination, I nonchalantly strolled towards the gate of the public gate. My plan consisted on passing the barrier with casual confidence, as if I knew exactly what I was doing and it was the most natural thing on this world. \nMy plan failed miserably.\nAs soon as I reached the gate, a security guard yelled for me to stop. ''Sir, I will need a valid ID, government entry authorization, and reason of your visit!''. \n''I, err…'' I… ";
+                    op1 = "Fought.";
+                    op2 = "Fled.";
+                    op3 = "tried to talk my way in.";
+                    pm.UpdateOptions(op1,op2,op3);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "002")
+                {
+                    lastText = "003";       //      AIGUA < 003 >
+                    str = "fought. What else was I going to do? If I had to go, I would go out it with a bang.\nUpon hearing his words, I dashed towards the barrier in an impressive sprint, expecting to be torn to pieces by heavy artillery at any moment. \nFortunately, reality wasn’t so dazzling. Rather than being shot down on sight, the security guard - who was a bit past his fifties, and packed a few extra pounds - managed to run me down and handcuff me. I received a sizable fine for resistance to authority, but was left otherwise unscathed at the door of my home.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "005")
+                {
+                    lastText = "006";       //      AIGUA < 006 >
+                    str = "''Certainly, sir!'', I replied with confidence. ''(541) 754-3010, lack of entry authorization due to jackal assault, and my visit is due to mandatory inspection of the facilities by member of licensed traveling circus''.\n''Finally. Five-four-one-s… wait, that’s a mobile phone number. Hold on, jackal what? Jim!'' he shouted through an intercom after dialing a number on a pad. ''Jim, we’ve got one of those. No, not the dangerous kind. Yep, just… disturbed. Be gentle, if you can''.\nI then received an invitation to leave the facilities, which I graciously accepted.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "008")
+                {
+                    lastText = "008b";       //      AIGUA < 008b >
+                    str = "''Really?'' he asked stupidly, and I could see the corners of his eyes beginning to water. ''I try to be a good father, of course, but I have to work so much… I never knew she valued… I never thought she... well, this is quite a surprise, sir'' he babbled a while before stopping, speechless.";
+                    op1 = "''Yes, yes, she loves you dearly. Now, if I may…''";
+                    pm.UpdateOptions(op1);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "008b")
+                {
+                    lastText = "009";       //      AIGUA < 009 >
+                    str = "''Yes, yes, she loves you dearly. Now, if I may go in for a minute…'' I said as I casually strolled towards the barrier.\n''Ah, no. I’m afraid that’s impossible. I understand you’re a good friend of my daughter, but I have strict orders to stop anyone trying to enter the facility without proper authorization. I’m so sorry, but there’s nothing I can do.''\nI decided not to tempt my luck any longer. Seems like I would have to find a more… impactful way to get rid of the girl’s father…";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "015" | lastText == "013")
+                {
+                    lastText = "016";       //      AIGUA < 016 >
+                    str = "''Onwards, to destiny!'' I told myself as I finally entered the water processing plant. Near the entrance I found a closet with some worker clothes, so I put them on to better disguise myself. I crossed a couple employees, but they didn’t take a second glance at me. Now, if I were the sunflower murderer, where would I go?";
+                    op1 = "The repository...";
+                    op2 = "The treatment plant...";
+                    op3 = "The control room...";
+                    pm.UpdateOptions(op1,op2,op3);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "016")
+                {
+                    lastText = "017";       //      AIGUA < 017 >
+                    str = "The repository was a huge storage room full with all the tools and materials needed for the proper functioning of the water processing plant. It was kind of boring, but at least I took the chance to pick up a crowbar I saw lying around. You never know when one of those will come in handy.\nAfterwards, I headed to…";
+                    op1 = "The control room. ";
+                    itemCrowbar = true;
+                    pm.UpdateOptions(op1);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "017" | lastText == "018")
+                {
+                    lastText = "019";       //      AIGUA < 019 >
+                    str = "The control room was a big cubicle at the end of a long corridor, full of screens and beeping sounds and serious looking people doing serious looking things and bustling about. It didn’t really look like the kind of place where one could find a sunflower murderer, but what I did find was a big red button with the label “EMERGENCY STOP OF ALL WATER OPERATIONS”. I…";
+                    op1 = "pushed it.";
+                    op2 = "didn’t push… nah, just kidding. Of course I pushed it.";
+                    pm.UpdateOptions(op1,op2);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "019")
+                {
+                    lastText = "020";       //      AIGUA < 020 >
+                    str = "pushed it. The moment I did, a loud emergency alarm got activated, red lights started flashing all over the water treatment plant, and the serious looking people started looking less serious and more panicky. It didn’t seem like they would be too happy about me pushing their button, so I took the chaos and confusion as my cue to disappear from the water treatment plant before they checked their video feed recordings.";
+                    itemWater = true;
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "011")
+                {
+                    lastText = "012";       //      AIGUA < 012 >
+                    str = "What had given me such ideas to begin with? The murderer was probably as clueless as I was. In fact, he might be standing around the water processing plant at this very moment, just like I was, failing to find a way to enter, just like I had. If anything, I had a higher chance of finding the murderer by continuing to wander aimlessly around the plant, as I had been doing for the last forty minutes!\nAfter two more hours like that, I left.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "007")
+                {
+                    lastText = "007b";       //      AIGUA < 007b >
+                    str = "The guard started dialing a number on a pad even before I could finished my sentence. ''Jim, we’ve got one of those,'' he shouted through an intercom. ''No, not the dangerous kind. Yep, just… disturbed. Be gentle, if you can''.\nI then received an invitation to leave the facilities, which I graciously accepted. ";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
                 else
                 {
                     Debug.Log("Default caseA: Going to MAPA");
@@ -966,6 +1054,43 @@ public class GameController : MonoBehaviour
 
                 break;
             case 6:                         //  >> AIGUA <<
+                if (lastText == "001")
+                {
+                    lastText = "010";       //      AIGUA < 010 >
+                    str = "Infiltrate the plant through the private entrance, of course! As Sun Tzu once said, ''Attack your enemy where he is unprepared, appear where you are not expected''. A perfect plan, indeed. \nExcept, for, well, that PIN code detail. Right. Well, the PIN had only four digits, whereas I had twenty. How hard could it be to defeat it with such an advantage?\nI reached the pad and looked around to make sure there was no one around, and then I input the super secret PIN number… ";
+                    pm.UpdateOptions(1);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "002")
+                {
+                    lastText = "004";       //      AIGUA < 004 >
+                    str = "fled. What else was I going to do? I’m a coward, yes, but at least I’ve never pretended otherwise.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "005")
+                {
+                    lastText = "008";       //      AIGUA < 008 >
+                    str = "''Wouldn’t you happen to have an eight year old daughter?''\nThe guard looked at me with disbelief. ''You know my daughter?'' he asked, cautiously. \n''Well, of course! I’m a volunteer at the public school, and she’s always talking of you, and all the wonderful things you do together! She loves you very, very much''. ";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "016")
+                {
+                    lastText = "018";       //      AIGUA < 018 >
+                    str = "The treatment plant was where all the fun really happened. Less than five minutes after arriving I was already swimming with all the algae and bacteria of the anoxic tank, and making sand castles on the sand filters. Had it not been for the toxic smells of all those chemicals making me kind of dizzy, I would have certainly stayed there way longer, and I might never have reached…";
+                    op1 = "The control room.";
+                    pm.UpdateOptions(op1);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "019")
+                {
+                    lastText = "021";       //      AIGUA < 021 >
+                    str = "pushed it. The moment I did, a loud emergency alarm got activated, red lights started flashing all over the water treatment plant, and the serious looking people started looking less serious and more panicky. It didn’t seem like they would be too happy about me pushing their button, so I took the chaos and confusion as my cue to disappear from the water treatment plant before they checked their video feed recordings.";
+                    itemWater = true;
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
 
                 break;
             case 7:                         //  >> PASSEIG <<
@@ -1181,7 +1306,29 @@ public class GameController : MonoBehaviour
 
                 break;
             case 6:                         //  >> AIGUA <<
-
+                if (lastText == "001")
+                {
+                    lastText = "011";       //      AIGUA < 011 >
+                    str = "explore the outside of the water processing plant. Yes, the world is full of thrilling tales of adventure, daring escapes and cunning infiltrations. Yes, those stories fill us all with awe and admiration towards their heroes. And no, I am not one of them. \nI had no intention whatsoever of ending in jail, even less so if it required trespassing a heavily armed government compound out of the nonsensical notion that the murderers of my sunflower might be found inside.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "005")
+                {
+                    lastText = "007";       //      AIGUA < 007 >
+                    str = "''Err… Sunflower!'' \nYeah, I’ve never been able to lie. So what? Whenever I get too nervous or I feel questioned, the truth just comes out of my mouth out of its own will. It’s a compulsion. I can’t help it. \n''Su… what?'' asked the guard, perplexed. \n''Yes, sir. My sunflower. I have to save it. They want to murder it! If only you would let me in for a…";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "016")
+                {
+                    lastText = "024";       //      AIGUA < 019 >
+                    str = "The control room was a big cubicle at the end of a long corridor, full of screens and beeping sounds and serious looking people doing serious looking things and bustling about. It didn’t really look like the kind of place where one could find a sunflower murderer, but what I did find was a big red button with the label “EMERGENCY STOP OF ALL WATER OPERATIONS”. I…";
+                    op1 = "pushed it.";
+                    op2 = "didn’t push… nah, just kidding. Of course I pushed it.";
+                    pm.UpdateOptions(op1, op2);
+                    pm.UpdateText(str);
+                }
                 break;
             case 7:                         //  >> PASSEIG <<
                 if (lastText == "001")
@@ -1304,7 +1451,13 @@ public class GameController : MonoBehaviour
                 }
                 break;
             case 6:                         //  >> AIGUA <<
-
+                if (lastText == "001")
+                {
+                    lastText = "011";       //      AIGUA < 011 >
+                    str = "explore the outside of the water processing plant. Yes, the world is full of thrilling tales of adventure, daring escapes and cunning infiltrations. Yes, those stories fill us all with awe and admiration towards their heroes. And no, I am not one of them. \nI had no intention whatsoever of ending in jail, even less so if it required trespassing a heavily armed government compound out of the nonsensical notion that the murderers of my sunflower might be found inside.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
                 break;
             case 7:                         //  >> PASSEIG <<
 
@@ -1325,6 +1478,27 @@ public class GameController : MonoBehaviour
         
         switch (place)
         {
+            case 6:
+                if (lastText == "010")
+                {
+                    if (ans == "8774")
+                    {
+                        lastText = "015";       //      AIGUA < 015 >
+                        str = "Hah. I knew this puny PIN would be no match for me. True, I had to kill a perfectly innocent girl and take advantage of his father’s grief in order to defeat it, but hey, nothing good ever came out of dwelling in the past too much.";
+                        op1 = "''Onwards, to destiny!''";
+                        pm.UpdateOptions(op1);
+                        pm.UpdateText(str);
+                    }
+                    else
+                    {
+                        lastText = "014";       //      AIGUA < 014 >
+                        str = "You fought well, brave PIN, and you might have defeated me this time, but we shall see each other again. On this day I swear revenge on you. You may have won this battle, but I shall be the one to win the war.";
+                        pm.UpdateOptions(continueText);
+                        pm.UpdateText(str);
+
+                    }
+                }
+                break;
             case 7:     // PASSEIG
                 if (lastText == "002")
                 {
