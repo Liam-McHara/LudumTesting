@@ -69,11 +69,11 @@ public class GameController : MonoBehaviour
     // MAPA
     public void GotoCasa()
     {
-        //pm.ShowPanel("Going to CASA");
         Debug.Log("Going to CASA");
         place = 1;
-
-        pm.ShowPanel("a sdoif aoisdnf oansdfo nasdof \nnosdf osdnfo ndof nsadofn osdn foiadsof noasdnfo nasdofna sdfpmsadpf mas");
+        op1 = op2 = op3 = op4 = "";
+        lastText = "001";       //      CASA < 001 >
+        
     }
     public void GotoParque()
     {
@@ -94,31 +94,39 @@ public class GameController : MonoBehaviour
     {
         Debug.Log("Going to ABOCADOR");
         place = 3;
+        op1 = op2 = op3 = op4 = "";
+        lastText = "001";       //      ABOCADOR < 001 >
 
     }
     public void GotoAlmacen()
     {
         Debug.Log("Going to ALMACEN");
         place = 4;
+        op1 = op2 = op3 = op4 = "";
+        lastText = "001";       //      ALMACEN < 001 >
 
     }
     public void GotoPizza()
     {
         Debug.Log("Going to PIZZA");
         place = 5;
+        op1 = op2 = op3 = op4 = "";
+        lastText = "001";       //      PIZZA < 001 >
 
     }
     public void GotoAigua()
     {
         Debug.Log("Going to AIGUA");
         place = 6;
+        op1 = op2 = op3 = op4 = "";
+        lastText = "001";       //      AIGUA < 001 >
 
     }
-    public void GotoPasseig()                   // TESTING SCENE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    public void GotoPasseig()                   
     {
         Debug.Log("Going to PASSEIG");
         place = 7;
-        lastText = "001";   //    < 001 >
+        lastText = "001";       //      PASSEIG < 001 >
         // Prepara el text
         if (!v7_001) str = "My search for new clues led me to the main avenue of the town. Everyone passes through here at some point, so I figured that, logically, the assassin would do so too. As soon as I came to the avenue, my attention was caught by...";
         else
@@ -144,6 +152,8 @@ public class GameController : MonoBehaviour
     {
         Debug.Log("Going to ESCOLA");
         place = 8;
+        op1 = op2 = op3 = op4 = "";
+        lastText = "001";       //      ESCOLA < 001 >
 
     }
 
