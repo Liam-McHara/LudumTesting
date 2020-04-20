@@ -409,7 +409,6 @@ public class GameController : MonoBehaviour
                         pm.UpdateText(str);
                     }
                 }
-                if (lastText == "001") Debug.Log("caca");
                 else
                 {
                     Debug.Log("Default caseA: Going to MAPA");
