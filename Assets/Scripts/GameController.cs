@@ -6,12 +6,13 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     // Variables de coneixement (permanents)
-    public bool infoCrash, infoVistNena, infoGorra, infoWarehouse = false;
+    public bool infoCrash, infoVistNena, infoGorra, infoWarehouse, infoLoop, infoNeighbour, infoSniper, infoEvilGirl, infoFinalboss = false;
 
     // Condicions temporals (es resetejen a cada bucle)
     public bool item2b1, itemWater, itemFlowers, itemLove, itemKillLady = false;    // parc
     public bool itemBarricade, itemSandWich, itemCrowbar = false;      // abocador
     public bool v7_001, v7_009, itemDeadGirl, itemChocolate = false;     // passeig
+    public bool itemFirstTimePizza, itemGun = false;
 
     // Hobo
     bool hobo = false;
@@ -71,7 +72,13 @@ public class GameController : MonoBehaviour
         place = 1;
         op1 = op2 = op3 = op4 = "";
         lastText = "001";       //      CASA < 001 >
-        
+        str = "I went home and made sure everything was all right. My flat is small, so, living there all alone, not much tends to happen on it. After watering my sunflower, I decided to...";
+        op1 = "… write down all the clues I had found so far.";
+        op2 = "… spy on my neighbour.";
+        op3 = "… search for cameras or traps.";
+        if (itemBarricade) op4 = "… build a barricade.";
+        pm.UpdateOptions(op1,op2,op3,op4);
+        pm.ShowPanel(str);
     }
     public void GotoParque()
     {
@@ -109,7 +116,18 @@ public class GameController : MonoBehaviour
         place = 4;
         op1 = op2 = op3 = op4 = "";
         lastText = "001";       //      ALMACEN < 001 >
-
+        str = "I went to the abandoned warehouses on the lonely side of town looking for clues, and ";
+        if (t == 1) str = str + "saw the sunrise on metal, rust and broken glass, wild dusty bushes, ragged quiet. Then I...";
+        else if (t == 2) str = str + "saw the sun Then I...";
+        else if (t == 3) str = str + "saw the sun Then I...";
+        else if (t == 4) str = str + "saw the sun directing a haze of floating orange dust soaked light towards me. Then I...";
+        else if (t == 5) str = str + "saw the street lights buzzing with electric delight over the abandoned and empty streets. I walked through thick darkness broken by cones of yellow. I walked through the futility of it all. Then  I...";
+        op1 = "... sat on a dusty old sofa.";
+        op2 = "... looked around for clues.";
+        op3 = "... fed some cats.";
+        if (infoWarehouse) op4 = "... went to the Roller Street warehouse.";
+        pm.UpdateOptions(op1, op2, op3, op4);
+        pm.ShowPanel(str);
     }
     public void GotoPizza()
     {
@@ -117,7 +135,14 @@ public class GameController : MonoBehaviour
         place = 5;
         op1 = op2 = op3 = op4 = "";
         lastText = "001";       //      PIZZA < 001 >
-
+        if (itemFirstTimePizza)
+        {
+            str = "Fermat pizza shop has been there forever. Some say it is a hole full of cockroaches, which is true. It is also the best pizza you can find in town. And the place to be to gather information and gossip.";
+            itemFirstTimePizza = true;
+        }
+        else str = "I went back to the pizza place. It was hot in there.";
+        pm.UpdateOptions(continueText);
+        pm.ShowPanel(str);
     }
     public void GotoAigua()
     {
@@ -125,7 +150,12 @@ public class GameController : MonoBehaviour
         place = 6;
         op1 = op2 = op3 = op4 = "";
         lastText = "001";       //      AIGUA < 001 >
-
+        str = "I decided to visit our town’s water processing plant. After all, sunflowers need nothing but two things to live: sunshine and water. Since the sun was probably out of reach, I figured the murderer might try to make his move on my sunflower’s only other vulnerability - water./nThe water processing plant formed a massive, heavily guarded structure, surrounded in its entirety by a spiked fence and security cameras. It had a public entrance for visitors, and a private, PIN-protected entrance for the employees. \nAfter a brief survey of the area, I was gripped with a doubtless certainty in regards to my upcoming plan. I would…";
+        op1 = "… infiltrate the plant through the public entrance!";
+        op2 = "… infiltrate the plant through the private entrance!";
+        op3 = "… explore the outside of the water processing plant.";
+        pm.UpdateOptions(op1, op2, op3);
+        pm.ShowPanel(str);
     }
     public void GotoPasseig()                   
     {
@@ -159,7 +189,12 @@ public class GameController : MonoBehaviour
         place = 8;
         op1 = op2 = op3 = op4 = "";
         lastText = "001";       //      ESCOLA < 001 >
-
+        str = "I strolled towards the school, an old brick building surrounded by a tall black iron fence.\nOne is never too old to learn, right? As I got closer I realized how good it felt knowing I was free to walk away whenever I wanted. Upon arriving, I…";
+        op1 = "...walked up to the main entrance...";
+        if (t<3) op2 = "...talked with some adults at the gate…";
+        if (t==3) op3 = "… saw my neighbour talking with a young schoolgirl!";
+        pm.UpdateOptions(op1, op2, op3);
+        pm.ShowPanel(str);
     }
 
     public void GotoMapa()
@@ -1007,7 +1042,11 @@ public class GameController : MonoBehaviour
 
         hobo = Random.value > 0.5f; // Mou el hobo
 
-        //Reseteja condicions temporals
-        v7_001 = false;
+    }
+    public void ResetItems()
+    {
+        // Reseteja variables temporals             ( aquesta funcio s'executa per IntroManager a dins de "HideIntro")
+
+        // TODO
     }
 }
