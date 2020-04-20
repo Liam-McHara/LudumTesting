@@ -238,9 +238,14 @@ public class GameController : MonoBehaviour
                         pm.UpdateText(str);
                     }
                 }
+                else
+                {
+                    Debug.Log("Default caseA: Going to MAPA");
+                    GotoMapa();  //  [ RETURN ]
+                }
                 break;
             default:
-                Debug.Log("Default case: Going to MAPA");
+                Debug.Log("Default caseB: Going to MAPA");
                 GotoMapa();  //  [ RETURN ]
                 break;
         }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class IntroScript : MonoBehaviour
 {
-    Text textComponent;
+    public Text textComponent;
     IntroManager im;
     public string text;
     [Range(0.01f, 0.03f)]
@@ -19,18 +19,20 @@ public class IntroScript : MonoBehaviour
         im = FindObjectOfType<IntroManager>();
 
         //TESTING
-        textComponent.text = "";
+        //textComponent.text = "";
         //StartCoroutine(BuildText());
     }
 
     private IEnumerator BuildText()
     {
-        im.HideButton();
+        //im.HideButton();
         writing = true;
         int i = 0;
+        
         while (i < text.Length & writing)
         {
-            textComponent.text = string.Concat(textComponent.text, text[i]);
+            Debug.Log("writing: " + textComponent.text + " + " + text[i]);
+            textComponent.text = textComponent.text + text[i];
             //Wait a certain amount of time, then continue with the for loop
             yield return new WaitForSeconds(timeLapse);
             i++;

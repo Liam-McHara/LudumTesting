@@ -22,10 +22,11 @@ public class IntroManager : MonoBehaviour
 
     public void ShowIntro(int l)
     {
+        
         Debug.Log("Showing Intro " + l);
         background.SetActive(true);
-        pm.HideMap();
-        intS.Clear();
+        if (l > 1) pm.HideMap();
+        HideButton();
         if (l == 1) intS.Write(intro1);
         else intS.Write(introN);
         visible = true;
