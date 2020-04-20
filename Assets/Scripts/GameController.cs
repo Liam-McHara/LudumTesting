@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
 
     
     // VARIABLES
-    public int fase;    // fase del día (1 - 5)
+    public int t;    // turno del día (1 - 5)
     public int loop = 1;
 
 
@@ -39,6 +39,7 @@ public class GameController : MonoBehaviour
     public bool infoCrash, infoVistNena = false;
 
     // Condicions temporals (es resetejen a cada bucle)
+    public bool item2b1 = false;    // parc
     public bool v7_001, v7_009, itemDeadGirl, itemChocolate = false;     // passeig
 
     // Ultima part de narracio mostrada
@@ -77,7 +78,16 @@ public class GameController : MonoBehaviour
     {
         Debug.Log("Going to PARQUE");
         place = 2;
-
+        lastText = "001";       //      PARK < 001 >
+        str = "I decided to take a stroll through the town’s park, thinking that perhaps it would help me clear my thoughts. It was almost silent there, except for the refreshing sound of the wind through the leaves. I liked the park even though it had no sunflowers - I had looked.\nAs I was walking around, I spotted…";
+        op1 = op2 = op3 = op4 = "";
+        if (t < 5) op1 = "a gardener, tending to his plants.";
+        op2 = "a really old lady sitting on a bench.";
+        op3 = "my favourite sitting spot.";
+        if (t < 4 & !item2b1) op4 = "a street sweeper, cleaning the park avenue.";
+        else if (t > 3) op4 = "a group of children chasing each other.";
+        pm.UpdateOptions(op1, op2, op3, op4);
+        pm.ShowPanel(str);
     }
     public void GotoAbocador()
     {
@@ -119,7 +129,7 @@ public class GameController : MonoBehaviour
         op1 = "...a suspicious alleway...";
         op2 = "";
         op3 = "...a chocolate store...";
-        if (fase > 3)
+        if (t > 3)
         {
             op2 = "...an innocent looking girl...";
             infoVistNena = true;
@@ -140,8 +150,8 @@ public class GameController : MonoBehaviour
     {
         Debug.Log("Going to MAPA");
         place = 0;
-        ++fase;
-        if (fase > 5) TimeTravel();
+        ++t;
+        if (t > 5) TimeTravel();
         pm.HidePanel();
     }
 
@@ -222,14 +232,14 @@ public class GameController : MonoBehaviour
                 else if (lastText == "011" | lastText == "012" | lastText == "013" | lastText == "014" | lastText == "015" | 
                     lastText == "016" | lastText == "017" | lastText == "018" | lastText == "019")
                 {
-                    if (fase == 4)
+                    if (t == 4)
                     {
                         lastText = "021";   //  < 021 >
                         str = "I left the main avenue feeling lost and lonely among the crowd of passers-by. It was getting dark already, and I had a sunflower to protect at home.";
                         pm.UpdateOptions(continueText);
                         pm.UpdateText(str);
                     }
-                    else if (fase == 5)
+                    else if (t == 5)
                     {
                         lastText = "022";   //  < 022 >
                         infoCrash = true;
@@ -450,7 +460,7 @@ public class GameController : MonoBehaviour
     public void TimeTravel()
     {
         ++loop;   // Actualitza el contador de loops
-        fase = 1;   // Torna a la fase 1
+        t = 1;   // Torna a la fase 1
 
 
         //Reseteja condicions temporals
