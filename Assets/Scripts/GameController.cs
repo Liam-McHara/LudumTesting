@@ -36,10 +36,10 @@ public class GameController : MonoBehaviour
     
 
     // Variables de coneixement (permanents)
-    public bool infoCrash, infoVistNena = false;
+    public bool infoCrash, infoVistNena, infoGorra = false;
 
     // Condicions temporals (es resetejen a cada bucle)
-    public bool item2b1 = false;    // parc
+    public bool item2b1, itemWater = false;    // parc
     public bool v7_001, v7_009, itemDeadGirl, itemChocolate = false;     // passeig
 
     // Ultima part de narracio mostrada
@@ -54,8 +54,9 @@ public class GameController : MonoBehaviour
         am = this.GetComponentInChildren<AudioManager>();
         pm = FindObjectOfType<PanelManager>();
         im = FindObjectOfType<IntroManager>();
-        
-        im.ShowIntro(loop);     //      < FIRST LOOP >
+
+        if (showIntro) im.ShowIntro(loop);     //      < FIRST LOOP >
+        else im.HideIntro();
     }
 
     // Update is called once per frame
@@ -157,12 +158,92 @@ public class GameController : MonoBehaviour
 
 
     // OPCIONES
-    public void Option1()
+    public void Option1()   //--------------------------------------------------------------------  1   ---
     {
-        Debug.Log("Option 1");
+        op1 = op2 = op3 = op4 = "";     // buida noms d'opcions
+        Debug.Log("Option 1 - from: "+ lastText );
         switch (place)
         {
-            case 7:                         //  >>PASSEIG<<
+            case 1:                         //  >> CASA <<
+
+                if (lastText == "001") Debug.Log("caca");
+                else
+                {
+                    Debug.Log("Default caseA: Going to MAPA");
+                    GotoMapa();  //  [ RETURN ]
+                }
+                break;
+            case 2:                         //  >> PARC <<
+                if (lastText == "001" & !itemWater)
+                {
+                    lastText = "002";       // < 002 >
+                    str = " a gardener, tending to his plants. I hold a deep respect for all gardeners, but, given the circumstances, I couldn’t help but mistrust him. After all, if you know how to keep a plant alive, you also know how best to kill it. I had to ask the question.\n“What’s your favourite flower?” I heard right then, interrupting my thoughts. I raised my head and saw the gardener smiling at me. There was a serene sadness in his eyes.";
+                    op1 = "“Sunflowers”";
+                    op2 = "“Su… Roses”";
+                    op3 = "“Hey, that’s what I wanted to ask!”";
+                    pm.UpdateOptions(op1, op2, op3);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "001" & itemWater)
+                {
+                    lastText = "006";       // < 006 >
+                    str = "a gardener, tending to his plants, or at least trying to. At the moment, he was mostly looking at his empty water hose with a mourning face. \n“They cut the water”, he said sadly, as if he had just woken from a beautiful dream. “How am I supposed to water my plants now?”.";
+                    op1 = "“I heard there was a problem at the water processing plant”.";
+                    op2 = "“Cheer up, it should only last a few hours”.";
+                    op3 = "“I like flowers”.";
+                    pm.UpdateOptions(op1, op2, op3);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "027")
+                {
+                    lastText = "027b";       //      PARC < 027b >
+                    str = "Then they started talking about a new girl that had recently moved to town and was attending second grade.\nApparently, her mother was a new teacher at the school. They all seemed to like the new girl, but they complained that she was always seemed to be busy for some reason, and they almost never got a chance to play with her.\nAfter a while I got tired of their talk and went home.  ";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else
+                {
+                    Debug.Log("Default caseA: Going to MAPA");
+                    GotoMapa();  //  [ RETURN ]
+                }
+                break;
+            case 3:                         //  >> ABOCADOR <<
+
+                if (lastText == "001") Debug.Log("caca");
+                else
+                {
+                    Debug.Log("Default caseA: Going to MAPA");
+                    GotoMapa();  //  [ RETURN ]
+                }
+                break;
+            case 4:                         //  >> MAGATZEM <<
+
+                if (lastText == "001") Debug.Log("caca");
+                else
+                {
+                    Debug.Log("Default caseA: Going to MAPA");
+                    GotoMapa();  //  [ RETURN ]
+                }
+                break;
+            case 5:                         //  >> PIZZA <<
+
+                if (lastText == "001") Debug.Log("caca");
+                else
+                {
+                    Debug.Log("Default caseA: Going to MAPA");
+                    GotoMapa();  //  [ RETURN ]
+                }
+                break;
+            case 6:                         //  >> AIGUA <<
+
+                if (lastText == "001") Debug.Log("caca");
+                else
+                {
+                    Debug.Log("Default caseA: Going to MAPA");
+                    GotoMapa();  //  [ RETURN ]
+                }
+                break;
+            case 7:                         //  >> PASSEIG <<
                 if (lastText == "001")
                 {
                     lastText = "002";       // < 002 >
@@ -248,6 +329,15 @@ public class GameController : MonoBehaviour
                         pm.UpdateText(str);
                     }
                 }
+                if (lastText == "001") Debug.Log("caca");
+                else
+                {
+                    Debug.Log("Default caseA: Going to MAPA");
+                    GotoMapa();  //  [ RETURN ]
+                }
+                break;
+            case 8:                         //  >> ESCOLA <<
+                if (lastText == "001") Debug.Log("caca");
                 else
                 {
                     Debug.Log("Default caseA: Going to MAPA");
@@ -261,11 +351,38 @@ public class GameController : MonoBehaviour
         }
 
     }
-    public void Option2()
+    public void Option2()   //--------------------------------------------------------------------  2   ---
     {
-        Debug.Log("Option 2");
+        op1 = op2 = op3 = op4 = "";     // buida noms d'opcions
+        Debug.Log("Option 2 - from: " + lastText);
         switch (place)
         {
+            case 1:                         //  >> CASA <<
+
+                break;
+            case 2:                         //  >> PARC <<
+                if (lastText == "001")
+                {
+                    lastText = "024";       //      PARC < 024 >
+                    str = "a really old lady sitting in a bench, so peacefully. I went to sit next to her, and she seemed startled for a second until she squeezed her eyes and said, “Timothy? Is that you, dear?”";
+                    op1 = "“Err, I... no.”";
+                    op2 = "“Certainly.”";
+                    pm.UpdateOptions(op1,op2);
+                    pm.UpdateText(str);
+                }
+                break;
+            case 3:                         //  >> ABOCADOR <<
+
+                break;
+            case 4:                         //  >> MAGATZEM <<
+
+                break;
+            case 5:                         //  >> PIZZA <<
+
+                break;
+            case 6:                         //  >> AIGUA <<
+
+                break;
             case 7:                         //  >> PASSEIG <<
                 if (lastText == "001")
                 {
@@ -334,15 +451,43 @@ public class GameController : MonoBehaviour
                     pm.UpdateText(str);
                 }
                 break;
+            case 8:                         //  >> ESCOLA <<
+
+                break;
             default:
                 break;
         }
     }
-    public void Option3()
+    public void Option3()   //--------------------------------------------------------------------  3   ---
     {
-        Debug.Log("Option 3");
+        op1 = op2 = op3 = op4 = "";     // buida noms d'opcions
+        Debug.Log("Option 3 - from: " + lastText);
         switch (place)
         {
+            case 1:                         //  >> CASA <<
+
+                break;
+            case 2:                         //  >> PARC <<
+                if (lastText == "001")
+                {
+                    lastText = "028";       //      PARC < 028 >
+                    str = "my favourite sitting spot. \nAs I lay there, breathing slowly, drinking it all in, I could almost feel all my problems beginning to fade away. If only I could stay there forever, enjoying that nice breeze and thinking of nothing… \nBut I couldn’t. I still had a murderer to catch, and a sunflower to save.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                break;
+            case 3:                         //  >> ABOCADOR <<
+
+                break;
+            case 4:                         //  >> MAGATZEM <<
+
+                break;
+            case 5:                         //  >> PIZZA <<
+
+                break;
+            case 6:                         //  >> AIGUA <<
+
+                break;
             case 7:                         //  >> PASSEIG <<
                 if (lastText == "001")
                 {
@@ -398,17 +543,62 @@ public class GameController : MonoBehaviour
                     pm.UpdateText(str);
                 }
                 break;
+            case 8:                         //  >> ESCOLA <<
+
+                break;
             default:
                 break;
         }
 
     }
-    public void Option4()
+    public void Option4()    //--------------------------------------------------------------------  4   ---
     {
-        Debug.Log("Option 4");
+        op1 = op2 = op3 = op4 = "";     // buida noms d'opcions
+        Debug.Log("Option 4 - from: " + lastText);
         switch (place)
         {
+            case 1:                         //  >> CASA <<
+
+                break;
+            case 2:                         //  >> PARC <<
+                if (lastText == "001" & t < 4)
+                {
+                    lastText = "013";       //      PARC < 013 >
+                    string s1 = "a street sweeper, cleaning the park avenue. At the moment, he seemed to be talking very agitatedly with someone over the phone.";
+                    string s2 = " A sudden realization hit me right then when I looked at him: his uniform showed the exact same sign I had found on that cap in the warehouse a while ago. The sign of the sunflower!";
+                    string s3 = " I decided to…";
+                    if (infoGorra) str = s1 + s2 + s3;
+                    else str = s1 + s3;
+                    op1 = "Approach him...";
+                    op2 = "Leave him alone...";
+                    if (infoGorra) op3 = "Spy on him...";
+                    pm.UpdateOptions(op1, op2, op3);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "001" & t > 3)
+                {
+                    lastText = "024";       //      PARC < 024 >
+                    str = "a group of children chasing each other. They seemed so happy, there in the park, like they didn’t have a worry on this world.\nAs I approached and sat on a bench near the playground, some of them looked at me warily, but after a while they resumed their game.\nWhile sitting on the bench I could easily overhear their conversation, although most of it was of no interest to me, having nothing to do with sunflowers. Apparently, a substitute teacher named Martin had been expected at the school this morning, but in the end he had never showed up.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                break;
+            case 3:                         //  >> ABOCADOR <<
+
+                break;
+            case 4:                         //  >> MAGATZEM <<
+
+                break;
+            case 5:                         //  >> PIZZA <<
+
+                break;
+            case 6:                         //  >> AIGUA <<
+
+                break;
             case 7:                         //  >> PASSEIG <<
+
+                break;
+            case 8:                         //  >> ESCOLA <<
 
                 break;
             default:

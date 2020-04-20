@@ -150,14 +150,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cdfd3b5397be534585b4808c163d7bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showIntro: 1
-  fase: 0
+  showIntro: 0
+  t: 0
   loop: 1
-  continueText: Continue
+  continueText: '>'
   beginLoopText: Start
   place: 0
   infoCrash: 0
   infoVistNena: 0
+  infoGorra: 0
+  item2b1: 0
+  itemWater: 0
   v7_001: 0
   v7_009: 0
   itemDeadGirl: 0
