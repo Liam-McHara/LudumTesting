@@ -53,7 +53,8 @@ public class IntroManager : MonoBehaviour
 
     public void Next()
     {
-        if (lastText == endIntro1 | lastText == endIntro2)
+        Debug.Log("Next: " + lastText);
+        if (lastText == "endIntro1" | lastText == "endIntro2")
         {
             // ------------------------------------   COSSOS   ------------------------------------------------
             if (!gc.itemLove)
@@ -80,8 +81,11 @@ public class IntroManager : MonoBehaviour
         }
         else if (lastText == "cos")
         {
+            intS.Clear();
+            lastText = "introN";
             intS.Write(introN);
         }
+        else HideIntro();
     }
 
     public void HideIntro()     // RESETEJAR VARIABLES DE LOOP AQUI

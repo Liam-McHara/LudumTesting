@@ -1991,7 +1991,7 @@ public class GameController : MonoBehaviour
     {
         ++loop;   // Actualitza el contador de loops
         t = 1;   // Torna a la fase 1
-
+        im.ShowIntro(loop);
         hobo = Random.value > 0.5f; // Mou el hobo
 
     }
