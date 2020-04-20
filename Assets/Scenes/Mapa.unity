@@ -154,6 +154,13 @@ MonoBehaviour:
   infoVistNena: 0
   infoGorra: 0
   infoWarehouse: 0
+  infoLoop: 0
+  infoNeighbour: 0
+  infoSniper: 0
+  infoEvilGirl: 0
+  infoFinalboss: 0
+  infoFermat: 0
+  infoHoboSandwich: 0
   item2b1: 0
   itemWater: 0
   itemFlowers: 0
@@ -166,6 +173,10 @@ MonoBehaviour:
   v7_009: 0
   itemDeadGirl: 0
   itemChocolate: 0
+  itemFirstTimePizza: 0
+  itemGun: 0
+  v5a7: 0
+  itemPoison: 0
   showIntro: 1
   t: 0
   loop: 1
@@ -1747,6 +1758,7 @@ MonoBehaviour:
   background: {fileID: 703889152}
   beginButton: {fileID: 595029256}
   visible: 1
+  lastText: 
 --- !u!1 &1063176147
 GameObject:
   m_ObjectHideFlags: 0

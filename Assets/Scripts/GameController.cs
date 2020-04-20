@@ -6,13 +6,14 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     // Variables de coneixement (permanents)
-    public bool infoCrash, infoVistNena, infoGorra, infoWarehouse, infoLoop, infoNeighbour, infoSniper, infoEvilGirl, infoFinalboss = false;
+    public bool infoCrash, infoVistNena, infoGorra, infoWarehouse, infoLoop, infoNeighbour, infoSniper, infoEvilGirl, 
+        infoFinalboss, infoFermat, infoHoboSandwich = false;
 
     // Condicions temporals (es resetejen a cada bucle)
     public bool item2b1, itemWater, itemFlowers, itemLove, itemKillLady = false;    // parc
     public bool itemBarricade, itemSandWich, itemCrowbar = false;      // abocador
     public bool v7_001, v7_009, itemDeadGirl, itemChocolate = false;     // passeig
-    public bool itemFirstTimePizza, itemGun = false;
+    public bool itemFirstTimePizza, itemGun, v5a7, itemPoison = false;
 
     // Hobo
     bool hobo = false;
@@ -434,8 +435,170 @@ public class GameController : MonoBehaviour
                 }
                 break;
             case 5:                         //  >> PIZZA <<
-
-                if (lastText == "001") Debug.Log("caca");
+                if (lastText == "001" & !itemSandWich)
+                {
+                    lastText = "002";       //      PIZZA < 002 >
+                    str = "Once I got there, I…";
+                    op1 = "...went to get some pizza…";
+                    op2 = "...went to the toilet…";
+                    if (hobo) op3 = "...approached the hobo sitting on the sidewalk next door…";
+                    pm.UpdateOptions(op1, op2, op3);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "001" & itemSandWich)
+                {
+                    lastText = "003";       //      PIZZA < 003 >
+                    str = "Once I got there, I…";
+                    op1 = "...went to look for some pizza behind the counter…";
+                    op2 = "...went to the toilet…";
+                    if (hobo) op3 = "...approached the hobo sitting on the sidewalk next door…";
+                    pm.UpdateOptions(op1, op2, op3);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "003" | (!itemSandWich & (lastText == "018" | lastText == "020")))
+                {
+                    lastText = "004";       //      PIZZA < 004 >
+                    str = "went to look for some pizza behind the counter. In one of the cupboards I found a very suspicious bottle. I grabbed it and…";
+                    op1 = "drank it…";
+                    op2 = "read the label…";
+                    pm.UpdateOptions(op1, op2);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "002" | (!itemSandWich & (lastText == "017" | lastText == "019")))
+                {
+                    lastText = "007";       //      PIZZA < 007 >
+                    str = "went to get some pizza. I approached Fermat, who was sitting behind the counter, looking gloomy. ''I’d like some pizza'' I said. \n''Sure thing! What would you like in your pizza?'' he replied, fast and professional.";
+                    if (!v5a7) op1 = "''The same as always, you know me.''";
+                    v5a7 = true;
+                    op2 = "''I would like something new, daring, fresh.''";
+                    op3 = "''That’d be pepperoni, tomato, rucula... and sunflower.''";
+                    op4 = "''Don’t you ever clean the toilet?''";
+                    pm.UpdateOptions(op1, op2, op3, op4);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "007")
+                {
+                    lastText = "008";       //      PIZZA < 008 >
+                    str = "''The same as always, you know me''.\n''I don’t. Have we ever met before?'', he answered, sticking his head out and staring at me.";
+                    op1 = "''... Yes, I’ve come here twice a week for the past 10 years…''";
+                    op2 = "''Yes, I’m the guy with the sunflower.''";
+                    op3 = "''Yes, and you should really clean your toilet.''";
+                    op4 = "''Are you serious? Come on! It’s me.''";
+                    pm.UpdateOptions(op1, op2, op3, op4);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "008")
+                {
+                    lastText = "009";       //      PIZZA < 009 >
+                    str = "Yes, I’ve come here twice a week for the past 10 years.''\n''I couldn't tell'' he shrugged ''there’s a lot of people passing by. What would you like in your pizza?''";
+                    op1 = "“I would like something new, daring, fresh.”";
+                    op2 = "“That’d be pepperoni, tomato, rucula... and sunflower.”";
+                    op3 = "“Don’t you ever clean the toilet?”";
+                    pm.UpdateOptions(op1, op2, op3);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "009" | lastText == "012")
+                {
+                    lastText = "013";       //      PIZZA < 013 >
+                    str = "''I would like something new, daring, fresh.''\n ''All we have is pizza.'";
+                    op1 = "''That’d be pepperoni, tomato, rucula... and sunflower.''";
+                    op2 = "''Don’t you ever clean the toilet?''";
+                    pm.UpdateOptions(op1, op2);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "013")
+                {
+                    lastText = "014";       //      PIZZA < 014 >
+                    str = "''That’d be pepperoni, tomato, rucula... and sunflower'' I added, hoping to catch him off guard.\n ''Umm, ehh… we, we don’t have any of that,'' he mumbled, looking down. He had to be hiding something there! ''And now, now get out of here, the restaurant is too full!''";
+                    infoFermat = true;
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "003")
+                {
+                    lastText = "021";       //      PIZZA < 021 >
+                    str = "...approached the hobo sitting on the sidewalk next door. \nI figured that since he often spent the whole day sitting in the middle of the street, drugged on God knows what, he would know better than anyone what was going on inside the human soul, and thus could help me uncover the murderer. I sat next to him, but he didn’t seem to notice me. He was mumbling something to himself and making strange drawings on the pavement. On a second thought, he was probably just nuts.";
+                    op1 = "I kept listening to him.";
+                    op2 = "I went home.";
+                    pm.UpdateOptions(op1, op2);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "021")
+                {
+                    lastText = "022";       //      PIZZA < 022 >
+                    str = "I kept listening to him.\n“Yes! it is the new ...mumblemumble ... loophole...the most efficient arrangement … mumblemubmle.. quantum entanglement ...r(n) = √n  ... the Golden Angle ... φ = (1+√5)/2.. mimb... it is the only... 137,5°....the sunflower… AHHH! ike ike, one of a hundred ...mumblemumble... the Day finally has come...  the order of… mumble… fermat mumblmubmle ...the golden spiral… mumblemumb  how many times… need to find mumble… ”";
+                    op1 = "“Hey, hold on! What did you say about sunflowers?”";
+                    op2 = "“Hey, hold on! What was that loophole thing about?”";
+                    if (itemSandWich) op3 = "Hey, dude! Fancy a sandwich?";
+                    pm.UpdateOptions(op1, op2, op3);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "022")
+                {
+                    lastText = "023";       //      PIZZA < 023 >
+                    str = "''Hey, hold on! What did you say about sunflowers?'' I asked without much hope. Surprisingly, he stopped his nonsense and kept silent for much longer than I thought possible. Not only he was silent. Everything was still.\n Suddenly, I started hearing the voices once again. ''Am I going crazy?'' I thought. \n\n''...''\n\n ''I must be dreaming all of this.''\n\n''...''\n\nMuch to my relief, I came back to reality when he suddenly spat out:\n''Sunflower.''\n''One of a hundred.''";
+                    op1 = "I kept listening.";
+                    op2 = "I went home";
+                    pm.UpdateOptions(op1, op2);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "023")
+                {
+                    lastText = "024";       //      PIZZA < 024 >
+                    str = "I kept listening, and he started vomiting words all over, shouting and moving his arms around. \n''will come the time and surely this time has come and past and come AGAIN till it passes away if only no one would PASS AWAY, y’know??\nplay would stop reap shot poison bomb the one we could keep doin keep gofin, keep moving forward! y'know? save it if you can save it yourself and don't waste my time, hey dude don’t waste my time, yesterday is gone tomorrow won't come just shut up SHUT UP and bend low bend down!!''";
+                    op1 = "I bend down.";
+                    op2 = "I went home.";
+                    pm.UpdateOptions(op1, op2);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "024")
+                {
+                    lastText = "025";       //      PIZZA < 025 >
+                    str = "He sat silent, eyes closed. I bent down and closed my eyes as well. Completely alienated from the world of cars and  pedestrians passing by, I thought of my sunflower. That pacified my mind. Pacified my mind. Pacified my mind. When I opened my eyes again I found some ugly letters carved in the pavement. They read:\nTo save the sunflower you must\nControl the water\nStop war\nSteal the food\nMake love stay\nDrink the poison\nThe hobo looked at me with sparkly eyes. ''I made up the last one, so don’t take it so seriously haha'' He explained proudly, grinning his rotten teeth at me. ''Want some?'' And he offered me a glass bottle reeking of alcohol.";
+                    op1 = "''Sure.''";
+                    op2 = "''I’ll pass this time.''";
+                    pm.UpdateOptions(op1, op2);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "025")
+                {
+                    lastText = "026";       //      PIZZA < 026 >
+                    str = "''Sure'' I said, accepting the booze and taking a long gulp. ''Y’now'' He said eventually ''I wouldn't like to be in your position, much responsibility. Anyway, no hurry eh, me I just chillin man, just take it easy. Take your time. It is not like we are going anywhere.'' He told me. For once I forgot about it all.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "026") TimeTravel();   //  [ END LOOP ]
+                else if (lastText == "028")
+                {
+                    lastText = "029";       //      PIZZA < 029 >
+                    str = "''Isn’t that your bed?'' I asked.\n''Yes indeed! The pictograms appeared in my bed this morning. A time traveler must have made them,'' he replied before falling soundly asleep. I went home.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "016")
+                {
+                    str = "cleaning it, but instead I...";
+                    if (itemSandWich)
+                    {
+                        lastText = "018";       //      PIZZA < 018 >
+                        op1 = "went back to look for some pizza behind the counter.";
+                    }
+                    else
+                    {
+                        lastText = "017";       //      PIZZA < 017 >
+                        op1 = "went to get some pizza.";
+                    }
+                    pm.UpdateOptions(op1);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "004")
+                {
+                    lastText = "005";       //      PIZZA < 005 >
+                    str = "drank it. \nIt tasted like death.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "005") TimeTravel();   //  [END OF LOOP]
                 else
                 {
                     Debug.Log("Default caseA: Going to MAPA");
@@ -702,6 +865,104 @@ public class GameController : MonoBehaviour
 
                 break;
             case 5:                         //  >> PIZZA <<
+                if (lastText == "002" | lastText == "003")
+                {
+                    lastText = "016";       //      PIZZA < 016 >
+                    str = "went to the toilet. Nobody had cleaned in ages. The dirtiness made me think of...";
+                    op1 = "cleaning it.";
+                    op2 = "delicious pizza.";
+                    pm.UpdateOptions(op1, op2);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "007")
+                {
+                    lastText = "013";       //      PIZZA < 013 >
+                    str = "''I would like something new, daring, fresh.''\n ''All we have is pizza.'";
+                    op1 = "''That’d be pepperoni, tomato, rucula... and sunflower.''";
+                    op2 = "''Don’t you ever clean the toilet?''";
+                    pm.UpdateOptions(op1, op2);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "008")
+                {
+                    lastText = "010";       //      PIZZA < 010 >
+                    str = "''Yes, I’m the guy with the sunflower.''\n ''Oh yes, I might remember you'' He said looking suspicious. I paid and he handed me one of the best pizza in town.";
+                    infoFermat = true;
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "009" | lastText == "012")
+                {
+                    lastText = "014";       //      PIZZA < 014 >
+                    str = "''That’d be pepperoni, tomato, rucula... and sunflower'' I added, hoping to catch him off guard.\n ''Umm, ehh… we, we don’t have any of that,'' he mumbled, looking down. He had to be hiding something there! ''And now, now get out of here, the restaurant is too full!''";
+                    infoFermat = true;
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "001")
+                {
+                    lastText = "024";       //      PIZZA < 024 >
+                    str = "I kept listening, and he started vomiting words all over, shouting and moving his arms around. \n''will come the time and surely this time has come and past and come AGAIN till it passes away if only no one would PASS AWAY, y’know??\nplay would stop reap shot poison bomb the one we could keep doin keep gofin, keep moving forward! y'know? save it if you can save it yourself and don't waste my time, hey dude don’t waste my time, yesterday is gone tomorrow won't come just shut up SHUT UP and bend low bend down!!''";
+                    op1 = "I bend down.";
+                    op2 = "I went home.";
+                    pm.UpdateOptions(op1,op2);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "013")
+                {
+                    lastText = "015";       //      PIZZA < 015 >
+                    str = "''Don’t you ever clean the toilet?'' I inquired.\n ''No,'' he said. ''And if you’re not going to get anything, I’m going to have to ask you to leave.''";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "022")
+                {
+                    lastText = "028";       //      PIZZA < 028 >
+                    str = "''Hey, hold on! What was that loophole thing about?'', I asked. \n''In a temporal loop let’s say you, particles cannot go back, the arrow of time won’t completely stop for them, follow me? if we think we are subatomic particles and because the quantum entanglement and the fractal nature of existence we can think that ‘kay? some things won’t reset every loop y‘know? as it is shown and revealed in these pictograms made by a sage.'' \nA shaky finger and a broken nail pointed towards some ugly drawings made with a marker in a cardboard box.";
+                    op1 = "''Isn’t that your bed?''";
+                    op2 = "''Isn’t that your marker?''";
+                    op3 = "''Isn’t that your handwriting?''";
+                    pm.UpdateOptions(op1, op2, op3);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "025")
+                {
+                    lastText = "027";       //      PIZZA < 027 >
+                    str = "''I’ll pass this one'' I replied, excusing myself. I don’t think he even heard me. He had sunk into his nonsense talk again.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "028")
+                {
+                    lastText = "030";       //      PIZZA < 030 >
+                    str = "''Isn’t that your marker?'' I asked\n''Well, that’s a really common marker,'' he replied before falling soundly asleep. I went home.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "016")
+                {
+                    str = "delicious pizza, so I…";
+                    if (itemSandWich)
+                    {
+                        lastText = "020";       //      PIZZA < 020 >
+                        op1 = "went back to look for some pizza behind the counter.";
+                    }
+                    else
+                    {
+                        lastText = "019";       //      PIZZA < 019 >
+                        op1 = "went to get some pizza.";
+                    }
+                    pm.UpdateOptions(op1);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "004")
+                {
+                    lastText = "006";       //      PIZZA < 006 >
+                    str = "read the label. There was enough herbicide in that bottle to kill a Baobab… Or to clean a toilet. ''Hehe, Fermat won’t be happy about this'', I thought. Once I finished cleaning the toilette, I replenished the bottle with plain water and left it where it was. I felt great. Not only I had helped cleanse the world, but I had also saved the sunflower from another deadly threat.";
+                    itemPoison = true;
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
 
                 break;
             case 6:                         //  >> AIGUA <<
@@ -871,6 +1132,52 @@ public class GameController : MonoBehaviour
 
                 break;
             case 5:                         //  >> PIZZA <<
+                if (lastText == "002")
+                {
+                    lastText = "021";       //      PIZZA < 021 >
+                    str = "approached the hobo sitting on the sidewalk next door. \nI figured that since he often spent the whole day sitting in the middle of the street, drugged on God knows what, he would know better than anyone what was going on inside the human soul, and thus could help me uncover the murderer. I sat next to him, but he didn’t seem to notice me. He was mumbling something to himself and making strange drawings on the pavement. On a second thought, he was probably just nuts.";
+                    op1 = "I kept listening to him. ";
+                    op2 = "I went home.";
+                    pm.UpdateOptions(op1, op2);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "007")
+                {
+                    lastText = "014";       //      PIZZA < 014 >
+                    str = "''That’d be pepperoni, tomato, rucula... and sunflower'' I added, hoping to catch him off guard.\n ''Umm, ehh… we, we don’t have any of that,'' he mumbled, looking down. He had to be hiding something there! ''And now, now get out of here, the restaurant is too full!''";
+                    infoFermat = true;
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "008")
+                {
+                    lastText = "011";       //      PIZZA < 011 >
+                    str = "'Yes, and you should clean your toilet.'' \nHis eyes narrowed.\n ''If you’re not going to get anything, I’m going to have to ask you to leave.''";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "009" | lastText == "012")
+                {
+                    lastText = "015";       //      PIZZA < 015 >
+                    str = "''Don’t you ever clean the toilet?'' I inquired.\n ''No,'' he said. ''And if you’re not going to get anything, I’m going to have to ask you to leave.''";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "022")
+                {
+                    lastText = "032";       //      PIZZA < 032 >
+                    str = "''Hey dude! fancy a sandwich?'' I handed him the sandwich. He ate it without a comment. After finishing it he took a sip of beer, eructed, and kept on mumbling. I decided to go home.";
+                    infoHoboSandwich = true;
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "028")
+                {
+                    lastText = "031";       //      PIZZA < 031 >
+                    str = "''Isn’t that your handwritting?'' I asked\n''I have a very conventional handwritting,'' he replied before falling soundly asleep. I went home.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
 
                 break;
             case 6:                         //  >> AIGUA <<
@@ -978,7 +1285,23 @@ public class GameController : MonoBehaviour
 
                 break;
             case 5:                         //  >> PIZZA <<
-
+                if (lastText == "007")
+                {
+                    lastText = "015";       //      PIZZA < 015 >
+                    str = "''Don’t you ever clean the toilet?'' I inquired.\n ''No,'' he said. ''And if you’re not going to get anything, I’m going to have to ask you to leave.''";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "008")
+                {
+                    lastText = "012";       //      PIZZA < 012 >
+                    str = "''Are you serious? Come on! It’s me.'' \n ''Look'' he said ''your face does look familiar, ok?  What would you like in your pizza?''";
+                    op1 = "''I would like something new, daring, fresh.''";
+                    op2 = "''That’d be pepperoni, tomato, rucula... and sunflower.''";
+                    op3 = "''Don’t you ever clean the toilet?''";
+                    pm.UpdateOptions(op1, op2, op3);
+                    pm.UpdateText(str);
+                }
                 break;
             case 6:                         //  >> AIGUA <<
 
