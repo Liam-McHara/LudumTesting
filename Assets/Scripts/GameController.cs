@@ -36,10 +36,10 @@ public class GameController : MonoBehaviour
     
 
     // Variables de coneixement (permanents)
-    public bool infoCrash, infoVistNena, infoGorra = false;
+    public bool infoCrash, infoVistNena, infoGorra, infoWarehouse = false;
 
     // Condicions temporals (es resetejen a cada bucle)
-    public bool item2b1, itemWater, itemFlowers = false;    // parc
+    public bool item2b1, itemWater, itemFlowers, itemLove = false;    // parc
     public bool v7_001, v7_009, itemDeadGirl, itemChocolate = false;     // passeig
 
     // Ultima part de narracio mostrada
@@ -280,7 +280,21 @@ public class GameController : MonoBehaviour
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
-
+                else if (lastText == "021")
+                {
+                    lastText = "021b";       //      PARC < 021b >
+                    str = "“This… might help?”, I tried.\n“You really think so?”\n“Yes?” No.\n“Well, that’s beautiful. No one had ever given me flowers before. I… really, thanks. Maybe I should actually give love a try, you know. All my life I did what was expected of me as a member of a secret holy order, and what did I really get out of that? Yeah, saved the world a couple times, stopped one or two apocalypses. Well, that’s not the kind of thing that will warm me at night when I’m old, you know what I mean? No, I’ve had enough. I deserve this. I’ve got to think about myself, at least once in my life. Thank you, my friend, for showing me the way. I shall not forget this.”";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "021b")
+                {
+                    lastText = "021c";       //      PARC < 021c >
+                    str = "And with these words he left. I didn’t really understand any of what he’d said, but hey, it’s not like I thought I would. I’m just a guy who randomly says “flowers”.";
+                    itemLove = true;
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
                 else
                 {
                     Debug.Log("Default caseA: Going to MAPA");
@@ -452,6 +466,7 @@ public class GameController : MonoBehaviour
                 else if (lastText == "002")
                 {
                     lastText = "004";       //      PARC < 004 >
+                    itemFlowers = true;
                     str = "“Su… Roses,” I replied shrewdly. I wasn’t so dumb to reveal my true allegiances to a complete stranger just like that. What if he was the sunflower murderer?\n“Ah”, he said, looking somehow disappointed with my answer. “Well, I do have some roses, if you want them”. \nSeedless flowers hold no appeal to me, but I took the roses anyway, not wanting to give myself away.\nI was getting more and more uncomfortable with my charade, as if I had betrayed my pure devotion of sunflowers, so I thanked the gardener and walked away soon after that.";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
@@ -623,6 +638,36 @@ public class GameController : MonoBehaviour
                 {
                     lastText = "028";       //      PARC < 028 >
                     str = "my favourite sitting spot. \nAs I lay there, breathing slowly, drinking it all in, I could almost feel all my problems beginning to fade away. If only I could stay there forever, enjoying that nice breeze and thinking of nothing… \nBut I couldn’t. I still had a murderer to catch, and a sunflower to save.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "002")
+                {
+                    lastText = "005";       //      PARC < 005 >
+                    str = "“Hey, that’s what I wanted to ask!” I protested. He had stolen my question! Would he steal my sunflower too?\nThe gardener laughed out loud, shook his head and kept on tending to the plants. \n“My favourite flowers are Fire Lilies”, he said after a while. “If most people had half their intensity, we would live in a much more interesting world”. Then he looked at me once more with that rueful smile, and said “here, take these gardenias. A gift, from a fellow lover of flowers to another”. I thanked him and left, not knowing quite what to make of him.";
+                    itemFlowers = true;
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "006")
+                {
+                    lastText = "009";       //      PARC < 009 >
+                    str = "“I like flowers”, I said. \nHe looked up at me, his eyes still unfocused, and slowly he came back to his senses. \n“Yes… yes, me too. Here, you can have some, if you want”, he muttered. \nI thanked him and left, as he seemed ill-disposed at the moment.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "013")
+                {
+                    lastText = "023";       //      PARC < 023 >
+                    str = "Spy on him. He had the sign of the sunflower, after all. I had to get this. \nAs I approached, hiding through the bushes, I could clearly overhear his conversation. \n“Yes. Yes sir. No, I won’t let love get in the way, sir. I know we have to destroy it. Yes, it’s for the greater good. I’ll be at the warehouse on Roller Street in the afternoon, right after I finish my work here. Over.”Well, well. Seemed like I was finally getting somewhere. The old warehouse on Roller Street, this afternoon. I would have to take a look at that.";
+                    infoWarehouse = true;
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "018")
+                {
+                    lastText = "021";       //      PARC < 021 >
+                    str = "“Flowers”, I said. \n “What?”, he asked, perplexed.\nTo be honest, I had never really intended to say anything. I just randomly mutter the word “flowers” from time to time, especially when I get nervous, ever since I can remember, just like other people get a hiccup. Well, me, I never get a hiccup. I just say “flowers”. \nBut since I was actually engaged on a mission of deception, I handed him the flowers I had obtained a while back from the gardener. Trouble was, he still looked at me as if expecting me to say something.";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
