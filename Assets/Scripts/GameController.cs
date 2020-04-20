@@ -39,7 +39,7 @@ public class GameController : MonoBehaviour
     public bool infoCrash, infoVistNena, infoGorra = false;
 
     // Condicions temporals (es resetejen a cada bucle)
-    public bool item2b1, itemWater = false;    // parc
+    public bool item2b1, itemWater, itemFlowers = false;    // parc
     public bool v7_001, v7_009, itemDeadGirl, itemChocolate = false;     // passeig
 
     // Ultima part de narracio mostrada
@@ -211,6 +211,41 @@ public class GameController : MonoBehaviour
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
+                else if (lastText == "002")
+                {
+                    lastText = "003";       //      PARC < 003 >
+                    itemFlowers = true;
+                    str = "“Sunflowers,” I replied without hesitation. The gardener’s smile broadened, and he said, “yes, you do look like the sunflower type. Not many left around these days, huh?” he added with a mournful voice. \n“No, sadly not,” I agreed, wondering if I had given myself away too soon. The gardener looked at me once more with that rueful smile, and said “here, take these gardenias. A gift, from a fellow lover of flowers to another”.\nI thanked him and left, not knowing quite what to make of him.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "006")
+                {
+                    lastText = "007";       //      PARC < 007 >
+                    str = "“I heard there was a problem at the water processing plant”. \nAs soon as I said those words, he looked up at me with a shine to his eyes. “Really? Well, we can’t allow that, can we? No, no, no. I will have to go there immediately. Oh, yes. They shall hear about this. What kind of water processing plant stops processing the water for my plants on such an important day? Oh, no, no, no, I will have none of that”.\nHe kept on muttering to himself as he stood up and left in direction to the water plant, but all I heard were some isolated words like “fire”, “massacre” and “thermonuclear punishment”. \nAfter he left, I noticed he had forgotten some recently cut flowers and a sandwich. ";
+                    op1 = "I took both.";
+                    op2 = "I took the sandwich";
+                    op3 = "I took nothing.";
+                    pm.UpdateOptions(op1,op2,op3);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "007")
+                {
+                    lastText = "010";       //      PARC < 010 >
+                    str = "Seemed like he wasn’t going to need them anyway, where he was going.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "013")
+                {
+                    lastText = "014";       //      PARC < 014 >
+                    str = "Approach him, but as soon as he noticed me he stopped talking abruptly and shot me a guilty glance. All I could overhear was ”my love”, “destroy” and “warehouse”, but that was enough. Why else would he be looking at me with such a look of guilt painted all over his face?";
+                    op1 = "“You’re the sunflower murderer!”";
+                    op2 = "“You, uhm... what were you talking about just now?”";
+                    pm.UpdateOptions(op1, op2);
+                    pm.UpdateText(str);
+                }
+
                 else
                 {
                     Debug.Log("Default caseA: Going to MAPA");
