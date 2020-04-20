@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
     public bool item2b1, itemWater, itemFlowers, itemLove, itemKillLady = false;    // parc
     public bool itemBarricade, itemSandWich, itemCrowbar = false;      // abocador
     public bool v7_001, v7_009, itemDeadGirl, itemChocolate = false;     // passeig
-    public bool itemFirstTimePizza, itemGun, v5a7, itemPoison = false;
+    public bool itemFirstTimePizza, itemGun, v5a7, itemPoison, v1a3 = false;
 
     // Hobo
     bool hobo = false;
@@ -234,11 +234,28 @@ public class GameController : MonoBehaviour
                     if (infoPoison) str += " - Someone is going to poison my plant if I don’t stop it!\n";
                     if (infoWeapon) str += " - The sniper’s weapon is hidden in the warehouse!\n";
                     if (infoFinalboss) str += " - Even after I managed to dismantle all the her other plans, the Destroyer of Suns came herself to my flat at midnight, and murdered the sunflower. If only I found out her identity...\n";
-                    pm.UpdateOptions("","","",continueText);
+                    pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
-
-
+                else if (lastText == "003")
+                {
+                    lastText = "004";       //      HOME < 004 >
+                    str = "knocked on her door. ";
+                    if (t == 1 | t == 3 | t == 4) str += "She didn’t answer. I guess she wasn’t at home? I should try again later.";
+                    else
+                    {
+                        if (!itemLove) str += "She opened it.\n''Hey, neighbour, it’s you'' she said, eyeing me suspiciously. ''Did you need anything in particular?''\nThe memories of her, dressed only with dynamite and abseiling down my flat, rushed into my mind. I won’t deny I got a tad nervous, and probably gave myself away by saying ''Eh…um... Hello! Where did you learn how to abseil?'' To which she answered \n''I’m a firefighter''\nThat was more that I could handle and rushed back home to the sweet solace of my sunflower.";
+                        if (!v1a3)
+                        {
+                            str += ")She opened it.\n''Hey, it’s you!'' She said.\n''Err…um... Hello!'' I replied, not really knowing what to say ''Soo, what is that you do with your life?'' To which she answered \n''I’m a firefighter''\n That was more that I could handle and rushed back home to the solace of my sunflower.";
+                            v1a3 = true;
+                        }
+                    }
+                   
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "007") TimeTravel();    //  [NEXT LOOP]
 
                 else
                 {
@@ -850,39 +867,23 @@ public class GameController : MonoBehaviour
                 else if (lastText == "003")
                 {
                     lastText = "005";       //      HOME < 005 >
-                    str = "";
-                    op1 = "";
-                    op2 = "";
-                    pm.UpdateOptions();
+                    str = "peeked through the keyhole. ";
+                    if (t == 1) str += "It was just dark.";
+                    if (t == 2) str += "I saw my neighbour. She was writing a note on a piece of paper.";
+                    if (t == 3 | t == 4) str += "There was a long rope coiled on the ground and some red cylinders with a string sticking out of them next to it.";
+                    if (t == 5)
+                    {
+                        if (!itemLove) str += "She was writing a note on a piece of paper.";
+                        if (itemLove)
+                        {
+                            str += "I saw my neighbour on the ground with a red face fighting to breathe. The street sweeper was holding a phone in one hand and the bouquet of flowers in the other. Poor guy.";
+                            infoAllergy = true;
+                        }
+                    }
+                    pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
-                else if (lastText == "006")
-                {
-                    lastText = "007";       //      HOME < 007 >
-                    str = "";
-                    op1 = "";
-                    op2 = "";
-                    pm.UpdateOptions();
-                    pm.UpdateText(str);
-                }
-                else if (lastText == "010")
-                {
-                    lastText = "012";       //      HOME < 012 >
-                    str = "";
-                    op1 = "";
-                    op2 = "";
-                    pm.UpdateOptions();
-                    pm.UpdateText(str);
-                }
-                else if (lastText == "013")
-                {
-                    lastText = "015";       //      HOME < 015 >
-                    str = "";
-                    op1 = "";
-                    op2 = "";
-                    pm.UpdateOptions();
-                    pm.UpdateText(str);
-                }
+              
                 break;
             case 2:                         //  >> PARC <<
                 if (lastText == "001")
@@ -1241,7 +1242,13 @@ public class GameController : MonoBehaviour
         switch (place)
         {
             case 1:                         //  >> CASA <<
-                
+                if (lastText == "001")
+                {
+                    lastText = "006";       //      HOME < 006 >
+                    str = "search for cameras or traps around the house. All I found were some old donnuts, my favorite underwear, a lighter, the tv remote and a pregnant mouse.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
                 break;
             case 2:                         //  >> PARC <<
                 if (lastText == "001")
@@ -1468,11 +1475,9 @@ public class GameController : MonoBehaviour
             case 1:                         //  >> CASA <<
                 if (lastText == "001")
                 {
-                    lastText = "000";       //      HOME < 000 >
-                    str = "";
-                    op1 = "";
-                    op2 = "";
-                    pm.UpdateOptions();
+                    lastText = "007";       //      HOME < 007 >
+                    str = " build a barricade to block the door with my bed and a few wooden planches I found in the dumpster.. The door was locked, so I had to stay inside for the rest of the day.";
+                    pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "002") GotoMapa();
