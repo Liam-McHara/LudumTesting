@@ -449,6 +449,78 @@ public class GameController : MonoBehaviour
                     pm.UpdateOptions(op1,op2);
                     pm.UpdateText(str);
                 }
+                else if (lastText == "002")
+                {
+                    lastText = "004";       //      PARC < 004 >
+                    str = "“Su… Roses,” I replied shrewdly. I wasn’t so dumb to reveal my true allegiances to a complete stranger just like that. What if he was the sunflower murderer?\n“Ah”, he said, looking somehow disappointed with my answer. “Well, I do have some roses, if you want them”. \nSeedless flowers hold no appeal to me, but I took the roses anyway, not wanting to give myself away.\nI was getting more and more uncomfortable with my charade, as if I had betrayed my pure devotion of sunflowers, so I thanked the gardener and walked away soon after that.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "006")
+                {
+                    lastText = "008";       //      PARC < 008 >
+                    str = "“Cheer up, it will only last a few hours”, I said, trying to help. I wasn’t sure he was actually on my side, but he was nice to his flowers. \n“Yes”, he said absentmindedly. “Yes, I suppose you’re right”. \nAfter that he just sat there, waiting, and a while later I decided to leave. ";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "007")
+                {
+                    lastText = "011";       //      PARC < 011 >
+                    str = "I took the sandwich. What can I say? I was hungry, and it was a really good looking sandwich.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "013")
+                {
+                    lastText = "022";       //      PARC < 022 >
+                    str = "Leave him alone. We all need our privacy from time to time. Perhaps later would be a better time.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "014")
+                {
+                    lastText = "024";       //      PARC < 016 >
+                    str = "“You, uhm... what were you talking about just now?”, I tried to ask as casually as I could. \nHe was still startled, but he looked at me and sighed. \n“I, uh… it’s complicated,” he said.";
+                    op1 = "“You’re right, I don’t wanna hear this”.";
+                    op2 = "“I have time”.";
+                    pm.UpdateOptions(op1,op2);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "016")
+                {
+                    lastText = "018";       //      PARC < 018 >
+                    str = "“I have time”.\n “Well… I, I don’t know you, but I don’t really have anyone else to talk with. I, uh... it’s a woman. I love her, I truly do... but to be with her, I would have to betray everything I believe in. And I can’t just do that, can I?”";
+                    op1 = "“Sure you can”";
+                    op2 = "“That’s right. You have a duty”";
+                    if (itemFlowers) op3 = "Flowers";
+                    pm.UpdateOptions(op1,op2,op3);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "018")
+                {
+                    lastText = "020";       //      PARC < 020 >
+                    string s1, s2, s3, s4, s5 = "";
+                    s1 = "“That’s right. You have a duty”, I said. He nodded to himself, seemingly absorbed in his own thoughts.";
+                    s3 = "\n”Yeah”, he said at last";
+                    s5 = ". “Yeah. You’re right. Thanks bro. I needed that”. He gave a small squeeze on my shoulder, and then he left.";
+                    if (loop > 1)
+                    {
+                        s2 = "”Look at my case. Sometimes I don’t like being trapped in an endless time loop either, searching for a way to save my sunflower, you know? But it is what it is.";
+                        s4 = ", although I wasn’t sure if he had really heard me";
+                        str = s1 + s2 + s3 + s4 + s5;
+                    }
+                    else str = s1 + s3 + s5;
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "024")
+                {
+                    lastText = "026";       //      PARC < 026 >
+                    str = "“Certainly.”\n“Oh, Timothy. Such a good lad, such a good lad. And so grown, too, as of late,” she added, squeezing her eyes again to see me better, unsuccesfully. I could now see that she was almost completely blind, but that didn’t stop her from gazing towards me with a look of deep affection in her face. We sat there in that bench for more than two hours, holding each other’s hands, saying almost nothing. \nWe didn’t need to.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+
                 break;
             case 3:                         //  >> ABOCADOR <<
 
@@ -554,6 +626,7 @@ public class GameController : MonoBehaviour
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
+
                 break;
             case 3:                         //  >> ABOCADOR <<
 
