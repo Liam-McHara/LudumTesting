@@ -308,7 +308,79 @@ public class GameController : MonoBehaviour
                 break;
             case 3:                         //  >> ABOCADOR <<
 
-                if (lastText == "001") Debug.Log("caca");
+                if (lastText == "001")
+                {
+                    lastText = "002";       //      ABOCADOR < 002 >
+                    str = "";
+                    op1 = "";
+                    op2 = "";
+                    pm.UpdateOptions();
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "003")
+                {
+                    lastText = "004";       //      ABOCADOR < 004 >
+                    str = "";
+                    op1 = "";
+                    op2 = "";
+                    pm.UpdateOptions();
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "007")
+                {
+                    lastText = "008";       //      ABOCADOR < 008 >
+                    str = "";
+                    op1 = "";
+                    op2 = "";
+                    pm.UpdateOptions();
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "008")
+                {
+                    lastText = "018";       //      ABOCADOR < 018 >
+                    str = "";
+                    op1 = "";
+                    op2 = "";
+                    pm.UpdateOptions();
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "009")
+                {
+                    lastText = "010";       //      ABOCADOR < 010 >
+                    str = "";
+                    op1 = "";
+                    op2 = "";
+                    pm.UpdateOptions();
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "010")
+                {
+                    lastText = "011";       //      ABOCADOR < 011 >
+                    str = "";
+                    op1 = "";
+                    op2 = "";
+                    pm.UpdateOptions();
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "011")
+                {
+                    lastText = "012";       //      ABOCADOR < 012 >
+                    str = "";
+                    op1 = "";
+                    op2 = "";
+                    pm.UpdateOptions();
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "014")
+                {
+                    lastText = "016";       //      ABOCADOR < 016 >
+                    str = "";
+                    op1 = "";
+                    op2 = "";
+                    pm.UpdateOptions();
+                    pm.UpdateText(str);
+                }
+
                 else
                 {
                     Debug.Log("Default caseA: Going to MAPA");
@@ -543,6 +615,51 @@ public class GameController : MonoBehaviour
 
                 break;
             case 3:                         //  >> ABOCADOR <<
+                if (lastText == "001")
+                {
+                    lastText = "003";       //      ABOCADOR < 003 >
+                    str = "";
+                    op1 = "";
+                    op2 = "";
+                    pm.UpdateOptions();
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "003")
+                {
+                    lastText = "005";       //      ABOCADOR < 005 >
+                    str = "";
+                    op1 = "";
+                    op2 = "";
+                    pm.UpdateOptions();
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "008")
+                {
+                    lastText = "009";       //      ABOCADOR < 009 >
+                    str = "";
+                    op1 = "";
+                    op2 = "";
+                    pm.UpdateOptions();
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "011")
+                {
+                    lastText = "013";       //      ABOCADOR < 013 >
+                    str = "";
+                    op1 = "";
+                    op2 = "";
+                    pm.UpdateOptions();
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "014")
+                {
+                    lastText = "017";       //      ABOCADOR < 017 >
+                    str = "";
+                    op1 = "";
+                    op2 = "";
+                    pm.UpdateOptions();
+                    pm.UpdateText(str);
+                }
 
                 break;
             case 4:                         //  >> MAGATZEM <<
@@ -679,7 +796,43 @@ public class GameController : MonoBehaviour
 
                 break;
             case 3:                         //  >> ABOCADOR <<
-
+                if (lastText == "001")
+                {
+                    lastText = "007";       //      ABOCADOR < 007 >
+                    str = "";
+                    op1 = "";
+                    op2 = "";
+                    pm.UpdateOptions();
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "003")
+                {
+                    lastText = "006";       //      ABOCADOR < 024 >
+                    str = "";
+                    op1 = "";
+                    op2 = "";
+                    pm.UpdateOptions();
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "008")
+                {
+                    lastText = "014";       //      ABOCADOR < 014 >
+                    str = "";
+                    op1 = "";
+                    op2 = "";
+                    pm.UpdateOptions();
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "014")
+                {
+                    lastText = "015";       //      ABOCADOR < 015
+                    >
+                    str = "";
+                    op1 = "";
+                    op2 = "";
+                    pm.UpdateOptions();
+                    pm.UpdateText(str);
+                }
                 break;
             case 4:                         //  >> MAGATZEM <<
 
@@ -779,7 +932,7 @@ public class GameController : MonoBehaviour
                 }
                 else if (lastText == "001" & t > 3)
                 {
-                    lastText = "024";       //      PARC < 024 >
+                    lastText = "027";       //      PARC < 027 >
                     str = "a group of children chasing each other. They seemed so happy, there in the park, like they didn’t have a worry on this world.\nAs I approached and sat on a bench near the playground, some of them looked at me warily, but after a while they resumed their game.\nWhile sitting on the bench I could easily overhear their conversation, although most of it was of no interest to me, having nothing to do with sunflowers. Apparently, a substitute teacher named Martin had been expected at the school this morning, but in the end he had never showed up.";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
