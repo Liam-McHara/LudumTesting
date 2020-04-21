@@ -2334,6 +2334,10 @@ public class GameController : MonoBehaviour
     {
         // Reseteja variables temporals             ( aquesta funcio s'executa per IntroManager a dins de "HideIntro")
 
-        // TODO
-    }
+        item2b1 = itemWater = itemFlowers = itemLove = itemKillLady = false;    // parc
+        itemBarricade = itemSandWich = itemCrowbar = false;      // abocador
+        v7_001 = v7_009 = itemDeadGirl = itemChocolate = false;     // passeig
+        itemFirstTimePizza = itemGun = v5a7 = itemPoison = v1a3 = false;
+        itemSchoolKey = false;
+}
 }
