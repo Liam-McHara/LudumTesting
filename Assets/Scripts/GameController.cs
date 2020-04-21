@@ -595,7 +595,7 @@ public class GameController : MonoBehaviour
                     str = "Once I got there, I...";
                     op1 = "...went to get some pizza...";
                     op2 = "...went to the toilet...";
-                    if (hobo) op3 = "...approached the hobo sitting on the sidewalk next door...";
+                    if (!hobo) op3 = "...approached the hobo sitting on the sidewalk next door...";
                     pm.UpdateOptions(op1, op2, op3);
                     pm.UpdateText(str);
                 }
@@ -605,7 +605,7 @@ public class GameController : MonoBehaviour
                     str = "Once I got there, I...";
                     op1 = "...went to look for some pizza behind the counter...";
                     op2 = "...went to the toilet...";
-                    if (hobo) op3 = "...approached the hobo sitting on the sidewalk next door...";
+                    if (!hobo) op3 = "...approached the hobo sitting on the sidewalk next door...";
                     pm.UpdateOptions(op1, op2, op3);
                     pm.UpdateText(str);
                 }
