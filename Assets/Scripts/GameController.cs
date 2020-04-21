@@ -19,9 +19,6 @@ public class GameController : MonoBehaviour
     // Hobo
     bool hobo = false;
 
-    // TESTING
-    public bool showIntro = true;
-
     AudioManager am;
     PanelManager pm;
     IntroManager im;
@@ -30,7 +27,6 @@ public class GameController : MonoBehaviour
     public int loop = 1;
 
     public string continueText = ">";
-    public string beginLoopText = "Start";
 
     /*  0 - mapa
      *  1 - casa

@@ -8,6 +8,7 @@ public class PanelManager : MonoBehaviour
     public GameObject whereText;
     public GameController gc;
     public TextScript ts;
+    public InventoryScript inv;
     public GameObject background;
     public GameObject[] optionButtons;
     public GameObject[] mapButtons;
@@ -33,6 +34,7 @@ public class PanelManager : MonoBehaviour
         ts.Clear();       // Activa o desactiva segons tipus de text  <<<<<<<<<<<<<<<<<<< CANVIAR SI TEXT FLUID a lo 80 DAYS
         HideOptions();
         ts.Write(str);
+        inv.UpdateInventory();
     }
 
     public void HidePanel()
@@ -43,6 +45,7 @@ public class PanelManager : MonoBehaviour
         ts.Clear();
         visible = false;
         HideOptions();
+        inv.UpdateInventory();
     }
 
 
