@@ -2325,6 +2325,7 @@ public class GameController : MonoBehaviour
 
     public void TimeTravel()
     {
+        pm.HidePanel();
         ++loop;   // Actualitza el contador de loops
         t = 1;   // Torna a la fase 1
         im.ShowIntro(loop);
