@@ -1562,6 +1562,7 @@ public class GameController : MonoBehaviour
                     str = "... fled. What else was I going to do? I’m a coward, yes, but at least I’ve never pretended otherwise.";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
+                    break;
                 }
                 else if (lastText == "005")
                 {
@@ -1570,6 +1571,15 @@ public class GameController : MonoBehaviour
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
+
+                else if (lastText == "005")
+                {
+                    lastText = "007";       //      AIGUA < 007 >
+                    str = "''Err... Sunflower!'' \nYeah, I’ve never been able to lie. So what? Whenever I get too nervous or I feel questioned, the truth just comes out of my mouth out of its own will. It’s a compulsion. I can’t help it. \n''Su... what?'' asked the guard, perplexed. \n''Yes, sir. My sunflower. I have to save it. They want to murder it! If only you would let me in for a...";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+
                 else if (lastText == "016")
                 {
                     lastText = "018";       //      AIGUA < 018 >
@@ -1985,13 +1995,19 @@ public class GameController : MonoBehaviour
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
-                else if (lastText == "005")
+                else if (lastText == "002")
                 {
-                    lastText = "007";       //      AIGUA < 007 >
-                    str = "''Err... Sunflower!'' \nYeah, I’ve never been able to lie. So what? Whenever I get too nervous or I feel questioned, the truth just comes out of my mouth out of its own will. It’s a compulsion. I can’t help it. \n''Su... what?'' asked the guard, perplexed. \n''Yes, sir. My sunflower. I have to save it. They want to murder it! If only you would let me in for a...";
-                    pm.UpdateOptions(continueText);
+                    lastText = "005";       //      AIGUA < 007 >
+                    str = "tried to talk my way in. \n''And good morning to you, sir!'' I boomed back with what I hoped would be a confident voice. The guard eyed me perfunctorily before repeating \n''ID. Autorization. Reason of visit.''";
+                    op1 = "''Certainly, sir!''";
+                    op2 = " ''Err… Sunflower!''.";
+                    pm.UpdateOptions(op1, op2);
                     pm.UpdateText(str);
                 }
+
+
+
+                
                 else if (lastText == "016")
                 {
                     lastText = "024";       //      AIGUA < 019 >
