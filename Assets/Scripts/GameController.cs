@@ -948,6 +948,7 @@ public class GameController : MonoBehaviour
                     str = "“Why are they so busy, if I may ask? Does it have anything to do with sunflowers?”, I asked, eyeing her suspiciously. She smiled at me innocently, not seeming to notice my tension. \n“Oh, you know. My mom’s a teacher at the local school, so she’s always busy with homework, and my dad works double shifts as a security guard at the water processing plant.” \nShe raised her head and stared frankly into my eyes. “Being an adult isn’t too fun, is it?”\nI didn’t really know what to answer to that.";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
+                    infoGirlParents = true;
                 }
                 else if (lastText == "017")
                 {
@@ -1029,7 +1030,7 @@ public class GameController : MonoBehaviour
                     pm.UpdateText(str);
                 }
                 else if (lastText == "004" & t > 3 & !itemSchoolKey) GotoMapa();
-                else if (lastText == "005" & (!infoGirlParents | !infoSchoolNeighbour)) GotoMapa();
+                else if (lastText == "005" & (!infoGirlParents || !infoSchoolNeighbour || t != 1)) GotoMapa();
                 else if (lastText == "002")
                 {
                     lastText = "009";       //      ESCOLA < 009 >
@@ -1172,6 +1173,18 @@ public class GameController : MonoBehaviour
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
+                else if (lastText == "027")
+                {
+                    lastText = "028";       //      ESCOLA < 028 >
+                    str = "I won’t describe in detail the trials and tribulations we went through on our grand journey. Suffice it to say that eventually we made our way to the teacher’s room - although my guide lost one finger on the way, during a fight with a particularly ferocious tribe of class skippers that were competing with us for vital resources. In the teacher’s room we burned the concierge’s purse, as promised, thus sealing our pledge of eternal goodwill before parting ways. It wasn’t until I had almost given up my search for clues that I found something truly valuable: a copy of the school keys for the main gate, hidden away in a small locker of the teacher’s room. I pocketed them and quickly made my exit to the outside, to prepare for my return. ";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                    itemSchoolKey = true;
+                }
+
+
+
+
                 else if (lastText == "030") TimeTravel();
 
                 else
@@ -1427,6 +1440,20 @@ public class GameController : MonoBehaviour
                     pm.UpdateOptions(op1, op2);
                     pm.UpdateText(str);
                 }
+
+                else if (lastText == "005")
+                {
+                    lastText = "005";       //  < 27 >
+                    str = "I smelled it. It smelled almost unbearably fishy.\n";
+                    op1 = "I tried to open it by pushing against it";
+                    op2 = "";
+                    if (itemCrowbar) op3 = "I tried to open it with my crowbar";
+                    op4 = "";
+
+                    pm.UpdateOptions(op1, op2, op3);
+                    pm.UpdateText(str);
+                }
+
                 else if (lastText == "022")
                 {
                     lastText = "024";       //  wh < 24 >
@@ -1697,7 +1724,7 @@ public class GameController : MonoBehaviour
                 if (lastText == "001")
                 {
                     lastText = "005";       //      ESCOLA < 005 >
-                    if (!infoGirlParents || !infoSchoolNeighbour)
+                    if ((!infoGirlParents || !infoSchoolNeighbour) || t !=1  )
                     {
                         str = "talked with some adults at the gate. Most of them were parents delivering or waiting to pick up their children, too busy to pay me any attention. I asked around, but no one had seen anyone suspicious, and although I managed to eavesdrop some conversations here and there, I learned nothing useful in relation to my sunflower.";
                         pm.UpdateOptions(continueText);
@@ -1793,10 +1820,13 @@ public class GameController : MonoBehaviour
                 else if (lastText == "024")
                 {
                     lastText = "027";       //      ESCOLA < 027 >
+                    op1 = ">";
                     str = "tried to enlist his help for my cause. “Well met, stranger”, I began, “I hail from distant lands with a proposal to you and your tribe, which I believe shall work towards the betterment and attainment of our mutual interests in these hostile wasteland known to some as School. Show me where the teacher’s room is, and we shall dance naked around a bonfire where we’ll burn the concierge’s purse and use its ashes to paint our faces as a sign of everlasting kinship and affiliation”.\nHe seemed to think about it for a few seconds, and then he nodded curtly before jumping out of the stairs, motioning for me to follow him.";
-                    pm.UpdateOptions(continueText);
+                    pm.UpdateOptions(op1);
                     pm.UpdateText(str);
                 }
+
+                
 
                 break;
             default:
@@ -1938,25 +1968,14 @@ public class GameController : MonoBehaviour
                     pm.UpdateText(str);
                 }
 
-                else if (lastText == "005")
-                {
-                    lastText = "005";       //  < 27 >
-                    str = "I smelled it. It smelled almost unbearably fishy.\n";
-                    op1 = "I tried to open it by pushing against it";
-                    op2 = "";
-                    if (itemCrowbar) op3 = "I tried to open it with my crowbar";
-                    op4 = "";
-
-                    pm.UpdateOptions(op1, op2, op3, op4);
-                    pm.UpdateText(str);
-                }
+               
 
 
                 else if (lastText == "005")
                 {
                     lastText = "30";       //  < 30 >
                     str = " I tried to open it with my crowbar. I managed to injure myself with it and, much to my surprise, it worked. Inside the room I easily found the sniper’s gun hidden under a box. I picked it up and tossed it on a random potato field. Let the plants deal with it. My sunflower would be safe today.";
-
+                    itemGun = true;
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
