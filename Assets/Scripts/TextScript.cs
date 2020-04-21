@@ -20,7 +20,6 @@ public class TextScript : MonoBehaviour
         
         //TESTING
         textComponent.text = "";
-        //StartCoroutine(BuildText());
     }
 
     private IEnumerator BuildText()
@@ -54,6 +53,7 @@ public class TextScript : MonoBehaviour
 
     public void Write(string newText)
     {
+        
         text = newText;
         StartCoroutine(BuildText());
     }

@@ -31,9 +31,7 @@ public class IntroScript : MonoBehaviour
         
         while (i < text.Length & writing)
         {
-            //Debug.Log("writing: " + textComponent.text + " + " + text[i]);
             textComponent.text = textComponent.text + text[i];
-            //Wait a certain amount of time, then continue with the for loop
             yield return new WaitForSeconds(timeLapse);
             i++;
         }

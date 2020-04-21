@@ -40,7 +40,7 @@ public class PanelManager : MonoBehaviour
 
     public void UpdateText(string str)  // Actualitza el text del panel
     {
-        if (scrollText) // Activa si ScrollText
+        if (scrollText)
         {
             ts.Write("\n");
         }

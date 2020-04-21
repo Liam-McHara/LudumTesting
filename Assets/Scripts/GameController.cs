@@ -224,7 +224,7 @@ public class GameController : MonoBehaviour
                 if (lastText == "001")
                 {
                     lastText = "002";       //      HOME < 002 >
-                    str = "... write down all the clues I had found so far, to get a clearer picture of my progress.";
+                    str = "... write down all the clues I had found so far, to get a clearer picture of my progress.\n";
                     if (infoGorra) str += " - I found a cap on some bushes next to the warehouses. It had a sign resembling a sunflower.\n";
                     if (infoWarehouse) str += " - I overheard the street sweeper talking over the phone about a warehouse on Roller Street.\n";
                     if (infoHoboSandwich) str += " - I gave a sandwich to the hobo, which he ate.\n";
@@ -254,7 +254,7 @@ public class GameController : MonoBehaviour
                         if (!itemLove) str += "She opened it.\n''Hey, neighbour, it’s you'' she said, eyeing me suspiciously. ''Did you need anything in particular?''\nThe memories of her, dressed only with dynamite and abseiling down my flat, rushed into my mind. I won’t deny I got a tad nervous, and probably gave myself away by saying ''Eh...um... Hello! Where did you learn how to abseil?'' To which she answered \n''I’m a firefighter''\nThat was more that I could handle and rushed back home to the sweet solace of my sunflower.";
                         if (!v1a3)
                         {
-                            str += ")She opened it.\n''Hey, it’s you!'' She said.\n''Err...um... Hello!'' I replied, not really knowing what to say ''Soo, what is that you do with your life?'' To which she answered \n''I’m a firefighter''\n That was more that I could handle and rushed back home to the solace of my sunflower.";
+                            str += "She opened it.\n''Hey, it’s you!'' She said.\n''Err...um... Hello!'' I replied, not really knowing what to say ''Soo, what is that you do with your life?'' To which she answered \n''I’m a firefighter''\n That was more that I could handle and rushed back home to the solace of my sunflower.";
                             v1a3 = true;
                         }
                     }

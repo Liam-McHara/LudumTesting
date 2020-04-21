@@ -608,7 +608,7 @@ MonoBehaviour:
   scrollText: 0
   whereText: {fileID: 204624692}
   gc: {fileID: 36873364}
-  ts: {fileID: 1732860881}
+  ts: {fileID: 308458133}
   textGo: {fileID: 812643500}
   inv: {fileID: 646195827}
   background: {fileID: 353649251}
@@ -1645,9 +1645,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'something
-
-'
+  m_Text: 
 --- !u!222 &646195829
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2057,7 +2055,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1035.2, y: 580.4505}
+  m_AnchoredPosition: {x: 1035.2, y: 643}
   m_SizeDelta: {x: 1284.1573, y: 458.66693}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &812643502
@@ -3449,10 +3447,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
+    m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 30
+    m_MinSize: 4
     m_MaxSize: 50
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -3795,7 +3793,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 43
+    m_FontSize: 38
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
