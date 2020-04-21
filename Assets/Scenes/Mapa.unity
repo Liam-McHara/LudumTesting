@@ -164,6 +164,8 @@ MonoBehaviour:
   infoAllergy: 0
   infoPoison: 0
   infoWeapon: 0
+  infoGirlParents: 0
+  infoSchoolNeighbour: 0
   item2b1: 0
   itemWater: 0
   itemFlowers: 0
@@ -181,6 +183,7 @@ MonoBehaviour:
   v5a7: 0
   itemPoison: 0
   v1a3: 0
+  itemSchoolKey: 0
   showIntro: 1
   t: 1
   loop: 1
@@ -324,8 +327,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1027.4999, y: 543.2}
-  m_SizeDelta: {x: 1284.1573, y: 446.43744}
+  m_AnchoredPosition: {x: 1027.4999, y: 578.8}
+  m_SizeDelta: {x: 1284.1573, y: 517.617}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &308458133
 MonoBehaviour:
@@ -581,8 +584,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1020.9, y: 449.43}
-  m_SizeDelta: {x: 1769.873, y: 898.8571}
+  m_AnchoredPosition: {x: 1020.9, y: 509.9}
+  m_SizeDelta: {x: 1769.873, y: 1019.86255}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &353649253
 MonoBehaviour:
@@ -1400,11 +1403,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
+    m_FontSize: 36
     m_FontStyle: 1
     m_BestFit: 1
-    m_MinSize: 35
-    m_MaxSize: 50
+    m_MinSize: 3
+    m_MaxSize: 36
     m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -2498,11 +2501,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
+    m_FontSize: 36
     m_FontStyle: 1
     m_BestFit: 1
-    m_MinSize: 35
-    m_MaxSize: 50
+    m_MinSize: 3
+    m_MaxSize: 36
     m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -3201,11 +3204,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
+    m_FontSize: 36
     m_FontStyle: 1
     m_BestFit: 1
-    m_MinSize: 35
-    m_MaxSize: 50
+    m_MinSize: 3
+    m_MaxSize: 36
     m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -3453,11 +3456,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
+    m_FontSize: 36
     m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 30
-    m_MaxSize: 50
+    m_BestFit: 1
+    m_MinSize: 3
+    m_MaxSize: 36
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -3531,11 +3534,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
+    m_FontSize: 36
     m_FontStyle: 1
     m_BestFit: 1
-    m_MinSize: 35
-    m_MaxSize: 50
+    m_MinSize: 3
+    m_MaxSize: 36
     m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
