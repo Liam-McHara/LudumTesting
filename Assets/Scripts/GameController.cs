@@ -2055,6 +2055,7 @@ public class GameController : MonoBehaviour
                     str = "... whatever a child might like, thinking of the little girl I had seen playing outside. \nI paid in cash and asked the shopkeeper if he had seen anyone who looked like they might hate sunflowers, but he just stared blankly at me, so I left.";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
+                    itemChocolate = true; 
                 }
                 break;
             case 8:                         //  >> ESCOLA <<
