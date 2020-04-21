@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour
 {
     // Variables de coneixement (permanents)
     public bool infoCrash, infoVistNena, infoGorra, infoWarehouse, infoLoop, infoNeighbour, infoSniper, infoEvilGirl, 
-        infoFinalboss, infoFermat, infoHoboSandwich, infoAllergy, infoPoison, infoWeapon, infoGirlParents, infoSchoolNeighbour = false;
+        infoFinalboss, infoFermat, infoTakeSandwich, infoHoboSandwich, infoAllergy, infoPoison, infoWeapon, infoGirlParents, infoSchoolNeighbour = false;
 
     // Condicions temporals (es resetejen a cada bucle)
     public bool item2b1, itemWater, itemFlowers, itemLove, itemKillLady = false;    // parc
@@ -288,6 +288,7 @@ public class GameController : MonoBehaviour
                     op1 = "“I heard there was a problem at the water processing plant”.";
                     op2 = "“Cheer up, it should only last a few hours”.";
                     op3 = "“I like flowers”.";
+                    itemWater = false;
                     pm.UpdateOptions(op1, op2, op3);
                     pm.UpdateText(str);
                 }
@@ -331,6 +332,8 @@ public class GameController : MonoBehaviour
                 {
                     lastText = "010";       //      PARC < 010 >
                     str = "Seemed like he wasn’t going to need them anyway, where he was going.";
+                    itemFlowers = itemSandWich = true;
+                    infoTakeSandwich = true;
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
@@ -442,6 +445,7 @@ public class GameController : MonoBehaviour
                     str = "“Hey dude! fancy a sandwich?” I handed him the sandwich. He ate it without a comment. After finishing it he took a sip of beer, eructed, and kept on mumbling. I decided to go home.";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
+                    itemSandWich = false;
                 }
                 else if (lastText == "009")
                 {
@@ -476,6 +480,7 @@ public class GameController : MonoBehaviour
                     str = "“Sure” I said, accepting the booze and taking a long gulp. “Y’now” He said eventually “I wouldn't like to be in your position, much responsibility. Anyway, no hurry eh, me I just chillin man, just take it easy. Take your time. It is not like we are going anywhere.” He told me. For once I forgot about it all.";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
+
                 }
                 else if (lastText == "014")
                 {
@@ -607,7 +612,7 @@ public class GameController : MonoBehaviour
                     pm.UpdateOptions(op1, op2, op3);
                     pm.UpdateText(str);
                 }
-                else if (lastText == "001" & itemSandWich)
+                else if (lastText == "001" & infoTakeSandwich)
                 {
                     lastText = "003";       //      PIZZA < 003 >
                     str = "Once I got there, I...";
@@ -728,6 +733,7 @@ public class GameController : MonoBehaviour
                     str = "''Sure'' I said, accepting the booze and taking a long gulp. ''Y’now'' He said eventually ''I wouldn't like to be in your position, much responsibility. Anyway, no hurry eh, me I just chillin man, just take it easy. Take your time. It is not like we are going anywhere.'' He told me. For once I forgot about it all.";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
+
                 }
                 else if (lastText == "026") TimeTravel();   //  [ END LOOP ]
                 else if (lastText == "028")
@@ -759,6 +765,7 @@ public class GameController : MonoBehaviour
                     str = "drank it. \nIt tasted like death.";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
+
                 }
                 else if (lastText == "005") TimeTravel();   //  [END OF LOOP]
                 else
@@ -781,7 +788,17 @@ public class GameController : MonoBehaviour
                     pm.UpdateOptions(op1,op2,op3);
                     pm.UpdateText(str);
                 }
-                else if(lastText== "intro")
+                if (lastText == "001" & itemDeadGirl)
+                {
+                    lastText = "013";       //      AIGUA < 002 >
+                    str = "infiltrate the plant through the public entrance! The guard post was empty, so there was no one to stop me from freely entering the water processing plant.\nSeems like guarding the entrance isn’t so important now that your daughter is dead or about to die at the town hospital, huh, Mr I’m-So-Sorry-But-There’s-Nothing-I-Can-Do?\n";
+                    op1 = "''Onwards, to destiny!''";
+                    pm.UpdateOptions(op1);
+                    pm.UpdateText(str);
+                }
+
+
+                else if (lastText== "intro")
             {
                 lastText = "001";      //AIGUA intro segona part
                 
@@ -1237,6 +1254,7 @@ public class GameController : MonoBehaviour
                 {
                     lastText = "011";       //      PARC < 011 >
                     str = "I took the sandwich. What can I say? I was hungry, and it was a really good looking sandwich.";
+                    itemSandWich = infoTakeSandwich = true;
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
@@ -1679,7 +1697,7 @@ public class GameController : MonoBehaviour
                 if (lastText == "001")
                 {
                     lastText = "005";       //      ESCOLA < 005 >
-                    if (!infoGirlParents | !infoSchoolNeighbour)
+                    if (!infoGirlParents || !infoSchoolNeighbour)
                     {
                         str = "talked with some adults at the gate. Most of them were parents delivering or waiting to pick up their children, too busy to pay me any attention. I asked around, but no one had seen anyone suspicious, and although I managed to eavesdrop some conversations here and there, I learned nothing useful in relation to my sunflower.";
                         pm.UpdateOptions(continueText);
@@ -1838,6 +1856,7 @@ public class GameController : MonoBehaviour
                     str = "“Flowers”, I said. \n “What?”, he asked, perplexed.\nTo be honest, I had never really intended to say anything. I just randomly mutter the word “flowers” from time to time, especially when I get nervous, ever since I can remember, just like other people get a hiccup. Well, me, I never get a hiccup. I just say “flowers”. \nBut since I was actually engaged on a mission of deception, I handed him the flowers I had obtained a while back from the gardener. Trouble was, he still looked at me as if expecting me to say something.";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
+                    itemFlowers = false;
                 }
 
                 break;
@@ -1985,6 +2004,7 @@ public class GameController : MonoBehaviour
                     lastText = "032";       //      PIZZA < 032 >
                     str = "''Hey dude! fancy a sandwich?'' I handed him the sandwich. He ate it without a comment. After finishing it he took a sip of beer, eructed, and kept on mumbling. I decided to go home.";
                     infoHoboSandwich = true;
+                    itemSandWich = false;
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
@@ -2021,7 +2041,7 @@ public class GameController : MonoBehaviour
                 else if (lastText == "016")
                 {
                     lastText = "024";       //      AIGUA < 019 >
-                    str = "The control room was a big cubicle at the end of a long corridor, full of screens and beeping sounds and serious looking people doing serious looking things and bustling about. It didn’t really look like the kind of place where one could find a sunflower murderer, but what I did find was a big red button with the label “EMERGENCY STOP OF ALL WATER OPERATIONS”. I...";
+                    str = "The control room was a big cubicle at the end of a long corridor, full of screens and beeping sounds and serious looking people doing serious looking things and bustling about. There I picked up an employee card with the number 8774 written on it. It didn’t really look like the kind of place where one could find a sunflower murderer, but what I did find was a big red button with the label “EMERGENCY STOP OF ALL WATER OPERATIONS”.  I...";
                     op1 = "... pushed it.";
                     op2 = "... didn’t push... nah, just kidding. Of course I pushed it.";
                     pm.UpdateOptions(op1, op2);
