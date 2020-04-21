@@ -7,13 +7,14 @@ public class GameController : MonoBehaviour
 {
     // Variables de coneixement (permanents)
     public bool infoCrash, infoVistNena, infoGorra, infoWarehouse, infoLoop, infoNeighbour, infoSniper, infoEvilGirl, 
-        infoFinalboss, infoFermat, infoHoboSandwich, infoAllergy, infoPoison, infoWeapon = false;
+        infoFinalboss, infoFermat, infoHoboSandwich, infoAllergy, infoPoison, infoWeapon, infoGirlParents, infoSchoolNeighbour = false;
 
     // Condicions temporals (es resetejen a cada bucle)
     public bool item2b1, itemWater, itemFlowers, itemLove, itemKillLady = false;    // parc
     public bool itemBarricade, itemSandWich, itemCrowbar = false;      // abocador
     public bool v7_001, v7_009, itemDeadGirl, itemChocolate = false;     // passeig
     public bool itemFirstTimePizza, itemGun, v5a7, itemPoison, v1a3 = false;
+    public bool itemSchoolKey = false;
 
     // Hobo
     bool hobo = false;
@@ -955,7 +956,191 @@ public class GameController : MonoBehaviour
                 }
                 break;
             case 8:                         //  >> ESCOLA <<
-                if (lastText == "001") Debug.Log("caca");
+                if (lastText == "001" & t <= 3)
+                {
+                    lastText = "002";       //      ESCOLA < 002 >
+                    if (t == 3)
+                    {
+                        str = "walked up to the main entrance. There was a strong flow of kids running, yelling, jumping, fighting and rejoicing in their freedom as they went out the door. I tried to oppose the current but I was swept by it.";
+                        pm.UpdateOptions(continueText);
+                    }
+                    else
+                    {
+                        str = "walked up to the main entrance.\nAs I went in, a woman welcomed me.  ''Good morning, sir. May I help you?'' It was obvious she expected some kind of comment about my visit.";
+                        op1 = "Is it too late for me to sign in?";
+                        op2 = "Have you seen anyone suspicious around the school lately?";
+                        if (infoNeighbour) op3 = "Let me in, there’s a murderer inside the school!";
+                        pm.UpdateOptions(op1, op2, op3);
+                    }
+
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "002" & t == 3) GotoMapa();
+                else if (lastText == "001" | t > 3)
+                {
+                    lastText = "004";       //      ESCOLA < 004 >
+                    str = "walked up to the main entrance, but it was closed. A timetable said the school was open every weekday from dawn till noon.";
+                    if (!itemSchoolKey)
+                    {
+                        str += "I had arrived too late.";
+                        pm.UpdateOptions(continueText);
+                    }
+                    else
+                    {
+                        str += "I fished the school keys I had stolen that morning out of my pocket, and slowly opened the iron gates of the school. They made an ominous metal sound, and, just like that, I was inside. \nI finally had all the time in the world to uncover the secrets of the school - and Miss Summers. As soon as I was inside, I…";
+                        op1 = "Headed back to the teacher’s room…";
+                        op2 = "Tried to find my kin tribe again…";
+                        op3 = "Started walking randomly.";
+                        pm.UpdateOptions(op1, op2, op3);
+                    }
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "004" & t > 3 & !itemSchoolKey) GotoMapa();
+                else if (lastText == "005" & (!infoGirlParents | !infoSchoolNeighbour)) GotoMapa();
+                else if (lastText == "002")
+                {
+                    lastText = "009";       //      ESCOLA < 009 >
+                    str = "''Is it too late for me to sign in?'' I asked, feeling suddenly encouraged to resume my learning by the yells and shouts of schoolchildren, and the general mayhem of the school. After all, if these children managed to learn something despite having been immersed in such conditions almost since their birth and against their own will, then it couldn’t be so hard for me, right? \n Apparently, the school concierge disagreed.\n''Well… with all respect, I would say there are other learning centers that would prove more, uh, more appropriate for your… current age'', she answered. \nAh, the outrage, the shame. They say knowledge is the greatest gift, and to have it denied just like that, without even an apology. I had to go home and think about this.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "010")
+                {
+                    lastText = "011";       //      ESCOLA < 011 >
+                    str = "I ran away. What had I been thinking, coming back here? After everything I’d suffered in this cage, after everything I had been through, had I somehow managed to forgot how utterly stupid and unforgiving adults actually are? While fleeing, the words ''run away, Simba. Run. Run away and never return'' kept echoing on my head, and they didn’t stop until I had been safely tucked under my own bed for over twenty minutes. Yikes.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "004")
+                {
+                    lastText = "029";       //      ESCOLA < 029 >
+                    str = "headed back to the teacher’s room. I believed this time, with no reason to hurry up, I might be able to find some clues related to Miss Summers. \nThe teacher’s room was barricaded against nocturnal children and beasts, but I managed to squeeze in through a loose plank.\nMiss Summer’s documents seemed perfectly normal. She looked like a regular teacher - stern and devoted to her work, yes, but not insane. Why did I still have this hunch, then, that I was getting closer and closer to the truth?";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "029")
+                {
+                    lastText = "032";       //      ESCOLA < 032 >
+                    str = "I closed my eyes, trying to focus on the problem, to find the missing piece on this puzzle. And then I knew. Perhaps I had known all along, but I had been to stubborn to accept it. It was too far-fetched. Too monstruous. But it was the only option. \nStill, I had to see it by myself. I needed proof. \nI had to reach classroom 2B. I headed out of the teacher’s room and…";
+                    op1 = "Went upstairs to the second floor.";
+                    op2 = "Turn left before the fire exit. ";
+                    pm.UpdateOptions(op1, op2);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "032")
+                {
+                    lastText = "033";       //      ESCOLA < 033 >
+                    str = "Went upstairs to the second floor. Then I…";
+                    op1 = "Turned left near the broom closet... ";
+                    op2 = "Turned right near the cafeteria...";
+                    pm.UpdateOptions(op1, op2);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "033")
+                {
+                    lastText = "035";       //      ESCOLA < 035 >
+                    str = "Turned left near the broom closet, and realized I was lost.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "036")
+                {
+                    lastText = "039";       //      ESCOLA < 039 >
+                    str = "039 Went down one floor and realized I was lost.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "040")
+                {
+                    lastText = "041";       //      ESCOLA < 041 >
+                    str = "It was her. It had always been her. Inside the false bottom of Valentine Summers’ desk I found all her secret plans and schematics, her musings and calculations. She had planned everything, accounted for every setback. What kind of twisted, brilliant mind lay hidden inside that innocent-looking eight year old girl? I couldn’t follow her entire lines of thought, as there were too many ramifications and leaps of logic for me, but on those childish notebook pages I saw equations of M-theory and quantum physics that many accomplished theoretical physicists would have killed to read. During the following hours I understood everything, including why she wanted to murder my sunflower. Perhaps the simplest explanation was found on this old entry of her diary:";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "041")
+                {
+                    lastText = "042";       //      ESCOLA < 042 >
+                    str = "Dear Diary,\nMy calculations have proven that the Iroquois legend is indeed real. There is a day, a single day every one hundred years, when a single sunflower on Earth becomes the Guiding Sunflower for an entire Earth rotation. Throughout these 24 hours, the Guiding Sunflower stops following the Sun’s trajectory, and instead it is the Sun that starts following the Sunflower. Of course, that sunflower is indistinguishable from any other by any conventional means. But if someone were to locate and destroy the Guiding Sunflower during the time of its awakening, then I have proven that not only would the Sun’s motion stop, but also the flow of Time itself. This would mean that I could live and play forever. I could eat candy forever. And what’s more: the date of awakening of the next Guiding Sunflower falls on a Saturday. That means that if I manage to destroy the Guiding Sunflower, I will never ever have to go back to school. Ever.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "042")
+                {
+                    lastText = "043";       //      ESCOLA < 043 >
+                    str = "And now, finally, I realize. She didn’t expect any of this. She is trapped on this time loop just like I am, except she doesn’t know about it. Her plans to destroy the Guiding Sunflower, my sunflower, keep succeeding every time, and that resets the Time flux once again. Somehow I have to find the way to thwart the perfect plans of the evil genius who has managed to stop the flux of the universe’s space-time continuum, or we will all be trapped in here forever. We are doomed.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "034")
+                {
+                    lastText = "037";       //      ESCOLA < 037 >
+                    str = "Went upstairs one floor and realized I was lost.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "005")
+                {
+                    lastText = "007";       //      ESCOLA < 007 >
+                    str = "I rushed towards her, unwilling to leave her daughter alone with that monster for a minute longer than necessary. \n ''Miss! Miss!'' I screamed. She turned towards me, obviously startled by my tone of voice. ''There’s a dangerous individual inside the school. We have to find her and kick her out, no matter what''. \nShe looked alarmed by my words, ''Sir, I think you need to calm down. There is no danger, and all the staff of the school are qualified professionals. Is your child inside the school?''";
+                    op1 = "''You don’t understand! Your own daughter is talking to the murderer!''";
+                    op2 = "''I have no children, I came here to save my sunflower!''";
+                    pm.UpdateOptions(op1, op2);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "007")
+                {
+                    lastText = "014";       //      ESCOLA < 014 >
+                    str = "“You don’t understand! Your own daughter is talking to the murderer!'', I screamed in panic. Surprisingly, Miss Summers stayed as calm as a cool breeze. “My daughter, you say? Well, you will find she’s quite mature for her age. Why don’t we call her and ask her about it?”. And that’s just what she did. Five minutes later her daughter was at the gate, wearing the same dress as the other day… which actually made sense, of course, considering we were reliving the same twenty-four hours over and over. “Dear, this man here says he saw you talking with a strange person a few minutes ago. Is that true?” said Miss Summers to her daughter.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "014")
+                {
+                    lastText = "015";       //      ESCOLA < 015 >
+                    str = "Her daughter’s face lit up, delighted to know the answer to the question. “Strange? It was just Miss Montreau, the fire woman who’s been coming this week to prepare us for the fire emergency drills. She was telling me stories of the people she has saved, mom!” she yelled with wide eyes. \nMiss Summers made a dismissive gesture with her hand. “See? No reason to get so worked out. And now, if you’ll excuse me, I have quite a busy day ahead”.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "008")
+                {
+                    lastText = "017";       //      ESCOLA < 017 >
+                    str = "“Your daughter is in danger, Miss Summers”, I said. I was expecting her to panic at such an announcement, or at least get alarmed, but she stayed as calm as a cool breeze. “My daughter, you say? Well, you will find she’s quite mature for her age. Why don’t we call her and ask her about it?”. And that’s just what she did. Five minutes later her daughter was at the gate, wearing the same dress as the other day… which actually made sense, of course, considering we were reliving the same twenty-four hours over and over. “Dear, this man here says he saw you talking with a strange person a few minutes ago. Is that true?” said Miss Summers to her daughter.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "018")
+                {
+                    lastText = "018";       //      ESCOLA < 018 >
+                    str = "Her daughter’s face lit up, delighted to know the answer to the question. “Strange? It was just Miss Montreau, the fire woman who’s been coming this week to prepare us for the fire emergency drills. She was telling me stories of the people she has saved, mom!” she yelled with wide eyes. \nMiss Summers made a dismissive gesture with her hand. “See? No reason to get so worked out. And now, if you’ll excuse me, I have quite a busy day ahead”.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "021")
+                {
+                    lastText = "022";       //      ESCOLA < 022 >
+                    str = "“I’m sure a teacher with such good recommendations as yourself will know better than to start wandering about on a new School. As you know, Schools are no place for the faint of heart. Until you become familiar with our most dangerous regions and get acquainted with the main predators of our local fauna, please stick to my directions and you’ll have no trouble getting to your destination. Now I must excuse myself, as I have a parents meeting today. I’ll check on you by lunchtime, all right? Good luck with the class”.\nFeeling somewhat dazed by her unending stream of words, but also quite elated at the success of my infiltration attempt, I decided to…";
+                    op1 = "find my students on 5B and give them a masterclass...";
+                    op2 = "look for the teachers room…";
+                    op3 = "spy on Miss Summer’s parent meeting…";
+                    pm.UpdateOptions(op1, op2, op3);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "022")
+                {
+                    lastText = "023";       //      ESCOLA < 023 >
+                    str = "find my students on 5B and give them a masterclass on ostrich reproduction. I’ve always believed that if someone had just done that for me when I was their age, they would have saved me from becoming the mental shipwreck I currently am. Unfortunately, class 5B wasn’t as easy to find as it seemed, and by the time I managed to reach it the class had already ended and children were running towards their freedom. I followed them to the main entrance and went home with a bitter feeling of disappointment at having wasted my one true chance in life at sacrificing myself for the greater good. ";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "024")
+                {
+                    lastText = "026";       //      ESCOLA < 026 >
+                    str = "ran away from him, afraid he would give me away to a teacher. In the end, though, I ended up getting so lost I wasn’t sure I would be able to get out of the school even if I wanted, so by the time I heard the lunch time bell and found a window that connecting to the outside, I gave a silent prayer of gratitude and escaped through through it, swearing never to set a foot on that accursed place again.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "030") TimeTravel();
+
                 else
                 {
                     Debug.Log("Default caseA: Going to MAPA");
@@ -1463,6 +1648,109 @@ public class GameController : MonoBehaviour
                 }
                 break;
             case 8:                         //  >> ESCOLA <<
+                if (lastText == "001")
+                {
+                    lastText = "005";       //      ESCOLA < 005 >
+                    if (!infoGirlParents | !infoSchoolNeighbour)
+                    {
+                        str = "talked with some adults at the gate. Most of them were parents delivering or waiting to pick up their children, too busy to pay me any attention. I asked around, but no one had seen anyone suspicious, and although I managed to eavesdrop some conversations here and there, I learned nothing useful in relation to my sunflower.";
+                        pm.UpdateOptions(continueText);
+                    }
+                    else
+                    {
+                        str = "talked with some adults at the gate. Most of them were parents delivering or waiting to pick up their children, too busy to pay me any attention. I was looking for a way to get inside the school and save the innocent girl from the main avenue when, suddenly, my attention was caught by a grown woman who looked just like the little girl. It had to be her mother!";
+                        op1 = "I rushed towards her...";
+                        op2 = "I asked a nearby father for her name…";
+                        pm.UpdateOptions(op1,op2);
+                    }
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "002")
+                {
+                    lastText = "010";       //      ESCOLA < 010 >
+                    str = "'Have you seen anyone suspicious around the school lately?'' I asked nonchalantly. The concierge returned me a blank stare. ''I don’t really get your meaning, sir. I mean, in my eyes all children are clearly suspect of being bloodthirsty, uncivilized savages with no respect whatsoever for morality, dignity or the basic human need of not having the salt on your shaker secretly replaced with washing powder. So in a sense, yes, I’ve seen about two hundred suspicious persons around, although ''person'' may be an overstatement''.";
+                    op1 = "I ran away.";
+                    pm.UpdateOptions(op1);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "004")
+                {
+                    lastText = "030";       //      ESCOLA < 030 >
+                    str = "tried to locate my kin tribe again. I had a hunch they might have set camp in one of the rainforests on the eastern wings of the School.\nI lost most of my clothes and my left ear during a particularly violent attack by wildlings, but I managed to reach the eastern wings with my life intact. And, just as I had predicted, my tribe was camped right there in the rainforests, close to a huge waterfall. They made fluttering sounds and clapped their hands against their shoulders as a signal of welcome, and offered me some roasted leather, probably from the covers of wild books scavenged on the northern libraries. And I must say that sitting there in the campfire, roasting leatherbound volumes and listening to their wordless atonal songs, I felt home at last. Tomorrow I would wake up in my home and I would continue the quest to save my sunflower, but, at least today, I would stay here and sing battlesongs with my newfound family.";
+                    pm.UpdateOptions(continueText); 
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "032")
+                {
+                    lastText = "034";       //      ESCOLA < 034 >
+                    str = "Turn left before the fire exit. Then I…";
+                    op1 = "Went upstairs one floor... ";
+                    op2 = "Went down the double staircase...";
+                    pm.UpdateOptions(op1,op2);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "033")
+                {
+                    lastText = "036";       //      ESCOLA < 036 >
+                    str = "Turned right near the cafeteria, then I finally…";
+                    op1 = "Went down one floor…";
+                    op2 = "Followed straight…";
+                    pm.UpdateOptions(op1,op2);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "036")
+                {
+                    lastText = "040";       //      ESCOLA < 040 >
+                    str = "Followed straight until I reached classroom 2B. Miss Summers’ daughter’s class. \n I had to search desk by desk, as I had no idea which one was hers, but soon enough I found a desk with a pile of papers signed under the name “Valentine Summers”. She had a neat, regular handwriting, and the papers were all perfectly inconspicuous. Some watercolor drawings, a notebook page with substractions and additions for math class… I started to give up, thinking I was going mad, but my fingers kept prickling around the her desk, and then I felt it. A tiny hole under the table, almost too small to feel it with your own fingers. A false bottom. I took out the ink charge of one of her pens and used it to life the fake bottom of her desk drawer. And inside, I finally found what I had been looking for. The truth.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "034")
+                {
+                    lastText = "038";       //      ESCOLA < 038 >
+                    str = "Went down the double staircase and realized I was lost.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "005")
+                {
+                    lastText = "008";       //      ESCOLA < 008 >
+                    str = "I asked a nearby father for her surname, and he helpfully revealed it was ''Summers''.\n''Miss Summers, I presume? May I have a minute?'' I asked with a serious voice. She looked at me and nodded.";
+                    op1 = "Your daughter is in danger, Miss Summers.";
+                    op2 = "I’m the new substitute teacher.";
+                    pm.UpdateOptions(op1,op2);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "007")
+                {
+                    lastText = "016";       //      ESCOLA < 016 >
+                    str = "''I have no children, I came here to save my sunflower!'', I screamed in panic. Miss Summers wrinkled her eyebrows. “Save your...? Sir, are you aware that you are not allowed to be here unless you are the legal guardian of one of the school students? I’m afraid I’ll have to ask you to leave the premises immediately. And don’t worry, if there was in fact a dangerous person in our school, which I doubt, we would take care of it.\nWith that she crossed the gate, and I was left by myself with nothing to do but go home.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "008")
+                {
+                    lastText = "019";       //      ESCOLA < 019 >
+                    str = "“I’m the new substitute teacher,” I said confidently. Miss Summers shot me a look of appraisal, and then she nodded. \n“About time, I would say. And what was your name again, Mr…?”";
+                    pm.UpdateOptions(1);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "022")
+                {
+                    lastText = "024";       //      ESCOLA < 024 >
+                    str = "look for the teachers room. Perhaps I could find some useful clues there. The problem was that I naturally had no idea about the location of the teacher’s room, so I started walking at random until I found a young boy, maybe five or six years old, sitting in one of the school staircases. I…";
+                    op1 = "ran away from him…";
+                    op2 = "tried to enlist his help…";
+                    pm.UpdateOptions(op1,op2);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "024")
+                {
+                    lastText = "027";       //      ESCOLA < 027 >
+                    str = "tried to enlist his help for my cause. “Well met, stranger”, I began, “I hail from distant lands with a proposal to you and your tribe, which I believe shall work towards the betterment and attainment of our mutual interests in these hostile wasteland known to some as School. Show me where the teacher’s room is, and we shall dance naked around a bonfire where we’ll burn the concierge’s purse and use its ashes to paint our faces as a sign of everlasting kinship and affiliation”.\nHe seemed to think about it for a few seconds, and then he nodded curtly before jumping out of the stairs, motioning for me to follow him.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
 
                 break;
             default:
@@ -1770,6 +2058,35 @@ public class GameController : MonoBehaviour
                 }
                 break;
             case 8:                         //  >> ESCOLA <<
+                if (lastText == "001")
+                {
+                    lastText = "013";       //      ESCOLA < 013 >
+                    str = "saw my neighbour talking with a young schoolgirl! How was this even possible? What was a cold-blooded murderer doing here? I leaned against the fence, and I realized the schoolgirl was the young girl I had seen playing at the main avenue. That was so strange… what was actually happening here? Was my evil neighbour somehow using this poor child for the purposes of her evil plans? I would have to find a way to get inside the school and unveil the truth.";
+                    infoSchoolNeighbour = true;
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "002")
+                {
+                    lastText = "012";       //      ESCOLA < 012 >
+                    str = "''Let me in, there’s a murderer inside the school!''. The concierge looked strangely serene given the situation.\n''Are you sure, sir?'' was all she asked.\n''Absolutely! I saw her with my own eyes''.\n''But sir, are you completely certain?'' she asked once more.\n''Completely''.\n''Finally'' sighed the concierge, and a tiny smile somehow managed to creep into the corners of her mouth. ''I can’t believe those little fuckers are finally going to get what they deserve'' And with that she locked the school fence and started whistling happily, locking me outside.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "004")
+                {
+                    lastText = "031";       //      ESCOLA < 031 >
+                    str = "started walking randomly through the wastelands of a public School at night. What could ever go wrong, right?\nAt first I didn’t hear the noise, but after a while I became certain I was being followed. Far ahead I could hear a faint scraping of metal or bone against the wooden floor. Now that I paid attention, I became certain that the pack hunting me consisted of at least a dozen individuals, probably no longer human. It was an ambush. \nPerhaps a braver explorer would have stayed to find out what kind of abominable beasts were going to devour them, out of scientific curiosity if nothing else, but not me. I slit my wrists right there and then, the way I had been taught during my training, knowing I could always come back next loop.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "022")
+                {
+                    lastText = "025";       //      ESCOLA < 025 >
+                    str = "spy on Miss Summer’s parent meeting. I felt like there was something off about that woman.\nAt first everything went just fine. I followed her through the school as silently as possible, and she kept on walking through corridors and staircases. Really, how big could that building be? But then after a while I lost track of her, and when I tried to retrace my steps to follow her, I ended up meeting her face to face. She didn’t seem pleased to find me there, and I fear she suspected I had been following her. After that, she insisted on keeping an eye on me for the rest of the school day, which made me lose any opportunity to investigate further.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
 
                 break;
             default:
@@ -1977,6 +2294,24 @@ public class GameController : MonoBehaviour
                         pm.UpdateOptions(op1, op2, op3);
                     }
                     // Mostra el nou panell amb text i opcions
+                    pm.UpdateText(str);
+                }
+                break;
+            case 8:
+                if (lastText == "019")
+                {
+                    if (ans == "Martin")
+                    {
+                        lastText = "021";       //      ESCOLA < 021 >
+                        str = "“Martin. Pleased to meet you” I answered, hoping that was in fact the name I’d overheard at the park. It seemed to match what she was expecting, because she signaled me to follow her and started walking through the school at a brisk pace. \n“Please come with me, Mr Martin. We have no time to lose. You will be covering class 5B for today. Our school is in fact quite big, and new teachers have often mentioned difficulties getting around at first. For now, all you need to know is that in order to reach class 5B from the main entrance you should go upstairs to the second floor, then turn right near the cafeteria, follow straight past class 2B, then go up one more floor before taking your first turn to the left”.";
+                        pm.UpdateOptions(continueText);
+                    }
+                    else
+                    {
+                        lastText = "020";       //      ESCOLA < 020 >
+                        str = "“"+ans+ ". Pleased to meet you.” I answered, hoping for a fluke, but Miss Summers wrinkled her forehead as soon as she heard my name. “Really? Mr "+ans+ "? Seems like there’s been some kind of misunderstanding, then. This is Saint Nicolas Public Elementary School, and I’m afraid we are already expecting someone else to cover our vacant teaching spot. No doubt he will arrive soon, although he’s already seven minutes late, and I’m not one to approve of tardiness.";
+                        pm.UpdateOptions(continueText);
+                    }
                     pm.UpdateText(str);
                 }
                 break;
