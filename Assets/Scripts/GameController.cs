@@ -75,10 +75,10 @@ public class GameController : MonoBehaviour
         op1 = op2 = op3 = op4 = "";
         lastText = "001";       //      CASA < 001 >
         str = "I went home and made sure everything was all right. My flat is small, so, living there all alone, not much tends to happen on it. After watering my sunflower, I decided to...";
-        op1 = "… write down all the clues I had found so far.";
-        op2 = "… spy on my neighbour.";
-        op3 = "… search for cameras or traps.";
-        if (itemBarricade) op4 = "… build a barricade.";
+        op1 = "... write down all the clues I had found so far.";
+        op2 = "... spy on my neighbour.";
+        op3 = "... search for cameras or traps.";
+        if (itemBarricade) op4 = "... build a barricade.";
         pm.UpdateOptions(op1,op2,op3,op4);
         pm.ShowPanel(str);
     }
@@ -87,13 +87,13 @@ public class GameController : MonoBehaviour
         Debug.Log("Going to PARQUE");
         place = 2;
         lastText = "001";       //      PARK < 001 >
-        str = "I decided to take a stroll through the town’s park, thinking that perhaps it would help me clear my thoughts. It was almost silent there, except for the refreshing sound of the wind through the leaves. I liked the park even though it had no sunflowers - I had looked.\nAs I was walking around, I spotted…";
+        str = "I decided to take a stroll through the town’s park, thinking that perhaps it would help me clear my thoughts. It was almost silent there, except for the refreshing sound of the wind through the leaves. I liked the park even though it had no sunflowers - I had looked.\nAs I was walking around, I spotted...";
         op1 = op2 = op3 = op4 = "";
-        if (t < 5) op1 = "a gardener, tending to his plants.";
-        if (!itemKillLady) op2 = "a really old lady sitting on a bench.";
-        op3 = "my favourite sitting spot.";
-        if (t < 4 & !item2b1) op4 = "a street sweeper, cleaning the park avenue.";
-        else if (t > 3) op4 = "a group of children chasing each other.";
+        if (t < 5) op1 = "... a gardener, tending to his plants.";
+        if (!itemKillLady) op2 = "... a really old lady sitting on a bench.";
+        op3 = "... my favourite sitting spot.";
+        if (t < 4 & !item2b1) op4 = "... a street sweeper, cleaning the park avenue.";
+        else if (t > 3) op4 = "... a group of children chasing each other.";
         pm.UpdateOptions(op1, op2, op3, op4);
         pm.ShowPanel(str);
     }
@@ -119,11 +119,11 @@ public class GameController : MonoBehaviour
         op1 = op2 = op3 = op4 = "";
         lastText = "001";       //      ALMACEN < 001 >
         str = "I went to the abandoned warehouses on the lonely side of town looking for clues, and ";
-        if (t == 1) str = str + "saw the sunrise on metal, rust and broken glass, wild dusty bushes, ragged quiet. Then I...";
-        else if (t == 2) str = str + "saw the sun Then I...";
-        else if (t == 3) str = str + "saw the sun Then I...";
-        else if (t == 4) str = str + "saw the sun directing a haze of floating orange dust soaked light towards me. Then I...";
-        else if (t == 5) str = str + "saw the street lights buzzing with electric delight over the abandoned and empty streets. I walked through thick darkness broken by cones of yellow. I walked through the futility of it all. Then  I...";
+        if (t == 1) str = str + "... saw the sunrise on metal, rust and broken glass, wild dusty bushes, ragged quiet. Then I...";
+        else if (t == 2) str = str + "... saw the sun Then I...";
+        else if (t == 3) str = str + "... saw the sun Then I...";
+        else if (t == 4) str = str + "... saw the sun directing a haze of floating orange dust soaked light towards me. Then I...";
+        else if (t == 5) str = str + "... saw the street lights buzzing with electric delight over the abandoned and empty streets. I walked through thick darkness broken by cones of yellow. I walked through the futility of it all. Then  I...";
         op1 = "... sat on a dusty old sofa.";
         op2 = "... looked around for clues.";
         op3 = "... fed some cats.";
@@ -137,7 +137,7 @@ public class GameController : MonoBehaviour
         place = 5;
         op1 = op2 = op3 = op4 = "";
         lastText = "001";       //      PIZZA < 001 >
-        if (itemFirstTimePizza)
+        if (!itemFirstTimePizza)
         {
             str = "Fermat pizza shop has been there forever. Some say it is a hole full of cockroaches, which is true. It is also the best pizza you can find in town. And the place to be to gather information and gossip.";
             itemFirstTimePizza = true;
@@ -150,13 +150,11 @@ public class GameController : MonoBehaviour
     {
         Debug.Log("Going to AIGUA");
         place = 6;
-        op1 = op2 = op3 = op4 = "";
-        lastText = "001";       //      AIGUA < 001 >
-        str = "I decided to visit our town’s water processing plant. After all, sunflowers need nothing but two things to live: sunshine and water. Since the sun was probably out of reach, I figured the murderer might try to make his move on my sunflower’s only other vulnerability - water./nThe water processing plant formed a massive, heavily guarded structure, surrounded in its entirety by a spiked fence and security cameras. It had a public entrance for visitors, and a private, PIN-protected entrance for the employees. \nAfter a brief survey of the area, I was gripped with a doubtless certainty in regards to my upcoming plan. I would…";
-        op1 = "… infiltrate the plant through the public entrance!";
-        op2 = "… infiltrate the plant through the private entrance!";
-        op3 = "… explore the outside of the water processing plant.";
-        pm.UpdateOptions(op1, op2, op3);
+        op1 = ">" ;
+           op2 = op3 = op4 = "";
+        lastText = "intro";       //      AIGUA < 001 >
+        str = "I decided to visit our town’s water processing plant. After all, sunflowers need nothing but two things to live: sunshine and water. Since the sun was probably out of reach, I figured the murderer might try to make his move on my sunflower’s only other vulnerability - water.";
+        pm.UpdateOptions(op1);
         pm.ShowPanel(str);
     }
     public void GotoPasseig()                   
@@ -169,7 +167,7 @@ public class GameController : MonoBehaviour
         else
         {
             v7_001 = true;
-            str = "I came back to the Avenue. I could feel there was something left for me to do there. As soon as I got there, I headed to…";
+            str = "I came back to the Avenue. I could feel there was something left for me to do there. As soon as I got there, I headed to...";
         }
         // Prepara les opcions...
         op1 = "...a suspicious alleway...";
@@ -191,10 +189,10 @@ public class GameController : MonoBehaviour
         place = 8;
         op1 = op2 = op3 = op4 = "";
         lastText = "001";       //      ESCOLA < 001 >
-        str = "I strolled towards the school, an old brick building surrounded by a tall black iron fence.\nOne is never too old to learn, right? As I got closer I realized how good it felt knowing I was free to walk away whenever I wanted. Upon arriving, I…";
+        str = "I strolled towards the school, an old brick building surrounded by a tall black iron fence.\nOne is never too old to learn, right? As I got closer I realized how good it felt knowing I was free to walk away whenever I wanted. Upon arriving, I...";
         op1 = "...walked up to the main entrance...";
-        if (t<3) op2 = "...talked with some adults at the gate…";
-        if (t==3) op3 = "… saw my neighbour talking with a young schoolgirl!";
+        if (t<3) op2 = "...talked with some adults at the gate...";
+        if (t==3) op3 = "... saw my neighbour talking with a young schoolgirl!";
         pm.UpdateOptions(op1, op2, op3);
         pm.ShowPanel(str);
     }
@@ -220,8 +218,8 @@ public class GameController : MonoBehaviour
                 if (lastText == "001")
                 {
                     lastText = "002";       //      HOME < 002 >
-                    str = "write down all the clues I had found so far, to get a clearer picture of my progress.";
-                    if (infoGorra) str += " - I found a cap on some bushes next to the wharehouses. It had a sign resembling a sunflower.\n";
+                    str = "... write down all the clues I had found so far, to get a clearer picture of my progress.";
+                    if (infoGorra) str += " - I found a cap on some bushes next to the warehouses. It had a sign resembling a sunflower.\n";
                     if (infoWarehouse) str += " - I overheard the street sweeper talking over the phone about a warehouse on Roller Street.\n";
                     if (infoHoboSandwich) str += " - I gave a sandwich to the hobo, which he ate.\n";
                     if (infoCrash) str += " - I saw a car crashing against the mailbox in the main avenue on the afternoon.\n";
@@ -241,14 +239,14 @@ public class GameController : MonoBehaviour
                 else if (lastText == "003")
                 {
                     lastText = "004";       //      HOME < 004 >
-                    str = "knocked on her door. ";
+                    str = "... knocked on her door. ";
                     if (t == 1 | t == 3 | t == 4) str += "She didn’t answer. I guess she wasn’t at home? I should try again later.";
                     else
                     {
-                        if (!itemLove) str += "She opened it.\n''Hey, neighbour, it’s you'' she said, eyeing me suspiciously. ''Did you need anything in particular?''\nThe memories of her, dressed only with dynamite and abseiling down my flat, rushed into my mind. I won’t deny I got a tad nervous, and probably gave myself away by saying ''Eh…um... Hello! Where did you learn how to abseil?'' To which she answered \n''I’m a firefighter''\nThat was more that I could handle and rushed back home to the sweet solace of my sunflower.";
+                        if (!itemLove) str += "She opened it.\n''Hey, neighbour, it’s you'' she said, eyeing me suspiciously. ''Did you need anything in particular?''\nThe memories of her, dressed only with dynamite and abseiling down my flat, rushed into my mind. I won’t deny I got a tad nervous, and probably gave myself away by saying ''Eh...um... Hello! Where did you learn how to abseil?'' To which she answered \n''I’m a firefighter''\nThat was more that I could handle and rushed back home to the sweet solace of my sunflower.";
                         if (!v1a3)
                         {
-                            str += ")She opened it.\n''Hey, it’s you!'' She said.\n''Err…um... Hello!'' I replied, not really knowing what to say ''Soo, what is that you do with your life?'' To which she answered \n''I’m a firefighter''\n That was more that I could handle and rushed back home to the solace of my sunflower.";
+                            str += ")She opened it.\n''Hey, it’s you!'' She said.\n''Err...um... Hello!'' I replied, not really knowing what to say ''Soo, what is that you do with your life?'' To which she answered \n''I’m a firefighter''\n That was more that I could handle and rushed back home to the solace of my sunflower.";
                             v1a3 = true;
                         }
                     }
@@ -270,7 +268,7 @@ public class GameController : MonoBehaviour
                     lastText = "002";       // < 002 >
                     str = " a gardener, tending to his plants. I hold a deep respect for all gardeners, but, given the circumstances, I couldn’t help but mistrust him. After all, if you know how to keep a plant alive, you also know how best to kill it. I had to ask the question.\n“What’s your favourite flower?” I heard right then, interrupting my thoughts. I raised my head and saw the gardener smiling at me. There was a serene sadness in his eyes.";
                     op1 = "“Sunflowers”";
-                    op2 = "“Su… Roses”";
+                    op2 = "“Su... Roses”";
                     op3 = "“Hey, that’s what I wanted to ask!”";
                     pm.UpdateOptions(op1, op2, op3);
                     pm.UpdateText(str);
@@ -278,7 +276,7 @@ public class GameController : MonoBehaviour
                 else if (lastText == "001" & itemWater)
                 {
                     lastText = "006";       // < 006 >
-                    str = "a gardener, tending to his plants, or at least trying to. At the moment, he was mostly looking at his empty water hose with a mourning face. \n“They cut the water”, he said sadly, as if he had just woken from a beautiful dream. “How am I supposed to water my plants now?”.";
+                    str = "... a gardener, tending to his plants, or at least trying to. At the moment, he was mostly looking at his empty water hose with a mourning face. \n“They cut the water”, he said sadly, as if he had just woken from a beautiful dream. “How am I supposed to water my plants now?”.";
                     op1 = "“I heard there was a problem at the water processing plant”.";
                     op2 = "“Cheer up, it should only last a few hours”.";
                     op3 = "“I like flowers”.";
@@ -300,10 +298,21 @@ public class GameController : MonoBehaviour
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
+
                 else if (lastText == "006")
                 {
-                    lastText = "007";       //      PARC < 007 >
-                    str = "“I heard there was a problem at the water processing plant”. \nAs soon as I said those words, he looked up at me with a shine to his eyes. “Really? Well, we can’t allow that, can we? No, no, no. I will have to go there immediately. Oh, yes. They shall hear about this. What kind of water processing plant stops processing the water for my plants on such an important day? Oh, no, no, no, I will have none of that”.\nHe kept on muttering to himself as he stood up and left in direction to the water plant, but all I heard were some isolated words like “fire”, “massacre” and “thermonuclear punishment”. \nAfter he left, I noticed he had forgotten some recently cut flowers and a sandwich. ";
+                    lastText = "006b";       //      PARC < 007 >
+                    str = "“I heard there was a problem at the water processing plant”. \nAs soon as I said those words, he looked up at me with a shine to his eyes. “Really? Well, we can’t allow that, can we? No, no, no. I will have to go there immediately. Oh, yes. They shall hear about this. What kind of water processing plant stops processing the water for my plants on such an important day? Oh, no, no, no, I will have none of that”.\n";
+                    op1 = "I took both.";
+                    op2 = "I took the sandwich";
+                    op3 = "I took nothing.";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "006b")
+                {
+                    lastText = "007";       //      PARC < 007b >
+                    str = "“He kept on muttering to himself as he stood up and left in direction to the water plant, but all I heard were some isolated words like “fire”, “massacre” and “thermonuclear punishment”. \nAfter he left, I noticed he had forgotten some recently cut flowers and a sandwich. ";
                     op1 = "I took both.";
                     op2 = "I took the sandwich";
                     op3 = "I took nothing.";
@@ -343,7 +352,7 @@ public class GameController : MonoBehaviour
                 else if (lastText == "018")
                 {
                     lastText = "019";       //      PARC < 019 >
-                    str = "“Sure you can,” I said, not really knowing what I was talking about. All of my love has and shall always be for my sunflower. \n“Yeah, but what would happen then?”, he countered. “The world would be ruined. Everything would be lost. No, I just cannot do it. I can’t. It hurts and it’s unfair, but I have to suck it up and do what’s right”.\n”Uh...  okay”, I answered, not really knowing what else to say. And he left. What am I supposed to make of that that? This case needs someone who actually understands people…";
+                    str = "“Sure you can,” I said, not really knowing what I was talking about. All of my love has and shall always be for my sunflower. \n“Yeah, but what would happen then?”, he countered. “The world would be ruined. Everything would be lost. No, I just cannot do it. I can’t. It hurts and it’s unfair, but I have to suck it up and do what’s right”.\n”Uh...  okay”, I answered, not really knowing what else to say. And he left. What am I supposed to make of that that? This case needs someone who actually understands people...";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
@@ -352,7 +361,7 @@ public class GameController : MonoBehaviour
                     lastText = "025";       //      PARC < 025 >
                     str = "“Err, I... no.”\n“Oh”, she said. “Oh. So who are you, then? Did you come for me at last, O Grim Reaper? Is that what this is? The time of my parting, the final curtain, the eternal rest finally embracing me in its soft arms, forever? Well, then, I am ready. Yes, I may have sinned, and not a little, but I regret nothing. Every ounce of joy, every inch of pleasure and rebellion I scraped out of this dull, gray world, it was all worth it. Mary Antoniette’s lips upon mine, and to hell with whatever they said. And her sister’s lips, later on. Ah, the orgies. The ecstasy. The bliss. Yes, it was all worth it. You may take me, O Death. Take me and do with this old body what you will, for my spirit has soared high as any other.”";
                     itemKillLady = true;
-                    pm.UpdateOptions(continueText);
+                    pm.UpdateOptions(continueText); 
                     pm.UpdateText(str);
                 }
                 else if (lastText == "025")
@@ -365,7 +374,7 @@ public class GameController : MonoBehaviour
                 else if (lastText == "021")
                 {
                     lastText = "021b";       //      PARC < 021b >
-                    str = "“This… might help?”, I tried.\n“You really think so?”\n“Yes?” No.\n“Well, that’s beautiful. No one had ever given me flowers before. I… really, thanks. Maybe I should actually give love a try, you know. All my life I did what was expected of me as a member of a secret holy order, and what did I really get out of that? Yeah, saved the world a couple times, stopped one or two apocalypses. Well, that’s not the kind of thing that will warm me at night when I’m old, you know what I mean? No, I’ve had enough. I deserve this. I’ve got to think about myself, at least once in my life. Thank you, my friend, for showing me the way. I shall not forget this.”";
+                    str = "“This... might help?”, I tried.\n“You really think so?”\n“Yes?” No.\n“Well, that’s beautiful. No one had ever given me flowers before. I... really, thanks. Maybe I should actually give love a try, you know. All my life I did what was expected of me as a member of a secret holy order, and what did I really get out of that? Yeah, saved the world a couple times, stopped one or two apocalypses. Well, that’s not the kind of thing that will warm me at night when I’m old, you know what I mean? No, I’ve had enough. I deserve this. I’ve got to think about myself, at least once in my life. Thank you, my friend, for showing me the way. I shall not forget this.”";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
@@ -388,14 +397,14 @@ public class GameController : MonoBehaviour
                 if (lastText == "001")
                 {
                     lastText = "002";       //      ABOCADOR < 002 >
-                    str = "find the murderer’s hideout. \nThe dumpster was quite big, but I had plenty of time. After hours of searching, I found a cat feeding her kittens, a wild raccoon, and two scorpions. I found a nest of mockingbirds. I found a pair of socks which seemed quite warm and comfortable, too. But no hideout. In the end, I had no option but to face the truth and go home. The murderer simply wasn’t here.";
+                    str = "... find the murderer’s hideout. \nThe dumpster was quite big, but I had plenty of time. After hours of searching, I found a cat feeding her kittens, a wild raccoon, and two scorpions. I found a nest of mockingbirds. I found a pair of socks which seemed quite warm and comfortable, too. But no hideout. In the end, I had no option but to face the truth and go home. The murderer simply wasn’t here.";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "003")
                 {
                     lastText = "004";       //      ABOCADOR < 004 >
-                    str = "a neat pile of wooden planks, along with some tools. Nails, a hammer, etc. They could be useful to barricade my house. Or to build anything I needed in my quest, so I decided to take them with me.";
+                    str = "... a neat pile of wooden planks, along with some tools. Nails, a hammer, etc. They could be useful to barricade my house. Or to build anything I needed in my quest, so I decided to take them with me.";
                     itemBarricade = true;
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
@@ -403,11 +412,20 @@ public class GameController : MonoBehaviour
                 else if (lastText == "007")
                 {
                     lastText = "008";       //      ABOCADOR < 008 >
-                    str = "I kept listening to him.\n“Yes! it is the new ...mumblemumble ... loophole...the most efficient arrangement … mumblemubmle.. quantum entanglement ...r(n) = √n  ... the Golden Angle ... φ = (1+√5)/2.. mimb... it is the only... 137,5°....the sunflower… AHHH! ike ike, one of a hundred ...mumblemumble... the Day finally has come...  the order of… mumble… fermat mumblmubmle ...the golden spiral… mumblemumb  how many times… need to find mumble… ”";
+                    str = "I kept listening to him.\n“Yes! it is the new ...mumblemumble ... loophole...the most efficient arrangement ... mumblemubmle.. quantum entanglement ...r(n) = √n  ... the Golden Angle ... φ = (1+√5)/2.. mimb... it is the only... 137,5°....the sunflower... AHHH! ike ike, one of a hundred ...mumblemumble... the Day finally has come...  the order of... mumble... fermat mumblmubmle ...the golden spiral... mumblemumb  how many times... need to find mumble... ”";
                     op1 = "“Hey, hold on! What did you say about sunflowers?”";
                     op2 = "“Hey, hold on! What was that loophole thing about?”";
                     if (itemSandWich) op3 = "Hey, dude! Fancy a sandwich?";
                     pm.UpdateOptions(op1, op2, op3);
+                    pm.UpdateText(str);
+                }
+                else if (lastText == "008")
+                {
+                    lastText = "009";       //      ABOCADOR < 009 >
+                    str = "“Hey, hold on! What did you say about sunflowers?” I asked without much hope. Surprisingly, he stopped his nonsense and kept silent for much longer than I thought possible. Not only he was silent. Everything was still.";
+                    op1 = "I kept listening.";
+                    op2 = "I went home.";
+                    pm.UpdateOptions(op1, op2);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "008")
@@ -431,7 +449,7 @@ public class GameController : MonoBehaviour
                     lastText = "010";       //      ABOCADOR < 010 >
                     str = "I kept listening, and he started vomiting words all over, shouting and moving his arms around. \n“will come the time and surely this time has come and past and come AGAIN till it passes away if only no one would PASS AWAY, y’know??\nplay would stop reap shot poison bomb the one we could keep doin keep gofin, keep moving forward! y'know? save it if you can save it yourself and don't waste my time, hey dude don’t waste my time, yesterday is gone tomorrow won't come just shut up SHUT UP and bend low bend down!!”";
                     op1 = "I kept listening.";
-                    op2 = "I went home.";
+                 
                     pm.UpdateOptions(op1, op2);
                     pm.UpdateText(str);
                 }
@@ -471,51 +489,26 @@ public class GameController : MonoBehaviour
                     if (t == 5)
                     {
                         lastText = "002";       //  Abocador < 002 >
-                        str = "sat on this dusty old sofa and did nothing till the moon peeked through the clouds.\nThe world seemed to be turning just fine.";
+                        str = "... sat on this dusty old sofa and did nothing till the moon peeked through the clouds.\nThe world seemed to be turning just fine.";
                     }
                     if (t != 5)
                     {
                         lastText = "002";
-                        str = "sat on this dusty old sofa and did nothing for a while til the shadows moved.//\nThe world seemed to be turning just fine.";
+                        str = "... sat on this dusty old sofa and did nothing for a while til the shadows moved.//\nThe world seemed to be turning just fine.";
                     }
 
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
-                else if (lastText == "001" & t != 4)
-                {
-
-                    lastText = "005";       //  Abocador < 005 >
-                    str = "went to the Roller Street warehouse. It had just one door. It was hard, big and ugly. Probably nobody had ever loved it.";
-                    op1 = "I tried to open it by pushing against it.";
-                    op2 = "I smelled it";
-                    op3 = "I tried to open it with my crowbar";
-
-                    if (itemCrowbar) pm.UpdateOptions(op1, op2, op3);
-                    else { pm.UpdateOptions(op1, op2); }
-                    pm.UpdateText(str);
-                }
-
-                else if (lastText == "005" & t == 4)
-                {
-                    lastText = "006";       // WH  < 006 >
-                    str = "went to the Roller Street warehouse. Once I got there, I walked towards the door. It was hard, big, ugly and open.";
-                    op1 = "I walked in ";
-                    op2 = "I peeked through the door";
-                    op3 = "I smelled it";
-                    op4 = "";
-
-                    pm.UpdateOptions(op1, op2, op3);
-                    pm.UpdateText(str);
-                }
+                
                 else if (lastText == "006")
                 {
                     lastText = "007";       //  WH< 007 >
                     str = "I walked in and stumbled upon the street sweeper.  The room was big and empty, and he was holding a gun!\n";
-                    op1 = "“Holy sunflowers! I hope you’re not gonna kill me with that…”";
-                    op2 = "“Uhm… I was just casually passing by…”";
+                    op1 = "“Holy sunflowers! I hope you’re not gonna kill me with that...”";
+                    op2 = "“Uhm... I was just casually passing by...”";
                     op3 = "“You’re the sunflower murderer!”";
-                    op4 = "“Yes! I knew something smelled fishy…”";
+                    op4 = "“Yes! I knew something smelled fishy...”";
 
                     infoWeapon = true;
                     pm.UpdateOptions(op1, op2, op3, op4);
@@ -575,7 +568,7 @@ public class GameController : MonoBehaviour
                 else if (lastText == "024")
                 {
                     lastText = "025";       //  < 25 >
-                    str = "got the hell out of there before someone came and got the wrong idea.";
+                    str = "... got the hell out of there before someone came and got the wrong idea.";
 
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
@@ -599,36 +592,36 @@ public class GameController : MonoBehaviour
                 if (lastText == "001" & !itemSandWich)
                 {
                     lastText = "002";       //      PIZZA < 002 >
-                    str = "Once I got there, I…";
-                    op1 = "...went to get some pizza…";
-                    op2 = "...went to the toilet…";
-                    if (hobo) op3 = "...approached the hobo sitting on the sidewalk next door…";
+                    str = "Once I got there, I...";
+                    op1 = "...went to get some pizza...";
+                    op2 = "...went to the toilet...";
+                    if (hobo) op3 = "...approached the hobo sitting on the sidewalk next door...";
                     pm.UpdateOptions(op1, op2, op3);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "001" & itemSandWich)
                 {
                     lastText = "003";       //      PIZZA < 003 >
-                    str = "Once I got there, I…";
-                    op1 = "...went to look for some pizza behind the counter…";
-                    op2 = "...went to the toilet…";
-                    if (hobo) op3 = "...approached the hobo sitting on the sidewalk next door…";
+                    str = "Once I got there, I...";
+                    op1 = "...went to look for some pizza behind the counter...";
+                    op2 = "...went to the toilet...";
+                    if (hobo) op3 = "...approached the hobo sitting on the sidewalk next door...";
                     pm.UpdateOptions(op1, op2, op3);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "003" | (!itemSandWich & (lastText == "018" | lastText == "020")))
                 {
                     lastText = "004";       //      PIZZA < 004 >
-                    str = "went to look for some pizza behind the counter. In one of the cupboards I found a very suspicious bottle. I grabbed it and…";
-                    op1 = "drank it…";
-                    op2 = "read the label…";
+                    str = "... went to look for some pizza behind the counter. In one of the cupboards I found a very suspicious bottle. I grabbed it and...";
+                    op1 = "drank it...";
+                    op2 = "... read the label...";
                     pm.UpdateOptions(op1, op2);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "002" | (!itemSandWich & (lastText == "017" | lastText == "019")))
                 {
                     lastText = "007";       //      PIZZA < 007 >
-                    str = "went to get some pizza. I approached Fermat, who was sitting behind the counter, looking gloomy. ''I’d like some pizza'' I said. \n''Sure thing! What would you like in your pizza?'' he replied, fast and professional.";
+                    str = "... went to get some pizza. I approached Fermat, who was sitting behind the counter, looking gloomy. ''I’d like some pizza'' I said. \n''Sure thing! What would you like in your pizza?'' he replied, fast and professional.";
                     if (!v5a7) op1 = "''The same as always, you know me.''";
                     v5a7 = true;
                     op2 = "''I would like something new, daring, fresh.''";
@@ -641,7 +634,7 @@ public class GameController : MonoBehaviour
                 {
                     lastText = "008";       //      PIZZA < 008 >
                     str = "''The same as always, you know me''.\n''I don’t. Have we ever met before?'', he answered, sticking his head out and staring at me.";
-                    op1 = "''... Yes, I’ve come here twice a week for the past 10 years…''";
+                    op1 = "''... Yes, I’ve come here twice a week for the past 10 years...''";
                     op2 = "''Yes, I’m the guy with the sunflower.''";
                     op3 = "''Yes, and you should really clean your toilet.''";
                     op4 = "''Are you serious? Come on! It’s me.''";
@@ -670,7 +663,7 @@ public class GameController : MonoBehaviour
                 else if (lastText == "013")
                 {
                     lastText = "014";       //      PIZZA < 014 >
-                    str = "''That’d be pepperoni, tomato, rucula... and sunflower'' I added, hoping to catch him off guard.\n ''Umm, ehh… we, we don’t have any of that,'' he mumbled, looking down. He had to be hiding something there! ''And now, now get out of here, the restaurant is too full!''";
+                    str = "''That’d be pepperoni, tomato, rucula... and sunflower'' I added, hoping to catch him off guard.\n ''Umm, ehh... we, we don’t have any of that,'' he mumbled, looking down. He had to be hiding something there! ''And now, now get out of here, the restaurant is too full!''";
                     infoFermat = true;
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
@@ -680,14 +673,14 @@ public class GameController : MonoBehaviour
                     lastText = "021";       //      PIZZA < 021 >
                     str = "...approached the hobo sitting on the sidewalk next door. \nI figured that since he often spent the whole day sitting in the middle of the street, drugged on God knows what, he would know better than anyone what was going on inside the human soul, and thus could help me uncover the murderer. I sat next to him, but he didn’t seem to notice me. He was mumbling something to himself and making strange drawings on the pavement. On a second thought, he was probably just nuts.";
                     op1 = "I kept listening to him.";
-                    op2 = "I went home.";
+                   
                     pm.UpdateOptions(op1, op2);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "021")
                 {
                     lastText = "022";       //      PIZZA < 022 >
-                    str = "I kept listening to him.\n“Yes! it is the new ...mumblemumble ... loophole...the most efficient arrangement … mumblemubmle.. quantum entanglement ...r(n) = √n  ... the Golden Angle ... φ = (1+√5)/2.. mimb... it is the only... 137,5°....the sunflower… AHHH! ike ike, one of a hundred ...mumblemumble... the Day finally has come...  the order of… mumble… fermat mumblmubmle ...the golden spiral… mumblemumb  how many times… need to find mumble… ”";
+                    str = "I kept listening to him.\n“Yes! it is the new ...mumblemumble ... loophole...the most efficient arrangement ... mumblemubmle.. quantum entanglement ...r(n) = √n  ... the Golden Angle ... φ = (1+√5)/2.. mimb... it is the only... 137,5°....the sunflower... AHHH! ike ike, one of a hundred ...mumblemumble... the Day finally has come...  the order of... mumble... fermat mumblmubmle ...the golden spiral... mumblemumb  how many times... need to find mumble... ”";
                     op1 = "“Hey, hold on! What did you say about sunflowers?”";
                     op2 = "“Hey, hold on! What was that loophole thing about?”";
                     if (itemSandWich) op3 = "Hey, dude! Fancy a sandwich?";
@@ -699,7 +692,7 @@ public class GameController : MonoBehaviour
                     lastText = "023";       //      PIZZA < 023 >
                     str = "''Hey, hold on! What did you say about sunflowers?'' I asked without much hope. Surprisingly, he stopped his nonsense and kept silent for much longer than I thought possible. Not only he was silent. Everything was still.\n Suddenly, I started hearing the voices once again. ''Am I going crazy?'' I thought. \n\n''...''\n\n ''I must be dreaming all of this.''\n\n''...''\n\nMuch to my relief, I came back to reality when he suddenly spat out:\n''Sunflower.''\n''One of a hundred.''";
                     op1 = "I kept listening.";
-                    op2 = "I went home";
+                   
                     pm.UpdateOptions(op1, op2);
                     pm.UpdateText(str);
                 }
@@ -708,7 +701,7 @@ public class GameController : MonoBehaviour
                     lastText = "024";       //      PIZZA < 024 >
                     str = "I kept listening, and he started vomiting words all over, shouting and moving his arms around. \n''will come the time and surely this time has come and past and come AGAIN till it passes away if only no one would PASS AWAY, y’know??\nplay would stop reap shot poison bomb the one we could keep doin keep gofin, keep moving forward! y'know? save it if you can save it yourself and don't waste my time, hey dude don’t waste my time, yesterday is gone tomorrow won't come just shut up SHUT UP and bend low bend down!!''";
                     op1 = "I bend down.";
-                    op2 = "I went home.";
+                    
                     pm.UpdateOptions(op1, op2);
                     pm.UpdateText(str);
                 }
@@ -742,12 +735,12 @@ public class GameController : MonoBehaviour
                     if (itemSandWich)
                     {
                         lastText = "018";       //      PIZZA < 018 >
-                        op1 = "went back to look for some pizza behind the counter.";
+                        op1 = "... went back to look for some pizza behind the counter.";
                     }
                     else
                     {
                         lastText = "017";       //      PIZZA < 017 >
-                        op1 = "went to get some pizza.";
+                        op1 = "... went to get some pizza.";
                     }
                     pm.UpdateOptions(op1);
                     pm.UpdateText(str);
@@ -768,42 +761,57 @@ public class GameController : MonoBehaviour
                 break;
             case 6:                         //  >> AIGUA <<
 
-                if (lastText == "001" | !itemDeadGirl)
+
+
+                if (lastText == "001" & !itemDeadGirl)
                 {
                     lastText = "002";       //      AIGUA < 002 >
-                    str = "infiltrate the plant through the public entrance! Full of bravery and determination, I nonchalantly strolled towards the gate of the public gate. My plan consisted on passing the barrier with casual confidence, as if I knew exactly what I was doing and it was the most natural thing on this world. \nMy plan failed miserably.\nAs soon as I reached the gate, a security guard yelled for me to stop. ''Sir, I will need a valid ID, government entry authorization, and reason of your visit!''. \n''I, err…'' I… ";
+                    str = "infiltrate the plant through the public entrance! Full of bravery and determination, I nonchalantly strolled towards the gate of the public gate. My plan consisted on passing the barrier with casual confidence, as if I knew exactly what I was doing and it was the most natural thing on this world. \nMy plan failed miserably.\nAs soon as I reached the gate, a security guard yelled for me to stop. ''Sir, I will need a valid ID, government entry authorization, and reason of your visit!''. \n''I, err...'' I... ";
                     op1 = "Fought.";
                     op2 = "Fled.";
-                    op3 = "tried to talk my way in.";
+                    op3 = "... tried to talk my way in.";
                     pm.UpdateOptions(op1,op2,op3);
                     pm.UpdateText(str);
                 }
+                else if(lastText== "intro")
+            {
+                lastText = "001";      //AIGUA intro segona part
+                
+                str="The water processing plant formed a massive, heavily guarded structure, surrounded in its entirety by a spiked fence and security cameras.It had a public entrance for visitors, and a private, PIN-protected entrance for the employees. \nAfter a brief survey of the area, I was gripped with a doubtless certainty in regards to my upcoming plan.I would...";
+
+                op1 = "... infiltrate the plant through the public entrance!";
+                op2 = "... infiltrate the plant through the private entrance!";
+                op3 = "... explore the outside of the water processing plant.";   
+                pm.UpdateOptions(op1, op2, op3);
+                pm.UpdateText(str);
+
+            }
                 else if (lastText == "002")
                 {
                     lastText = "003";       //      AIGUA < 003 >
-                    str = "fought. What else was I going to do? If I had to go, I would go out it with a bang.\nUpon hearing his words, I dashed towards the barrier in an impressive sprint, expecting to be torn to pieces by heavy artillery at any moment. \nFortunately, reality wasn’t so dazzling. Rather than being shot down on sight, the security guard - who was a bit past his fifties, and packed a few extra pounds - managed to run me down and handcuff me. I received a sizable fine for resistance to authority, but was left otherwise unscathed at the door of my home.";
+                    str = "... fought. What else was I going to do? If I had to go, I would go out it with a bang.\nUpon hearing his words, I dashed towards the barrier in an impressive sprint, expecting to be torn to pieces by heavy artillery at any moment. \nFortunately, reality wasn’t so dazzling. Rather than being shot down on sight, the security guard - who was a bit past his fifties, and packed a few extra pounds - managed to run me down and handcuff me. I received a sizable fine for resistance to authority, but was left otherwise unscathed at the door of my home.";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "005")
                 {
                     lastText = "006";       //      AIGUA < 006 >
-                    str = "''Certainly, sir!'', I replied with confidence. ''(541) 754-3010, lack of entry authorization due to jackal assault, and my visit is due to mandatory inspection of the facilities by member of licensed traveling circus''.\n''Finally. Five-four-one-s… wait, that’s a mobile phone number. Hold on, jackal what? Jim!'' he shouted through an intercom after dialing a number on a pad. ''Jim, we’ve got one of those. No, not the dangerous kind. Yep, just… disturbed. Be gentle, if you can''.\nI then received an invitation to leave the facilities, which I graciously accepted.";
+                    str = "''Certainly, sir!'', I replied with confidence. ''(541) 754-3010, lack of entry authorization due to jackal assault, and my visit is due to mandatory inspection of the facilities by member of licensed traveling circus''.\n''Finally. Five-four-one-s... wait, that’s a mobile phone number. Hold on, jackal what? Jim!'' he shouted through an intercom after dialing a number on a pad. ''Jim, we’ve got one of those. No, not the dangerous kind. Yep, just... disturbed. Be gentle, if you can''.\nI then received an invitation to leave the facilities, which I graciously accepted.";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "008")
                 {
                     lastText = "008b";       //      AIGUA < 008b >
-                    str = "''Really?'' he asked stupidly, and I could see the corners of his eyes beginning to water. ''I try to be a good father, of course, but I have to work so much… I never knew she valued… I never thought she... well, this is quite a surprise, sir'' he babbled a while before stopping, speechless.";
-                    op1 = "''Yes, yes, she loves you dearly. Now, if I may…''";
+                    str = "''Really?'' he asked stupidly, and I could see the corners of his eyes beginning to water. ''I try to be a good father, of course, but I have to work so much... I never knew she valued... I never thought she... well, this is quite a surprise, sir'' he babbled a while before stopping, speechless.";
+                    op1 = "''Yes, yes, she loves you dearly. Now, if I may...''";
                     pm.UpdateOptions(op1);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "008b")
                 {
                     lastText = "009";       //      AIGUA < 009 >
-                    str = "''Yes, yes, she loves you dearly. Now, if I may go in for a minute…'' I said as I casually strolled towards the barrier.\n''Ah, no. I’m afraid that’s impossible. I understand you’re a good friend of my daughter, but I have strict orders to stop anyone trying to enter the facility without proper authorization. I’m so sorry, but there’s nothing I can do.''\nI decided not to tempt my luck any longer. Seems like I would have to find a more… impactful way to get rid of the girl’s father…";
+                    str = "''Yes, yes, she loves you dearly. Now, if I may go in for a minute...'' I said as I casually strolled towards the barrier.\n''Ah, no. I’m afraid that’s impossible. I understand you’re a good friend of my daughter, but I have strict orders to stop anyone trying to enter the facility without proper authorization. I’m so sorry, but there’s nothing I can do.''\nI decided not to tempt my luck any longer. Seems like I would have to find a more... impactful way to get rid of the girl’s father...";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
@@ -820,7 +828,7 @@ public class GameController : MonoBehaviour
                 else if (lastText == "016")
                 {
                     lastText = "017";       //      AIGUA < 017 >
-                    str = "The repository was a huge storage room full with all the tools and materials needed for the proper functioning of the water processing plant. It was kind of boring, but at least I took the chance to pick up a crowbar I saw lying around. You never know when one of those will come in handy.\nAfterwards, I headed to…";
+                    str = "The repository was a huge storage room full with all the tools and materials needed for the proper functioning of the water processing plant. It was kind of boring, but at least I took the chance to pick up a crowbar I saw lying around. You never know when one of those will come in handy.\nAfterwards, I headed to...";
                     op1 = "The control room. ";
                     itemCrowbar = true;
                     pm.UpdateOptions(op1);
@@ -829,16 +837,16 @@ public class GameController : MonoBehaviour
                 else if (lastText == "017" | lastText == "018")
                 {
                     lastText = "019";       //      AIGUA < 019 >
-                    str = "The control room was a big cubicle at the end of a long corridor, full of screens and beeping sounds and serious looking people doing serious looking things and bustling about. It didn’t really look like the kind of place where one could find a sunflower murderer, but what I did find was a big red button with the label “EMERGENCY STOP OF ALL WATER OPERATIONS”. I…";
-                    op1 = "pushed it.";
-                    op2 = "didn’t push… nah, just kidding. Of course I pushed it.";
+                    str = "The control room was a big cubicle at the end of a long corridor, full of screens and beeping sounds and serious looking people doing serious looking things and bustling about. It didn’t really look like the kind of place where one could find a sunflower murderer, but what I did find was a big red button with the label “EMERGENCY STOP OF ALL WATER OPERATIONS”. I...";
+                    op1 = "... pushed it.";
+                    op2 = "didn’t push... nah, just kidding. Of course I pushed it.";
                     pm.UpdateOptions(op1,op2);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "019")
                 {
                     lastText = "020";       //      AIGUA < 020 >
-                    str = "pushed it. The moment I did, a loud emergency alarm got activated, red lights started flashing all over the water treatment plant, and the serious looking people started looking less serious and more panicky. It didn’t seem like they would be too happy about me pushing their button, so I took the chaos and confusion as my cue to disappear from the water treatment plant before they checked their video feed recordings.";
+                    str = "... pushed it. The moment I did, a loud emergency alarm got activated, red lights started flashing all over the water treatment plant, and the serious looking people started looking less serious and more panicky. It didn’t seem like they would be too happy about me pushing their button, so I took the chaos and confusion as my cue to disappear from the water treatment plant before they checked their video feed recordings.";
                     itemWater = true;
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
@@ -853,7 +861,7 @@ public class GameController : MonoBehaviour
                 else if (lastText == "007")
                 {
                     lastText = "007b";       //      AIGUA < 007b >
-                    str = "The guard started dialing a number on a pad even before I could finished my sentence. ''Jim, we’ve got one of those,'' he shouted through an intercom. ''No, not the dangerous kind. Yep, just… disturbed. Be gentle, if you can''.\nI then received an invitation to leave the facilities, which I graciously accepted. ";
+                    str = "The guard started dialing a number on a pad even before I could finished my sentence. ''Jim, we’ve got one of those,'' he shouted through an intercom. ''No, not the dangerous kind. Yep, just... disturbed. Be gentle, if you can''.\nI then received an invitation to leave the facilities, which I graciously accepted. ";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
@@ -867,7 +875,7 @@ public class GameController : MonoBehaviour
                 if (lastText == "001")
                 {
                     lastText = "002";       // < 002 >
-                    str = "a suspicious alleway. If I was a murderer of sunflowers, that’s clearly the kind of place where I would hide to plot my evil plans. \nThe alleway was empty except for a dirty dog and some broken bottles. I was about to leave when I heard a mysterious voice that seemed to come from nowhere in particular. \n“Pssst, you! Yeah, you! Do you know how many times the sun rose today?”";
+                    str = "... a suspicious alleway. If I was a murderer of sunflowers, that’s clearly the kind of place where I would hide to plot my evil plans. \nThe alleway was empty except for a dirty dog and some broken bottles. I was about to leave when I heard a mysterious voice that seemed to come from nowhere in particular. \n“Pssst, you! Yeah, you! Do you know how many times the sun rose today?”";
                     pm.UpdateOptions(1);
                     pm.UpdateText(str);
                 }
@@ -888,7 +896,7 @@ public class GameController : MonoBehaviour
                 else if (lastText == "004")
                 {
                     lastText = "006";    //      < 006 >
-                    str = "“I’d say you’re just an idiot hiding under a sewer door…” I replied, losing my temper. \n“Brother, you’re not really angry with me, but with yourself. Sunflowers, grant patience to this lost lamb. He’ll be back once he’s ready to hear the Truth”.";
+                    str = "“I’d say you’re just an idiot hiding under a sewer door...” I replied, losing my temper. \n“Brother, you’re not really angry with me, but with yourself. Sunflowers, grant patience to this lost lamb. He’ll be back once he’s ready to hear the Truth”.";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
@@ -896,7 +904,7 @@ public class GameController : MonoBehaviour
                 else if (lastText == "009")
                 {
                     lastText = "010";       //  < 010 >
-                    str = " “No… I’m just looking for someone, although I don’t really know who,” I answered feeling a bit down.\n“Oh, that seems tricky,” she said, and then her face lit up. “You know what? Maybe I can help you find this person!” she said brightly.";
+                    str = " “No... I’m just looking for someone, although I don’t really know who,” I answered feeling a bit down.\n“Oh, that seems tricky,” she said, and then her face lit up. “You know what? Maybe I can help you find this person!” she said brightly.";
                     op1 = "“No, you wouldn’t know someone like that”.";
                     op2 = "“Sure, why not”.";
                     pm.UpdateOptions(op1, op2);
@@ -926,7 +934,7 @@ public class GameController : MonoBehaviour
                 else if (lastText == "024")
                 {
                     lastText = "025";       //  < 025 >
-                    str = "his favourite chocolate. “Ahhh, hard to say, hard to say…” he muttered to himself, before finally handing me a bar of 80% homemade organic chocolate. \nI paid in cash and asked if he had seen anyone who looked like they might hate sunflowers, but the shopkeeper just stared blankly at me, so I left.";
+                    str = "... his favourite chocolate. “Ahhh, hard to say, hard to say...” he muttered to himself, before finally handing me a bar of 80% homemade organic chocolate. \nI paid in cash and asked if he had seen anyone who looked like they might hate sunflowers, but the shopkeeper just stared blankly at me, so I left.";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
@@ -976,7 +984,7 @@ public class GameController : MonoBehaviour
                     pm.UpdateText(str);
                 }
                 else if (lastText == "002" & t == 3) GotoMapa();
-                else if (lastText == "001" | t > 3)
+                else if (lastText == "001" & t > 3)
                 {
                     lastText = "004";       //      ESCOLA < 004 >
                     str = "walked up to the main entrance, but it was closed. A timetable said the school was open every weekday from dawn till noon.";
@@ -1164,16 +1172,16 @@ public class GameController : MonoBehaviour
                 if (lastText == "001")
                 {
                     lastText = "003";       //      HOME < 003 >
-                    str = "spy on my neighbour. She lives two floors up. I went out in my sleepers and";
+                    str = "... spy on my neighbour. She lives two floors up. I went out in my sleepers and";
                     op1 = "Knocked on her door...";
-                    op2 = "Peeked through the keyhole…";
+                    op2 = "Peeked through the keyhole...";
                     pm.UpdateOptions(op1, op2);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "003")
                 {
                     lastText = "005";       //      HOME < 005 >
-                    str = "peeked through the keyhole. ";
+                    str = "... peeked through the keyhole. ";
                     if (t == 1) str += "It was just dark.";
                     if (t == 2) str += "I saw my neighbour. She was writing a note on a piece of paper.";
                     if (t == 3 | t == 4) str += "There was a long rope coiled on the ground and some red cylinders with a string sticking out of them next to it.";
@@ -1195,7 +1203,7 @@ public class GameController : MonoBehaviour
                 if (lastText == "001")
                 {
                     lastText = "024";       //      PARC < 024 >
-                    str = "a really old lady sitting in a bench, so peacefully. I went to sit next to her, and she seemed startled for a second until she squeezed her eyes and said, “Timothy? Is that you, dear?”";
+                    str = "... a really old lady sitting in a bench, so peacefully. I went to sit next to her, and she seemed startled for a second until she squeezed her eyes and said, “Timothy? Is that you, dear?”";
                     op1 = "“Err, I... no.”";
                     op2 = "“Certainly.”";
                     pm.UpdateOptions(op1,op2);
@@ -1205,7 +1213,7 @@ public class GameController : MonoBehaviour
                 {
                     lastText = "004";       //      PARC < 004 >
                     itemFlowers = true;
-                    str = "“Su… Roses,” I replied shrewdly. I wasn’t so dumb to reveal my true allegiances to a complete stranger just like that. What if he was the sunflower murderer?\n“Ah”, he said, looking somehow disappointed with my answer. “Well, I do have some roses, if you want them”. \nSeedless flowers hold no appeal to me, but I took the roses anyway, not wanting to give myself away.\nI was getting more and more uncomfortable with my charade, as if I had betrayed my pure devotion of sunflowers, so I thanked the gardener and walked away soon after that.";
+                    str = "“Su... Roses,” I replied shrewdly. I wasn’t so dumb to reveal my true allegiances to a complete stranger just like that. What if he was the sunflower murderer?\n“Ah”, he said, looking somehow disappointed with my answer. “Well, I do have some roses, if you want them”. \nSeedless flowers hold no appeal to me, but I took the roses anyway, not wanting to give myself away.\nI was getting more and more uncomfortable with my charade, as if I had betrayed my pure devotion of sunflowers, so I thanked the gardener and walked away soon after that.";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
@@ -1233,7 +1241,7 @@ public class GameController : MonoBehaviour
                 else if (lastText == "014")
                 {
                     lastText = "016";       //      PARC < 016 >
-                    str = "“You, uhm... what were you talking about just now?”, I tried to ask as casually as I could. \nHe was still startled, but he looked at me and sighed. \n“I, uh… it’s complicated,” he said.";
+                    str = "“You, uhm... what were you talking about just now?”, I tried to ask as casually as I could. \nHe was still startled, but he looked at me and sighed. \n“I, uh... it’s complicated,” he said.";
                     op1 = "“You’re right, I don’t wanna hear this”.";
                     op2 = "“I have time”.";
                     pm.UpdateOptions(op1,op2);
@@ -1242,10 +1250,10 @@ public class GameController : MonoBehaviour
                 else if (lastText == "016")
                 {
                     lastText = "018";       //      PARC < 018 >
-                    str = "“I have time”.\n “Well… I, I don’t know you, but I don’t really have anyone else to talk with. I, uh... it’s a woman. I love her, I truly do... but to be with her, I would have to betray everything I believe in. And I can’t just do that, can I?”";
+                    str = "“I have time”.\n “Well... I, I don’t know you, but I don’t really have anyone else to talk with. I, uh... it’s a woman. I love her, I truly do... but to be with her, I would have to betray everything I believe in. And I can’t just do that, can I?”";
                     op1 = "“Sure you can”";
                     op2 = "“That’s right. You have a duty”";
-                    if (itemFlowers) op3 = "Flowers";
+                    if (itemFlowers) op3 = "Flowers.";
                     pm.UpdateOptions(op1,op2,op3);
                     pm.UpdateText(str);
                 }
@@ -1283,27 +1291,28 @@ public class GameController : MonoBehaviour
                 if (lastText == "001")
                 {
                     lastText = "003";       //      ABOCADOR < 003 >
-                    str = "search for useful junk. \nIt wasn’t easy to find something I could use among the trash, but I persevered. As I was doing my third pass through the dumpster, I saw something that caught my eye. It was…";
-                    op1 = "…a neat pile of wooden planks…";
-                    op2 = "…a weird contraption…";
-                    op3 = "…a sturdy-looking crowbar…";
+                    str = "... search for useful junk. \nIt wasn’t easy to find something I could use among the trash, but I persevered. As I was doing my third pass through the dumpster, I saw something that caught my eye. It was...";
+                    op1 = "...a neat pile of wooden planks...";
+                    op2 = "...a weird contraption...";
+                    op3 = "...a sturdy-looking crowbar...";
                     pm.UpdateOptions(op1, op2, op3);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "003")
                 {
                     lastText = "005";       //      ABOCADOR < 005 >
-                    str = "a weird contraption made of wool, glass and copper tubes. After examining more closely, I realized it was actually a weird musical instrument I had never seen before. I didn’t know what it could be useful for, but I decided to bring it home with me anyway.";
+                    str = "... a weird contraption made of wool, glass and copper tubes. After examining more closely, I realized it was actually a weird musical instrument I had never seen before. I didn’t know what it could be useful for, but I decided to bring it home with me anyway.";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
-                else if (lastText == "008")
+                 else if (lastText == "008")
                 {
-                    lastText = "009";       //      ABOCADOR < 009 >
-                    str = "“Hey, hold on! What did you say about sunflowers?” I asked without much hope. Surprisingly, he stopped his nonsense and kept silent for much longer than I thought possible. Not only he was silent. Everything was still.";
-                    op1 = "I kept listening.";
-                    op2 = "I went home.";
-                    pm.UpdateOptions(op1, op2);
+                    lastText = "014";       //      ABOCADOR < 014 >
+                    str = "”Hey, hold on! What was that loophole thing about?”, I asked. \n“In a temporal loop let’s say you, particles cannot go back, the arrow of time won’t completely stop for them, follow me? if we think we are subatomic particles and because the quantum entanglement and the fractal nature of existence we can think that ‘kay? some things won’t reset every loop y‘know? as it is shown and revealed in this pictograms made by a sage.” \nA shaky finger and a broken nail pointed towards some ugly drawings made with a marker in a cardboard box.";
+                    op1 = "“Isn’t that your bed?”";
+                    op2 = "“Isn’t that your marker?”";
+                    op3 = "“Isn’t that your handwriting?”";
+                    pm.UpdateOptions(op1, op2, op3);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "011")
@@ -1326,7 +1335,7 @@ public class GameController : MonoBehaviour
                 if (lastText == "001")
                 {
                     lastText = "003";       // WH  < 003 >
-                    str = "looked around for clues. After searching for a couple hours, I found a cap between some bushes. I didn’t think much of it until I realized its logo depicted the exact pattern of sunflower seeds. This couldn’t be a coincidence. Shaken to the core, I decided to go back home and think about the implications of such a reveal.";
+                    str = "... looked around for clues. After searching for a couple hours, I found a cap between some bushes. I didn’t think much of it until I realized its logo depicted the exact pattern of sunflower seeds. This couldn’t be a coincidence. Shaken to the core, I decided to go back home and think about the implications of such a reveal.";
                     infoGorra = true;
 
                     pm.UpdateOptions(continueText);
@@ -1358,8 +1367,8 @@ public class GameController : MonoBehaviour
                 else if (lastText == "007")
                 {
                     lastText = "007";       //  < 17 >
-                    str = "''Um… I was just casually passing by'' I told him innocently. \n''Don't lie to me.''\n";
-                    op1 = "Holy sunflowers! I hope you’re not gonna kill me with that…";
+                    str = "''Um... I was just casually passing by'' I told him innocently. \n''Don't lie to me.''\n";
+                    op1 = "Holy sunflowers! I hope you’re not gonna kill me with that...";
                     op2 = "";
                     op3 = "'You’re the sunflower murderer!''";
                     op4 = "";
@@ -1394,9 +1403,9 @@ public class GameController : MonoBehaviour
                 else if (lastText == "022")
                 {
                     lastText = "024";       //  wh < 24 >
-                    str = " I yelled out of panic when a pigeon bumped against my back. Some other birds came out flying from their nests because of my scream, and then I heard a really loud ''BANG!'' echoing loudly. The street sweeper laid facing the ground in a pool of blood. The object he had been holding turned out to be a gun, and he had shoot himself by accident because of my noise. I…";
-                    op1 = "got the hell out of there";
-                    op2 = "went to check him up";
+                    str = " I yelled out of panic when a pigeon bumped against my back. Some other birds came out flying from their nests because of my scream, and then I heard a really loud ''BANG!'' echoing loudly. The street sweeper laid facing the ground in a pool of blood. The object he had been holding turned out to be a gun, and he had shoot himself by accident because of my noise. I...";
+                    op1 = "... got the hell out of there";
+                    op2 = "... went to check him up";
 
                     infoWeapon = true;
                     pm.UpdateOptions(op1, op2);
@@ -1406,7 +1415,7 @@ public class GameController : MonoBehaviour
                 else if (lastText == "024")
                 {
                     lastText = "026";       //  < 26 >
-                    str = "went to check him up. He was dead. I felt guilty for a second, at least until I realized that he would probably be fine by tomorrow if the time loop reset itself, so I decided to pick his pockets. I found a wallet, two rusty nails, some oily fish, a few coins, some matchsticks, a folded piece of paper, and an emblem of the order of the Sunflower with the following inscription carved ''The Sun follows, the Flower guides''\n";
+                    str = "... went to check him up. He was dead. I felt guilty for a second, at least until I realized that he would probably be fine by tomorrow if the time loop reset itself, so I decided to pick his pockets. I found a wallet, two rusty nails, some oily fish, a few coins, some matchsticks, a folded piece of paper, and an emblem of the order of the Sunflower with the following inscription carved ''The Sun follows, the Flower guides''\n";
                     op1 = "I opened the folded paper";
                     op2 = "";
                     op3 = "";
@@ -1429,9 +1438,9 @@ public class GameController : MonoBehaviour
                 {
                     lastText = "005";       //  < 029 >
                     str = "I smelled it. It stinked of fish";
-                    op1 = "I tried to open it by pushing against it…";
+                    op1 = "I tried to open it by pushing against it...";
                     op2 = "";
-                    if (itemCrowbar) op3 = "I tried to open it with my crowbar…";
+                    if (itemCrowbar) op3 = "I tried to open it with my crowbar...";
                     op4 = "";
 
                     pm.UpdateOptions(op1, op2, op3);
@@ -1442,9 +1451,9 @@ public class GameController : MonoBehaviour
                 if (lastText == "002" | lastText == "003")
                 {
                     lastText = "016";       //      PIZZA < 016 >
-                    str = "went to the toilet. Nobody had cleaned in ages. The dirtiness made me think of...";
-                    op1 = "cleaning it.";
-                    op2 = "delicious pizza.";
+                    str = "... went to the toilet. Nobody had cleaned in ages. The dirtiness made me think of...";
+                    op1 = "... cleaning it.";
+                    op2 = "... delicious pizza.";
                     pm.UpdateOptions(op1, op2);
                     pm.UpdateText(str);
                 }
@@ -1468,7 +1477,7 @@ public class GameController : MonoBehaviour
                 else if (lastText == "009" | lastText == "012")
                 {
                     lastText = "014";       //      PIZZA < 014 >
-                    str = "''That’d be pepperoni, tomato, rucula... and sunflower'' I added, hoping to catch him off guard.\n ''Umm, ehh… we, we don’t have any of that,'' he mumbled, looking down. He had to be hiding something there! ''And now, now get out of here, the restaurant is too full!''";
+                    str = "''That’d be pepperoni, tomato, rucula... and sunflower'' I added, hoping to catch him off guard.\n ''Umm, ehh... we, we don’t have any of that,'' he mumbled, looking down. He had to be hiding something there! ''And now, now get out of here, the restaurant is too full!''";
                     infoFermat = true;
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
@@ -1515,16 +1524,16 @@ public class GameController : MonoBehaviour
                 }
                 else if (lastText == "016")
                 {
-                    str = "delicious pizza, so I…";
+                    str = "... delicious pizza, so I...";
                     if (itemSandWich)
                     {
                         lastText = "020";       //      PIZZA < 020 >
-                        op1 = "went back to look for some pizza behind the counter.";
+                        op1 = "... went back to look for some pizza behind the counter.";
                     }
                     else
                     {
                         lastText = "019";       //      PIZZA < 019 >
-                        op1 = "went to get some pizza.";
+                        op1 = "... went to get some pizza.";
                     }
                     pm.UpdateOptions(op1);
                     pm.UpdateText(str);
@@ -1532,7 +1541,7 @@ public class GameController : MonoBehaviour
                 else if (lastText == "004")
                 {
                     lastText = "006";       //      PIZZA < 006 >
-                    str = "read the label. There was enough herbicide in that bottle to kill a Baobab… Or to clean a toilet. ''Hehe, Fermat won’t be happy about this'', I thought. Once I finished cleaning the toilette, I replenished the bottle with plain water and left it where it was. I felt great. Not only I had helped cleanse the world, but I had also saved the sunflower from another deadly threat.";
+                    str = "... read the label. There was enough herbicide in that bottle to kill a Baobab... Or to clean a toilet. ''Hehe, Fermat won’t be happy about this'', I thought. Once I finished cleaning the toilette, I replenished the bottle with plain water and left it where it was. I felt great. Not only I had helped cleanse the world, but I had also saved the sunflower from another deadly threat.";
                     itemPoison = true;
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
@@ -1543,14 +1552,14 @@ public class GameController : MonoBehaviour
                 if (lastText == "001")
                 {
                     lastText = "010";       //      AIGUA < 010 >
-                    str = "Infiltrate the plant through the private entrance, of course! As Sun Tzu once said, ''Attack your enemy where he is unprepared, appear where you are not expected''. A perfect plan, indeed. \nExcept, for, well, that PIN code detail. Right. Well, the PIN had only four digits, whereas I had twenty. How hard could it be to defeat it with such an advantage?\nI reached the pad and looked around to make sure there was no one around, and then I input the super secret PIN number… ";
+                    str = "Infiltrate the plant through the private entrance, of course! As Sun Tzu once said, ''Attack your enemy where he is unprepared, appear where you are not expected''. A perfect plan, indeed. \nExcept, for, well, that PIN code detail. Right. Well, the PIN had only four digits, whereas I had twenty. How hard could it be to defeat it with such an advantage?\nI reached the pad and looked around to make sure there was no one around, and then I input the super secret PIN number... ";
                     pm.UpdateOptions(1);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "002")
                 {
                     lastText = "004";       //      AIGUA < 004 >
-                    str = "fled. What else was I going to do? I’m a coward, yes, but at least I’ve never pretended otherwise.";
+                    str = "... fled. What else was I going to do? I’m a coward, yes, but at least I’ve never pretended otherwise.";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
@@ -1564,7 +1573,7 @@ public class GameController : MonoBehaviour
                 else if (lastText == "016")
                 {
                     lastText = "018";       //      AIGUA < 018 >
-                    str = "The treatment plant was where all the fun really happened. Less than five minutes after arriving I was already swimming with all the algae and bacteria of the anoxic tank, and making sand castles on the sand filters. Had it not been for the toxic smells of all those chemicals making me kind of dizzy, I would have certainly stayed there way longer, and I might never have reached…";
+                    str = "The treatment plant was where all the fun really happened. Less than five minutes after arriving I was already swimming with all the algae and bacteria of the anoxic tank, and making sand castles on the sand filters. Had it not been for the toxic smells of all those chemicals making me kind of dizzy, I would have certainly stayed there way longer, and I might never have reached...";
                     op1 = "The control room.";
                     pm.UpdateOptions(op1);
                     pm.UpdateText(str);
@@ -1572,7 +1581,7 @@ public class GameController : MonoBehaviour
                 else if (lastText == "019")
                 {
                     lastText = "021";       //      AIGUA < 021 >
-                    str = "pushed it. The moment I did, a loud emergency alarm got activated, red lights started flashing all over the water treatment plant, and the serious looking people started looking less serious and more panicky. It didn’t seem like they would be too happy about me pushing their button, so I took the chaos and confusion as my cue to disappear from the water treatment plant before they checked their video feed recordings.";
+                    str = "... pushed it. The moment I did, a loud emergency alarm got activated, red lights started flashing all over the water treatment plant, and the serious looking people started looking less serious and more panicky. It didn’t seem like they would be too happy about me pushing their button, so I took the chaos and confusion as my cue to disappear from the water treatment plant before they checked their video feed recordings.";
                     itemWater = true;
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
@@ -1583,9 +1592,9 @@ public class GameController : MonoBehaviour
                 if (lastText == "001")
                 {
                     lastText = "009";   //    < 009 >
-                    if (!v7_001) str = "an innocent looking girl, about eight or nine years old. She was jumping rope on the sidewalk, but as soon as I approached her she flashed me a charming smile. “Good evening, sir! Did you get lost?”, she asked with wide eyes.";
-                    else str = "an innocent looking girl. ”Hey, it’s you again!” she said, “Are you still lost?”";
-                    op1 = "“No… I’m just looking for someone, although I don’t really know who.”";
+                    if (!v7_001) str = "... an innocent looking girl, about eight or nine years old. She was jumping rope on the sidewalk, but as soon as I approached her she flashed me a charming smile. “Good evening, sir! Did you get lost?”, she asked with wide eyes.";
+                    else str = "... an innocent looking girl. ”Hey, it’s you again!” she said, “Are you still lost?”";
+                    op1 = "“No... I’m just looking for someone, although I don’t really know who.”";
                     op2 = "“All my life. How about you?”";
                     op3 = "“Do you like chocolate?”";
                     pm.UpdateOptions(op1, op2, op3);
@@ -1595,15 +1604,15 @@ public class GameController : MonoBehaviour
                 {
                     lastText = "004";      //    < 004 > 
                     str = "“And who the hell are you?”, I asked quite briskly. I admit I don’t take too kindly to invisible strangers startling me in small alleways. \n“Worry not, sunflower Brother. As I said, I am the Mysterious Voice™, Protector of the Poor and Helpless, Saver of Worlds, and Professional Adventure Advisor.”";
-                    op1 = "“I’d say you’re just an idiot hiding under a sewer door…”";
-                    op2 = "“If you say so…”";
+                    op1 = "“I’d say you’re just an idiot hiding under a sewer door...”";
+                    op2 = "“If you say so...”";
                     pm.UpdateOptions(op1, op2);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "004")
                 {
                     lastText = "007";      //    < 007 >
-                    str = "“If you say so…”, I said, hesitating. \n“Of course I say so”, replied the Voice with unwavering confidence. “Now go save a space-time continuum or two. And remember me when you find yourself in need of a friendly, mysterious Voice.”";
+                    str = "“If you say so...”, I said, hesitating. \n“Of course I say so”, replied the Voice with unwavering confidence. “Now go save a space-time continuum or two. And remember me when you find yourself in need of a friendly, mysterious Voice.”";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
@@ -1642,7 +1651,7 @@ public class GameController : MonoBehaviour
                 else if (lastText == "024")
                 {
                     lastText = "026";       //  < 026 >
-                    str = "his most expensive chocolate. “Well, I have some Amedei Porcelana from Tuscana, Italy. It’s an amazing dark chocolate, but it’s certainly not cheap... “\nI paid in cash and asked the shopkeeper if he had seen anyone who looked like they might hate sunflowers, but he just stared blankly at me, so I left. ";
+                    str = "... his most expensive chocolate. “Well, I have some Amedei Porcelana from Tuscana, Italy. It’s an amazing dark chocolate, but it’s certainly not cheap... “\nI paid in cash and asked the shopkeeper if he had seen anyone who looked like they might hate sunflowers, but he just stared blankly at me, so I left. ";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
@@ -1767,7 +1776,7 @@ public class GameController : MonoBehaviour
                 if (lastText == "001")
                 {
                     lastText = "006";       //      HOME < 006 >
-                    str = "search for cameras or traps around the house. All I found were some old donnuts, my favorite underwear, a lighter, the tv remote and a pregnant mouse.";
+                    str = "... search for cameras or traps around the house. All I found were some old donnuts, my favorite underwear, a lighter, the tv remote and a pregnant mouse.";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
@@ -1776,7 +1785,7 @@ public class GameController : MonoBehaviour
                 if (lastText == "001")
                 {
                     lastText = "028";       //      PARC < 028 >
-                    str = "my favourite sitting spot. \nAs I lay there, breathing slowly, drinking it all in, I could almost feel all my problems beginning to fade away. If only I could stay there forever, enjoying that nice breeze and thinking of nothing… \nBut I couldn’t. I still had a murderer to catch, and a sunflower to save.";
+                    str = "... my favourite sitting spot. \nAs I lay there, breathing slowly, drinking it all in, I could almost feel all my problems beginning to fade away. If only I could stay there forever, enjoying that nice breeze and thinking of nothing... \nBut I couldn’t. I still had a murderer to catch, and a sunflower to save.";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
@@ -1791,7 +1800,7 @@ public class GameController : MonoBehaviour
                 else if (lastText == "006")
                 {
                     lastText = "009";       //      PARC < 009 >
-                    str = "“I like flowers”, I said. \nHe looked up at me, his eyes still unfocused, and slowly he came back to his senses. \n“Yes… yes, me too. Here, you can have some, if you want”, he muttered. \nI thanked him and left, as he seemed ill-disposed at the moment.";
+                    str = "“I like flowers”, I said. \nHe looked up at me, his eyes still unfocused, and slowly he came back to his senses. \n“Yes... yes, me too. Here, you can have some, if you want”, he muttered. \nI thanked him and left, as he seemed ill-disposed at the moment.";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
@@ -1816,30 +1825,21 @@ public class GameController : MonoBehaviour
                 if (lastText == "001")
                 {
                     lastText = "007";       //      ABOCADOR < 007 >
-                    str = "go talk to the hobo. \nI figured that since he often sat in the middle of the street all day, probably drugged on God knows what, he would know better than anyone what was going on inside the human soul, and thus could help me uncover the murderer. I sat next to him, but he didn’t seem to notice me. He was mumbling something to himself and making strange drawings on the pavement. On a second thought, he was probably just nuts.";
+                    str = "... go talk to the hobo. \nI figured that since he often sat in the middle of the street all day, probably drugged on God knows what, he would know better than anyone what was going on inside the human soul, and thus could help me uncover the murderer. I sat next to him, but he didn’t seem to notice me. He was mumbling something to himself and making strange drawings on the pavement. On a second thought, he was probably just nuts.";
                     op1 = "I kept listening to him.";
-                    op2 = "I went home.";
+                    
                     pm.UpdateOptions(op1, op2);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "003")
                 {
                     lastText = "006";       //      ABOCADOR < 006 >
-                    str = "a sturdy-looking crowbar, which I could probably use to open almost any locked door I encountered. Handy.";
+                    str = "... a sturdy-looking crowbar, which I could probably use to open almost any locked door I encountered. Handy.";
                     itemCrowbar = true;
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
-                else if (lastText == "008")
-                {
-                    lastText = "014";       //      ABOCADOR < 014 >
-                    str = "”Hey, hold on! What was that loophole thing about?”, I asked. \n“In a temporal loop let’s say you, particles cannot go back, the arrow of time won’t completely stop for them, follow me? if we think we are subatomic particles and because the quantum entanglement and the fractal nature of existence we can think that ‘kay? some things won’t reset every loop y‘know? as it is shown and revealed in this pictograms made by a sage.” \nA shaky finger and a broken nail pointed towards some ugly drawings made with a marker in a cardboard box.";
-                    op1 = "“Isn’t that your bed?”";
-                    op2 = "“Isn’t that your marker?”";
-                    op3 = "“Isn’t that your handwriting?”";
-                    pm.UpdateOptions(op1, op2, op3);
-                    pm.UpdateText(str);
-                }
+               
                 else if (lastText == "014")
                 {
                     lastText = "015";       //      ABOCADOR < 015 >
@@ -1866,7 +1866,7 @@ public class GameController : MonoBehaviour
                 else if (lastText == "009")
                 {
                     lastText = "012";       //  WH< 012 >
-                    str = "''Are you planning to kill my plant?'' I asked full of accusation. \n''No, that’s not what I wanted! I was so confused..I was deeply in love, you see. But luckily I’ve come to my senses in time! Now I will destroy this firearm and save your sunflower from all danger. You should go home and be with who you love the most'' He said with tears in his eyes. What a sad story… but if his words were true, my sunflower was now safe.";
+                    str = "''Are you planning to kill my plant?'' I asked full of accusation. \n''No, that’s not what I wanted! I was so confused..I was deeply in love, you see. But luckily I’ve come to my senses in time! Now I will destroy this firearm and save your sunflower from all danger. You should go home and be with who you love the most'' He said with tears in his eyes. What a sad story... but if his words were true, my sunflower was now safe.";
 
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
@@ -1932,7 +1932,7 @@ public class GameController : MonoBehaviour
                 if (lastText == "002")
                 {
                     lastText = "021";       //      PIZZA < 021 >
-                    str = "approached the hobo sitting on the sidewalk next door. \nI figured that since he often spent the whole day sitting in the middle of the street, drugged on God knows what, he would know better than anyone what was going on inside the human soul, and thus could help me uncover the murderer. I sat next to him, but he didn’t seem to notice me. He was mumbling something to himself and making strange drawings on the pavement. On a second thought, he was probably just nuts.";
+                    str = "... approached the hobo sitting on the sidewalk next door. \nI figured that since he often spent the whole day sitting in the middle of the street, drugged on God knows what, he would know better than anyone what was going on inside the human soul, and thus could help me uncover the murderer. I sat next to him, but he didn’t seem to notice me. He was mumbling something to himself and making strange drawings on the pavement. On a second thought, he was probably just nuts.";
                     op1 = "I kept listening to him. ";
                     op2 = "I went home.";
                     pm.UpdateOptions(op1, op2);
@@ -1941,7 +1941,7 @@ public class GameController : MonoBehaviour
                 else if (lastText == "007")
                 {
                     lastText = "014";       //      PIZZA < 014 >
-                    str = "''That’d be pepperoni, tomato, rucula... and sunflower'' I added, hoping to catch him off guard.\n ''Umm, ehh… we, we don’t have any of that,'' he mumbled, looking down. He had to be hiding something there! ''And now, now get out of here, the restaurant is too full!''";
+                    str = "''That’d be pepperoni, tomato, rucula... and sunflower'' I added, hoping to catch him off guard.\n ''Umm, ehh... we, we don’t have any of that,'' he mumbled, looking down. He had to be hiding something there! ''And now, now get out of here, the restaurant is too full!''";
                     infoFermat = true;
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
@@ -1981,23 +1981,23 @@ public class GameController : MonoBehaviour
                 if (lastText == "001")
                 {
                     lastText = "011";       //      AIGUA < 011 >
-                    str = "explore the outside of the water processing plant. Yes, the world is full of thrilling tales of adventure, daring escapes and cunning infiltrations. Yes, those stories fill us all with awe and admiration towards their heroes. And no, I am not one of them. \nI had no intention whatsoever of ending in jail, even less so if it required trespassing a heavily armed government compound out of the nonsensical notion that the murderers of my sunflower might be found inside.";
+                    str = "... explore the outside of the water processing plant. Yes, the world is full of thrilling tales of adventure, daring escapes and cunning infiltrations. Yes, those stories fill us all with awe and admiration towards their heroes. And no, I am not one of them. \nI had no intention whatsoever of ending in jail, even less so if it required trespassing a heavily armed government compound out of the nonsensical notion that the murderers of my sunflower might be found inside.";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "005")
                 {
                     lastText = "007";       //      AIGUA < 007 >
-                    str = "''Err… Sunflower!'' \nYeah, I’ve never been able to lie. So what? Whenever I get too nervous or I feel questioned, the truth just comes out of my mouth out of its own will. It’s a compulsion. I can’t help it. \n''Su… what?'' asked the guard, perplexed. \n''Yes, sir. My sunflower. I have to save it. They want to murder it! If only you would let me in for a…";
+                    str = "''Err... Sunflower!'' \nYeah, I’ve never been able to lie. So what? Whenever I get too nervous or I feel questioned, the truth just comes out of my mouth out of its own will. It’s a compulsion. I can’t help it. \n''Su... what?'' asked the guard, perplexed. \n''Yes, sir. My sunflower. I have to save it. They want to murder it! If only you would let me in for a...";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "016")
                 {
                     lastText = "024";       //      AIGUA < 019 >
-                    str = "The control room was a big cubicle at the end of a long corridor, full of screens and beeping sounds and serious looking people doing serious looking things and bustling about. It didn’t really look like the kind of place where one could find a sunflower murderer, but what I did find was a big red button with the label “EMERGENCY STOP OF ALL WATER OPERATIONS”. I…";
-                    op1 = "pushed it.";
-                    op2 = "didn’t push… nah, just kidding. Of course I pushed it.";
+                    str = "The control room was a big cubicle at the end of a long corridor, full of screens and beeping sounds and serious looking people doing serious looking things and bustling about. It didn’t really look like the kind of place where one could find a sunflower murderer, but what I did find was a big red button with the label “EMERGENCY STOP OF ALL WATER OPERATIONS”. I...";
+                    op1 = "... pushed it.";
+                    op2 = "... didn’t push... nah, just kidding. Of course I pushed it.";
                     pm.UpdateOptions(op1, op2);
                     pm.UpdateText(str);
                 }
@@ -2006,7 +2006,7 @@ public class GameController : MonoBehaviour
                 if (lastText == "001")
                 {
                     lastText = "024";       //  < 024 >
-                    str = "a chocolate store. What can I say - I may cherish sunflowers, but I have a love for all edible seeds, and chocolate is no exception. \nThe shop was well stocked, and the shopkeeper was a smiling old man with a bushy beard. I asked him for… ";
+                    str = "... a chocolate store. What can I say - I may cherish sunflowers, but I have a love for all edible seeds, and chocolate is no exception. \nThe shop was well stocked, and the shopkeeper was a smiling old man with a bushy beard. I asked him for... ";
                     op1 = "...his favourite chocolate...";
                     op2 = "...his most expensive chocolate...";
                     if (infoVistNena)
@@ -2052,7 +2052,7 @@ public class GameController : MonoBehaviour
                 else if (lastText == "024")
                 {
                     lastText = "027";       //  < 027 >
-                    str = "whatever a child might like, thinking of the little girl I had seen playing outside. \nI paid in cash and asked the shopkeeper if he had seen anyone who looked like they might hate sunflowers, but he just stared blankly at me, so I left.";
+                    str = "... whatever a child might like, thinking of the little girl I had seen playing outside. \nI paid in cash and asked the shopkeeper if he had seen anyone who looked like they might hate sunflowers, but he just stared blankly at me, so I left.";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
@@ -2114,9 +2114,9 @@ public class GameController : MonoBehaviour
                 if (lastText == "001" & t < 4)
                 {
                     lastText = "013";       //      PARC < 013 >
-                    string s1 = "a street sweeper, cleaning the park avenue. At the moment, he seemed to be talking very agitatedly with someone over the phone.";
+                    string s1 = "... a street sweeper, cleaning the park avenue. At the moment, he seemed to be talking very agitatedly with someone over the phone.";
                     string s2 = " A sudden realization hit me right then when I looked at him: his uniform showed the exact same sign I had found on that cap in the warehouse a while ago. The sign of the sunflower!";
-                    string s3 = " I decided to…";
+                    string s3 = " I decided to...";
                     if (infoGorra) str = s1 + s2 + s3;
                     else str = s1 + s3;
                     op1 = "Approach him...";
@@ -2128,16 +2128,18 @@ public class GameController : MonoBehaviour
                 else if (lastText == "001" & t > 3)
                 {
                     lastText = "027";       //      PARC < 027 >
-                    str = "a group of children chasing each other. They seemed so happy, there in the park, like they didn’t have a worry on this world.\nAs I approached and sat on a bench near the playground, some of them looked at me warily, but after a while they resumed their game.\nWhile sitting on the bench I could easily overhear their conversation, although most of it was of no interest to me, having nothing to do with sunflowers. Apparently, a substitute teacher named Martin had been expected at the school this morning, but in the end he had never showed up.";
+                    str = "... a group of children chasing each other. They seemed so happy, there in the park, like they didn’t have a worry on this world.\nAs I approached and sat on a bench near the playground, some of them looked at me warily, but after a while they resumed their game.\nWhile sitting on the bench I could easily overhear their conversation, although most of it was of no interest to me, having nothing to do with sunflowers. Apparently, a substitute teacher named Martin had been expected at the school this morning, but in the end he had never showed up.";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
                 break;
             case 3:                         //  >> ABOCADOR <<
+                
+            case 4:                         //  >> MAGATZEM <<
                 if (lastText == "001" & t != 4)
                 {
                     lastText = "005";       // WH < 005>
-                    str = "went to the Roller Street warehouse. It had just one door. It was hard, big and ugly. Probably nobody had ever loved it.";
+                    str = "... went to the Roller Street warehouse. It had just one door. It was hard, big and ugly. Probably nobody had ever loved it.";
                     op1 = "I tried to open it by pushing against it";
                     op2 = "I smelled it";
                     if (itemCrowbar) op3 = "I tried to open it with my crowbar";
@@ -2150,7 +2152,7 @@ public class GameController : MonoBehaviour
                 else if (lastText == "001" & t == 4)
                 {
                     lastText = "006";       // wh  <006  >
-                    str = "went to the Roller Street warehouse. Once I got there, I walked towards the door. It was hard, big, ugly and open.\n";
+                    str = "... went to the Roller Street warehouse. Once I got there, I walked towards the door. It was hard, big, ugly and open.\n";
                     op1 = "I walked in";
                     op2 = "I peeked through the door";
                     op3 = "I smelled it";
@@ -2191,7 +2193,7 @@ public class GameController : MonoBehaviour
                 {
                     lastText = "007";       //  < 19 >
                     str = "''Yes, I knew something smelled fishy!'' I said triumphantly. \n''You mean the cats?'' He duly answered. ''I feed them every day.'' \n";
-                    op1 = "Holy sunflowers! I hope you’re not gonna kill me with that…'";
+                    op1 = "Holy sunflowers! I hope you’re not gonna kill me with that...'";
                     op2 = "";
                     op3 = "You’re the sunflower murderer!";
                     op4 = "";
@@ -2199,9 +2201,7 @@ public class GameController : MonoBehaviour
                     pm.UpdateOptions(op1, op2, op3);
                     pm.UpdateText(str);
                 }
-                break;
-            case 4:                         //  >> MAGATZEM <<
-
+                
                 break;
             case 5:                         //  >> PIZZA <<
                 if (lastText == "007")
@@ -2226,7 +2226,7 @@ public class GameController : MonoBehaviour
                 if (lastText == "001")
                 {
                     lastText = "011";       //      AIGUA < 011 >
-                    str = "explore the outside of the water processing plant. Yes, the world is full of thrilling tales of adventure, daring escapes and cunning infiltrations. Yes, those stories fill us all with awe and admiration towards their heroes. And no, I am not one of them. \nI had no intention whatsoever of ending in jail, even less so if it required trespassing a heavily armed government compound out of the nonsensical notion that the murderers of my sunflower might be found inside.";
+                    str = "... explore the outside of the water processing plant. Yes, the world is full of thrilling tales of adventure, daring escapes and cunning infiltrations. Yes, those stories fill us all with awe and admiration towards their heroes. And no, I am not one of them. \nI had no intention whatsoever of ending in jail, even less so if it required trespassing a heavily armed government compound out of the nonsensical notion that the murderers of my sunflower might be found inside.";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
@@ -2281,11 +2281,11 @@ public class GameController : MonoBehaviour
                         s1 = "The voice chuckled to itself. “Indeed, brother. Indeed. Anyway,";
                     else
                         s1 = "“Oh, dear, so innocent. It rose " + loop.ToString() + " times already. Anyway,";
-                    s2 = "you look kind of down. Seems like you might need some advise from your friendly next door mysterious voice, amirite?”\nAt first I thought I was imagining voices again, but this one seemed too real to be a figment. In fact, as I listened I realized the sound seemed to be coming from the sewer door directly under my feet. ";
+                    s2 = "... you look kind of down. Seems like you might need some advise from your friendly next door mysterious voice, amirite?”\nAt first I thought I was imagining voices again, but this one seemed too real to be a figment. In fact, as I listened I realized the sound seemed to be coming from the sewer door directly under my feet. ";
                     str = s1 + s2;
                     // Prepara les noves opcions
                     
-                    op1 = "Well, I am quite worried about my sunflower…";
+                    op1 = "Well, I am quite worried about my sunflower...";
                     op2 = "And who the hell are you?";
                     if (loop < 2) pm.UpdateOptions(op1, op2);
                     else
