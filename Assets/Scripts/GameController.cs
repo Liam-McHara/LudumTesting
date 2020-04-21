@@ -941,14 +941,14 @@ public class GameController : MonoBehaviour
                 else if (lastText == "011" | lastText == "012" | lastText == "013" | lastText == "014" | lastText == "015" | 
                     lastText == "016" | lastText == "017" | lastText == "018" | lastText == "019")
                 {
-                    if (t == 4)
+                    if (t == 5)
                     {
                         lastText = "021";   //  < 021 >
                         str = "I left the main avenue feeling lost and lonely among the crowd of passers-by. It was getting dark already, and I had a sunflower to protect at home.";
                         pm.UpdateOptions(continueText);
                         pm.UpdateText(str);
                     }
-                    else if (t == 5)
+                    else if (t == 4)
                     {
                         lastText = "022";   //  < 022 >
                         infoCrash = true;
@@ -2046,7 +2046,7 @@ public class GameController : MonoBehaviour
                     str = "“Do you like chocolate?” I asked, ignoring her question. Her face brightened up immediately. \n“Of course!” she yelled in delight. “Why, do you have some?”";
                     op1 = "“No, it was just a thought”";
                     if (itemChocolate) op2 = "“Sure, here you are”";
-                    if (itemChocolate & infoCrash) op3 = "“Sure, but I need your help”";
+                    if (itemChocolate & infoCrash & t==4) op3 = "“Sure, but I need your help”";
                     pm.UpdateOptions(op1, op2, op3);
                     pm.UpdateText(str);
                 }
