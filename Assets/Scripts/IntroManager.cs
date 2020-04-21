@@ -5,6 +5,7 @@ using UnityEngine;
 public class IntroManager : MonoBehaviour
 {
     GameController gc;
+    public AudioManager am;
     PanelManager pm;
     public IntroScript intS;
     public GameObject background;
@@ -26,7 +27,7 @@ public class IntroManager : MonoBehaviour
 
     public void ShowIntro(int l)
     {
-        
+        am.IntroEnding();
         Debug.Log("Showing Intro " + l);
         background.SetActive(true);
         if (l > 1) pm.HideMap();
@@ -53,6 +54,7 @@ public class IntroManager : MonoBehaviour
 
     public void Next()
     {
+        am.Click();
         Debug.Log("Next: " + lastText);
         if (lastText == "endIntro1" | lastText == "endIntro2")
         {
@@ -90,6 +92,7 @@ public class IntroManager : MonoBehaviour
 
     public void HideIntro()     // RESETEJAR VARIABLES DE LOOP AQUI
     {
+        am.InGame();
         Debug.Log("Hiding Intro ");
         background.SetActive(false);
         pm.ShowMap();
@@ -110,6 +113,7 @@ public class IntroManager : MonoBehaviour
 
     public void Faster()    // Makes the UI interaction go faster
     {
+        am.Click();
         if (visible)
         {
             if (intS.writing) // Accelerates text showing

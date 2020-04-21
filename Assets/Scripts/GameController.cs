@@ -54,8 +54,9 @@ public class GameController : MonoBehaviour
         pm = FindObjectOfType<PanelManager>();
         im = FindObjectOfType<IntroManager>();
 
-        if (showIntro) im.ShowIntro(loop);     //      < FIRST LOOP >
-        else im.HideIntro();
+        im.ShowIntro(loop);     //      < FIRST LOOP >
+        am.IntroEnding();
+
 
         hobo = Random.value > 0.5f; // Mou el hobo
     }
@@ -71,6 +72,7 @@ public class GameController : MonoBehaviour
     public void GotoCasa()
     {
         Debug.Log("Going to CASA");
+        am.Click();
         place = 1;
         op1 = op2 = op3 = op4 = "";
         lastText = "001";       //      CASA < 001 >
@@ -84,6 +86,7 @@ public class GameController : MonoBehaviour
     }
     public void GotoParque()
     {
+        am.Click();
         Debug.Log("Going to PARQUE");
         place = 2;
         lastText = "001";       //      PARK < 001 >
@@ -99,6 +102,7 @@ public class GameController : MonoBehaviour
     }
     public void GotoAbocador()
     {
+        am.Click();
         Debug.Log("Going to ABOCADOR");
         place = 3;
         op1 = op2 = op3 = op4 = "";
@@ -114,6 +118,7 @@ public class GameController : MonoBehaviour
     }
     public void GotoAlmacen()
     {
+        am.Click();
         Debug.Log("Going to ALMACEN");
         place = 4;
         op1 = op2 = op3 = op4 = "";
@@ -133,6 +138,7 @@ public class GameController : MonoBehaviour
     }
     public void GotoPizza()
     {
+        am.Click();
         Debug.Log("Going to PIZZA");
         place = 5;
         op1 = op2 = op3 = op4 = "";
@@ -148,6 +154,7 @@ public class GameController : MonoBehaviour
     }
     public void GotoAigua()
     {
+        am.Click();
         Debug.Log("Going to AIGUA");
         place = 6;
         op1 = ">" ;
@@ -159,6 +166,7 @@ public class GameController : MonoBehaviour
     }
     public void GotoPasseig()                   
     {
+        am.Click();
         Debug.Log("Going to PASSEIG");
         place = 7;
         lastText = "001";       //      PASSEIG < 001 >
@@ -185,6 +193,7 @@ public class GameController : MonoBehaviour
     }
     public void GotoEscola()
     {
+        am.Click();
         Debug.Log("Going to ESCOLA");
         place = 8;
         op1 = op2 = op3 = op4 = "";
@@ -210,6 +219,7 @@ public class GameController : MonoBehaviour
     // OPCIONES
     public void Option1()   //--------------------------------------------------------------------  1   ---
     {
+        am.Click();
         op1 = op2 = op3 = op4 = "";     // buida noms d'opcions
         Debug.Log("Option 1 - from: "+ lastText );
         switch (place)
@@ -1164,6 +1174,7 @@ public class GameController : MonoBehaviour
     }
     public void Option2()   //--------------------------------------------------------------------  2   ---
     {
+        am.Click();
         op1 = op2 = op3 = op4 = "";     // buida noms d'opcions
         Debug.Log("Option 2 - from: " + lastText);
         switch (place)
@@ -1778,6 +1789,7 @@ public class GameController : MonoBehaviour
     }
     public void Option3()   //--------------------------------------------------------------------  3   ---
     {
+        am.Click();
         op1 = op2 = op3 = op4 = "";     // buida noms d'opcions
         Debug.Log("Option 3 - from: " + lastText);
         switch (place)
@@ -2113,6 +2125,7 @@ public class GameController : MonoBehaviour
     }
     public void Option4()    //--------------------------------------------------------------------  4   ---
     {
+        am.Click();
         op1 = op2 = op3 = op4 = "";     // buida noms d'opcions
         Debug.Log("Option 4 - from: " + lastText);
         switch (place)
@@ -2263,6 +2276,7 @@ public class GameController : MonoBehaviour
     // ------------------------------------------------- SPECIAL OPTIONS (text)------
     public void TextOption(string ans)      
     {
+        am.Click();
         Debug.Log("Text answer: " + ans);
         
         switch (place)
