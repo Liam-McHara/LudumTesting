@@ -5,9 +5,12 @@ using UnityEngine.UI;
 
 public class PanelManager : MonoBehaviour
 {
+    public bool scrollText;
     public GameObject whereText;
     public GameController gc;
     public TextScript ts;
+    public GameObject textGo;   // TESTING: Text GameObject
+    Image scrollRect;           // TESTING: Scroll Rect Image
     public InventoryScript inv;
     public GameObject background;
     public GameObject[] optionButtons;
@@ -19,8 +22,14 @@ public class PanelManager : MonoBehaviour
     bool textInputOption = false;   // quan TRUE, fem malabars per introduir text en comptes de clicar opcions
     public GameObject specialOption1;
 
+    private void Start()
+    {
+        scrollRect = textGo.GetComponent<Image>();
+    }
+
     public void ShowPanel(string str)   // Mostra el panel amb el text que toqui
     {
+        scrollRect.enabled = true;    // TESTING
         whereText.SetActive(false);
         background.SetActive(true);
         HideMap();
@@ -31,7 +40,14 @@ public class PanelManager : MonoBehaviour
 
     public void UpdateText(string str)  // Actualitza el text del panel
     {
-        ts.Clear();       // Activa o desactiva segons tipus de text  <<<<<<<<<<<<<<<<<<< CANVIAR SI TEXT FLUID a lo 80 DAYS
+        if (scrollText) // Activa si ScrollText
+        {
+            ts.Write("\n");
+        }
+        else
+        {
+            ts.Clear();
+        }
         HideOptions();
         ts.Write(str);
         inv.UpdateInventory();
@@ -39,6 +55,7 @@ public class PanelManager : MonoBehaviour
 
     public void HidePanel()
     {
+        scrollRect.enabled = false;     // TESTING
         whereText.SetActive(true);
         background.SetActive(false);
         ShowMap();
