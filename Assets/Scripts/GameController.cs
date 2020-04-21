@@ -984,7 +984,7 @@ public class GameController : MonoBehaviour
                     pm.UpdateText(str);
                 }
                 else if (lastText == "002" & t == 3) GotoMapa();
-                else if (lastText == "001" | t > 3)
+                else if (lastText == "001" & t > 3)
                 {
                     lastText = "004";       //      ESCOLA < 004 >
                     str = "walked up to the main entrance, but it was closed. A timetable said the school was open every weekday from dawn till noon.";
