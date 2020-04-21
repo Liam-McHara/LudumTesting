@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PanelManager : MonoBehaviour
 {
+    public GameObject whereText;
     public GameController gc;
     public TextScript ts;
     public GameObject background;
@@ -19,6 +20,7 @@ public class PanelManager : MonoBehaviour
 
     public void ShowPanel(string str)   // Mostra el panel amb el text que toqui
     {
+        whereText.SetActive(false);
         background.SetActive(true);
         HideMap();
         ts.Clear();
@@ -35,6 +37,7 @@ public class PanelManager : MonoBehaviour
 
     public void HidePanel()
     {
+        whereText.SetActive(true);
         background.SetActive(false);
         ShowMap();
         ts.Clear();

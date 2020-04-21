@@ -243,6 +243,8 @@ public class GameController : MonoBehaviour
                     if (infoPoison) str += " - Someone is going to poison my plant if I don’t stop it!\n";
                     if (infoWeapon) str += " - The sniper’s weapon is hidden in the warehouse!\n";
                     if (infoFinalboss) str += " - Even after I managed to dismantle all the her other plans, the Destroyer of Suns came herself to my flat at midnight, and murdered the sunflower. If only I found out her identity...\n";
+                    if (infoSchoolNeighbour) str += " - I saw my neighbour talking to the girl I met on the Main Avenue, inside her school!";
+                    if (infoGirlParents) str += " - The girl from the main avenue told me her mother is a teacher at the school, and her father is a security guard at the water processing plant.";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
