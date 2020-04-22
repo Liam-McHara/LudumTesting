@@ -160,6 +160,7 @@ MonoBehaviour:
   infoEvilGirl: 0
   infoFinalboss: 0
   infoFermat: 0
+  infoTakeSandwich: 0
   infoHoboSandwich: 0
   infoAllergy: 0
   infoPoison: 0

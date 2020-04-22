@@ -22,6 +22,8 @@ public class GameController : MonoBehaviour
     AudioManager am;
     PanelManager pm;
     IntroManager im;
+    InventoryScript inv;
+
 
     public int t;    // turno del día (1 - 5)
     public int loop = 1;
@@ -49,6 +51,7 @@ public class GameController : MonoBehaviour
         am = this.GetComponentInChildren<AudioManager>();
         pm = FindObjectOfType<PanelManager>();
         im = FindObjectOfType<IntroManager>();
+        inv = FindObjectOfType<InventoryScript>();
 
         im.ShowIntro(loop);     //      < FIRST LOOP >
         am.IntroEnding();
@@ -2402,11 +2405,12 @@ public class GameController : MonoBehaviour
     public void ResetItems()
     {
         // Reseteja variables temporals             ( aquesta funcio s'executa per IntroManager a dins de "HideIntro")
-
+        Debug.Log("Resetting all temporal variables...");
         item2b1 = itemWater = itemFlowers = itemLove = itemKillLady = false;    // parc
         itemBarricade = itemSandWich = itemCrowbar = false;      // abocador
         v7_001 = v7_009 = itemDeadGirl = itemChocolate = false;     // passeig
         itemFirstTimePizza = itemGun = v5a7 = itemPoison = v1a3 = false;
         itemSchoolKey = false;
-}
+        inv.UpdateInventory();
+    }
 }
