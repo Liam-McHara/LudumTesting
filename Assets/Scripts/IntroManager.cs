@@ -25,7 +25,9 @@ public class IntroManager : MonoBehaviour
     string noPoison = "This time it will work, I tell myself. I made so many preparations. I’m even starting to forget what the world was like before the loop. This time I got rid of my neighbour, and I destroyed the sniper’s weapon. There’s nothing that should go wrong now…\nSuddenly, I wake up with a shiver, realizing I have fallen asleep. It’s morning, and the sun shines. I look at my phone, and the date shows the next day. I did it, I finally… oh. Wait. Something’s wrong with the sunflower. I look at it with disbelief. The leaves are withered. It is dying. How could it be? I’m sure nobody entered the flat. Perhaps it was… poison?\n… The world ends.";
     string noEvil = "Has it been years? Months? I don’t know anymore. I look back at the time when a neighbour abseiling down from her flat and immolating herself was all it took to defeat me. Hah. I was so foolish, back then. So naive. But they keep using the same strategies, making the same moves. The same mistakes. Only I keep learning, improving. And this time, this time I shall get it right. The neighbour, the sniper, the poison, I got rid of them all. Long live the sunflower!";
     string noEvil2 = "Suddenly, the lights go out. I look around, confused. I hear a spraying sound, and I start feeling sleepy. So sleepy. \nThen I hear the voice. It’s a female voice. Cheerful, soft. I know it’s her. She’s the one I’ve been fighting all along. The Destroyer of Suns. And I’m sure I’ve heard her before… somewhere.\n''It’s all right'', she whispers. ''Why do you resist it so much? A world without time won’t be so bad, you know. According to my calculations, we will all be young forever. Don’t you want to live forever...?''\n… The world ends.";
-
+    string victory = "First, it was the neighbour. Then the sniper. Then poison. Then, her. \nI sit calmly in my sofa.I look, but I no longer see the world. I only see causality. The universe is under my spell.I own the trajectory of every fly, of every speck of dust.Of everything that lives and moves.\nI am millenary.";
+    string victory2 = "And then she comes, like she has to. Believing she has won, like always. But not this time. She may be brilliant beyond comprehension, but she’s still a slave of causality. I can see through her every feint, her every plan and counterplan.\nWe meet on the roof, by moonlight. She looks at me. A little girl, just eight years old. I know how long until she blinks again. I know how long she will exhale for. She looks at me, and she knows I know.\n''It seems my calculations were wrong, after all. Destroying the Guiding Sunflower doesn’t stop time… just resets it. But not for you. How long have you been trapped in here?'', she wonders.\n''Eons''.";
+    string victory3 = "I look at the clouds and I realize that, suddenly, I am no longer God. This is all new time, out of the loop, beyond my kingdom. I look at the world and it all seems alien, unfathomable. What was it like to live without knowing everything? Who was I before this began? I no longer remember.But who cares. ";
     string str;
 
     private void Start()
@@ -95,7 +97,14 @@ public class IntroManager : MonoBehaviour
                 intS.Write(noEvil);
                 gc.infoFinalboss = true;
             }
-            else Debug.Log("YOU WIN! Contratulations :)");
+            else
+            {
+                lastText = "victory";    // victory Ending    (part1)
+                intS.Write(victory);
+                intS.Write(victory2);
+                intS.Write(victory3);
+                Debug.Log("YOU WIN! Contratulations :)");
+            }
         }
         else if (lastText == "noEvil")
         {
