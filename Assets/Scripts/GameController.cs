@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour
 
     // Condicions temporals (es resetejen a cada bucle)
     public bool item2b1, itemWater, itemFlowers, itemLove, itemGardenerIsGone, itemKillLady = false;    // parc
-    public bool itemBarricade, itemSandWich, itemCrowbar = false;      // abocador
+    public bool itemBarricade, itemSandWich, itemWeirdArtifact, itemCrowbar = false;      // abocador
     public bool v7_001, v7_009, itemDeadGirl, itemChocolate = false;     // passeig
     public bool itemFirstTimePizza, itemGun, v5a7, itemPoison, v1a3 = false;
     public bool itemSchoolKey = false;
@@ -1349,6 +1349,7 @@ public class GameController : MonoBehaviour
                     str = "... a weird contraption made of wool, glass and copper tubes. After examining more closely, I realized it was actually a weird musical instrument I had never seen before. I didn’t know what it could be useful for, but I decided to bring it home with me anyway.";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
+                    itemWeirdArtifact = true;
                 }
                  else if (lastText == "008")
                 {
@@ -2410,7 +2411,7 @@ public class GameController : MonoBehaviour
         Debug.Log("Resetting all temporal variables...");
         item2b1 = itemWater = itemFlowers = itemLove = itemGardenerIsGone = itemKillLady = false;    // parc
         itemBarricade = itemSandWich = itemCrowbar = false;      // abocador
-        v7_001 = v7_009 = itemDeadGirl = itemChocolate = false;     // passeig
+        v7_001 = v7_009 = itemDeadGirl = itemWeirdArtifact = itemChocolate = false;     // passeig
         itemFirstTimePizza = itemGun = v5a7 = itemPoison = v1a3 = false;
         itemSchoolKey = false;
         inv.UpdateInventory();
