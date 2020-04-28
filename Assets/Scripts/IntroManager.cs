@@ -83,7 +83,7 @@ public class IntroManager : MonoBehaviour
                 intS.Write(noGun);
                 gc.infoSniper = true;
             }
-            else if (!gc.infoPoison)
+            else if (!gc.itemPoison)
             {
                 lastText = "noPoison";    // noPoison Ending
                 intS.Write(noPoison);

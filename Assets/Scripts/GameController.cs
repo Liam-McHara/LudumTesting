@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour
         infoFinalboss, infoFermat, infoTakeSandwich, infoHoboSandwich, infoAllergy, infoPoison, infoWeapon, infoGirlParents, infoSchoolNeighbour = false;
 
     // Condicions temporals (es resetejen a cada bucle)
-    public bool item2b1, itemWater, itemFlowers, itemLove, itemKillLady = false;    // parc
+    public bool item2b1, itemWater, itemFlowers, itemLove, itemGardenerIsGone, itemKillLady = false;    // parc
     public bool itemBarricade, itemSandWich, itemCrowbar = false;      // abocador
     public bool v7_001, v7_009, itemDeadGirl, itemChocolate = false;     // passeig
     public bool itemFirstTimePizza, itemGun, v5a7, itemPoison, v1a3 = false;
@@ -91,7 +91,7 @@ public class GameController : MonoBehaviour
         lastText = "001";       //      PARK < 001 >
         str = "I decided to take a stroll through the town’s park, thinking that perhaps it would help me clear my thoughts. It was almost silent there, except for the refreshing sound of the wind through the leaves. I liked the park even though it had no sunflowers - I had looked.\nAs I was walking around, I spotted...";
         op1 = op2 = op3 = op4 = "";
-        if (t < 5) op1 = "... a gardener, tending to his plants.";
+        if (t < 5 && !itemGardenerIsGone)  op1 = "... a gardener, tending to his plants.";
         if (!itemKillLady) op2 = "... a really old lady sitting on a bench.";
         op3 = "... my favourite sitting spot.";
         if (t < 4 & !item2b1) op4 = "... a street sweeper, cleaning the park avenue.";
@@ -254,11 +254,11 @@ public class GameController : MonoBehaviour
                     if (t == 1 | t == 3 | t == 4) str += "She didn’t answer. I guess she wasn’t at home? I should try again later.";
                     else
                     {
-                        if (!itemLove) str += "She opened it.\n''Hey, neighbour, it’s you'' she said, eyeing me suspiciously. ''Did you need anything in particular?''\nThe memories of her, dressed only with dynamite and abseiling down my flat, rushed into my mind. I won’t deny I got a tad nervous, and probably gave myself away by saying ''Eh...um... Hello! Where did you learn how to abseil?'' To which she answered \n''I’m a firefighter''\nThat was more that I could handle and rushed back home to the sweet solace of my sunflower.";
-                        if (!v1a3)
+                        if (!itemLove && infoNeighbour) str += "She opened it.\n''Hey, neighbour, it’s you'' she said, eyeing me suspiciously. ''Did you need anything in particular?''\nThe memories of her, dressed only with dynamite and abseiling down my flat, rushed into my mind. I won’t deny I got a tad nervous, and probably gave myself away by saying ''Eh...um... Hello! Where did you learn how to abseil?'' To which she answered \n''I’m a firefighter''\nThat was more that I could handle and rushed back home to the sweet solace of my sunflower.";
+                        if (!infoNeighbour)
                         {
                             str += "She opened it.\n''Hey, it’s you!'' She said.\n''Err...um... Hello!'' I replied, not really knowing what to say ''Soo, what is that you do with your life?'' To which she answered \n''I’m a firefighter''\n That was more that I could handle and rushed back home to the solace of my sunflower.";
-                            v1a3 = true;
+                            //v1a3 = true; replaced v1a3 per infoNeighbour
                         }
                     }
                    
@@ -320,6 +320,7 @@ public class GameController : MonoBehaviour
                     op3 = "I took nothing.";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
+                    itemGardenerIsGone = true;
                 }
                 else if (lastText == "006b")
                 {
@@ -1100,6 +1101,7 @@ public class GameController : MonoBehaviour
                     str = "Dear Diary,\nMy calculations have proven that the Iroquois legend is indeed real. There is a day, a single day every one hundred years, when a single sunflower on Earth becomes the Guiding Sunflower for an entire Earth rotation. Throughout these 24 hours, the Guiding Sunflower stops following the Sun’s trajectory, and instead it is the Sun that starts following the Sunflower. Of course, that sunflower is indistinguishable from any other by any conventional means. But if someone were to locate and destroy the Guiding Sunflower during the time of its awakening, then I have proven that not only would the Sun’s motion stop, but also the flow of Time itself. This would mean that I could live and play forever. I could eat candy forever. And what’s more: the date of awakening of the next Guiding Sunflower falls on a Saturday. That means that if I manage to destroy the Guiding Sunflower, I will never ever have to go back to school. Ever.";
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
+                    infoEvilGirl = true;
                 }
                 else if (lastText == "042")
                 {
@@ -2406,7 +2408,7 @@ public class GameController : MonoBehaviour
     {
         // Reseteja variables temporals             ( aquesta funcio s'executa per IntroManager a dins de "HideIntro")
         Debug.Log("Resetting all temporal variables...");
-        item2b1 = itemWater = itemFlowers = itemLove = itemKillLady = false;    // parc
+        item2b1 = itemWater = itemFlowers = itemLove = itemGardenerIsGone = itemKillLady = false;    // parc
         itemBarricade = itemSandWich = itemCrowbar = false;      // abocador
         v7_001 = v7_009 = itemDeadGirl = itemChocolate = false;     // passeig
         itemFirstTimePizza = itemGun = v5a7 = itemPoison = v1a3 = false;
