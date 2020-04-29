@@ -1624,13 +1624,7 @@ public class GameController : MonoBehaviour
                     pm.UpdateText(str);
                     break;
                 }
-                else if (lastText == "005")
-                {
-                    lastText = "008";       //      AIGUA < 008 >
-                    str = "''Wouldn’t you happen to have an eight year old daughter?''\nThe guard looked at me with disbelief. ''You know my daughter?'' he asked, cautiously. \n''Well, of course! I’m a volunteer at the public school, and she’s always talking of you, and all the wonderful things you do together! She loves you very, very much''. ";
-                    pm.UpdateOptions(continueText);
-                    pm.UpdateText(str);
-                }
+                
 
                 else if (lastText == "005")
                 {
@@ -2054,15 +2048,22 @@ public class GameController : MonoBehaviour
                 {
                     lastText = "005";       //      AIGUA < 007 >
                     str = "tried to talk my way in. \n''And good morning to you, sir!'' I boomed back with what I hoped would be a confident voice. The guard eyed me perfunctorily before repeating \n''ID. Autorization. Reason of visit.''";
-                    op1 = "''Certainly, sir!''";
-                    op2 = " ''Err… Sunflower!''.";
-                    pm.UpdateOptions(op1, op2);
+                    op1 = "'Certainly, sir!'";
+                    op2 = "'Err… Sunflower!'.";
+                    if (infoGirlParents) op3 = "'Wouldn’t you happen to have an eight year old daughter?'";
+                    pm.UpdateOptions(op1, op2, op3);
                     pm.UpdateText(str);
                 }
 
 
+                else if (lastText == "005")
+                {
+                    lastText = "008";       //      AIGUA < 008 >
+                    str = "''Wouldn’t you happen to have an eight year old daughter?''\nThe guard looked at me with disbelief. ''You know my daughter?'' he asked, cautiously. \n''Well, of course! I’m a volunteer at the public school, and she’s always talking of you, and all the wonderful things you do together! She loves you very, very much''. ";
+                    pm.UpdateOptions(continueText);
+                    pm.UpdateText(str);
+                }
 
-                
                 else if (lastText == "016")
                 {
                     lastText = "024";       //      AIGUA < 019 >
