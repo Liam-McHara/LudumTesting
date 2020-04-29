@@ -792,7 +792,7 @@ public class GameController : MonoBehaviour
                     pm.UpdateOptions(op1,op2,op3);
                     pm.UpdateText(str);
                 }
-                if (lastText == "001" & itemDeadGirl)
+                else if (lastText == "001" & itemDeadGirl)
                 {
                     lastText = "013";       //      AIGUA < 002 >
                     str = "infiltrate the plant through the public entrance! The guard post was empty, so there was no one to stop me from freely entering the water processing plant.\nSeems like guarding the entrance isn’t so important now that your daughter is dead or about to die at the town hospital, huh, Mr I’m-So-Sorry-But-There’s-Nothing-I-Can-Do?\n";
