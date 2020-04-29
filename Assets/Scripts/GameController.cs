@@ -180,7 +180,7 @@ public class GameController : MonoBehaviour
         op1 = "...a suspicious alleway...";
         op2 = "";
         op3 = "...a chocolate store...";
-        if (t > 3)
+        if (t > 3 && !itemDeadGirl)
         {
             op2 = "...an innocent looking girl...";
             infoVistNena = true;
@@ -1005,9 +1005,9 @@ public class GameController : MonoBehaviour
                     else
                     {
                         str = "walked up to the main entrance.\nAs I went in, a woman welcomed me.  ''Good morning, sir. May I help you?'' It was obvious she expected some kind of comment about my visit.";
-                        op1 = "Is it too late for me to sign in?";
-                        op2 = "Have you seen anyone suspicious around the school lately?";
-                        if (infoNeighbour) op3 = "Let me in, there’s a murderer inside the school!";
+                        op1 = "''Is it too late for me to sign in?''";
+                        op2 = "''Have you seen anyone suspicious around the school lately?''";
+                        if (infoSchoolNeighbour) op3 = "''Let me in, there’s a murderer inside the school!''";
                         pm.UpdateOptions(op1, op2, op3);
                     }
 
@@ -1020,7 +1020,7 @@ public class GameController : MonoBehaviour
                     str = "walked up to the main entrance, but it was closed. A timetable said the school was open every weekday from dawn till noon.";
                     if (!itemSchoolKey)
                     {
-                        str += "I had arrived too late.";
+                        str += " I had arrived too late.";
                         pm.UpdateOptions(continueText);
                     }
                     else
@@ -1216,9 +1216,9 @@ public class GameController : MonoBehaviour
                 if (lastText == "001")
                 {
                     lastText = "003";       //      HOME < 003 >
-                    str = "... spy on my neighbour. She lives two floors up. I went out in my sleepers and";
-                    op1 = "Knocked on her door...";
-                    op2 = "Peeked through the keyhole...";
+                    str = "... spy on my neighbour. She lives two floors up. I went out in my sleepers and...";
+                    op1 = "... Knocked on her door...";
+                    op2 = "... Peeked through the keyhole...";
                     pm.UpdateOptions(op1, op2);
                     pm.UpdateText(str);
                 }
@@ -2359,12 +2359,12 @@ public class GameController : MonoBehaviour
                     str = s1 + s2;
                     // Prepara les noves opcions
                     
-                    op1 = "Well, I am quite worried about my sunflower...";
-                    op2 = "And who the hell are you?";
+                    op1 = "'Well, I am quite worried about my sunflower...'";
+                    op2 = "'And who the hell are you?'";
                     if (loop < 2) pm.UpdateOptions(op1, op2);
                     else
                     {
-                        op3 = "I think I’m trapped in a time loop!";
+                        op3 = "'I think I’m trapped in a time loop!'";
                         pm.UpdateOptions(op1, op2, op3);
                     }
                     // Mostra el nou panell amb text i opcions

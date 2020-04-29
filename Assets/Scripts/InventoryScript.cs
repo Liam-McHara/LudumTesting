@@ -17,7 +17,7 @@ public class InventoryScript : MonoBehaviour
     public void UpdateInventory()
     {
         t.text = ""; // Start with an empty inventory
-
+        if (gc.itemWeirdArtifact) t.text += "-weird artifact\n";
         if (gc.itemBarricade) t.text += "-baricade\n";
         if (gc.itemChocolate) t.text += "-chocolate\n";
         if (gc.itemCrowbar) t.text += "-crowbar\n";
