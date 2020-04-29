@@ -123,11 +123,11 @@ public class GameController : MonoBehaviour
         op1 = op2 = op3 = op4 = "";
         lastText = "001";       //      ALMACEN < 001 >
         str = "I went to the abandoned warehouses on the lonely side of town looking for clues, and ";
-        if (t == 1) str = str + "... saw the sunrise on metal, rust and broken glass, wild dusty bushes, ragged quiet. Then I...";
-        else if (t == 2) str = str + "... saw the sun Then I...";
-        else if (t == 3) str = str + "... saw the sun Then I...";
-        else if (t == 4) str = str + "... saw the sun directing a haze of floating orange dust soaked light towards me. Then I...";
-        else if (t == 5) str = str + "... saw the street lights buzzing with electric delight over the abandoned and empty streets. I walked through thick darkness broken by cones of yellow. I walked through the futility of it all. Then  I...";
+        if (t == 1) str = str + "saw the sunrise on metal, rust and broken glass, wild dusty bushes, ragged quiet. Then I...";
+        else if (t == 2) str = str + "Then I...";
+        else if (t == 3) str = str + "Then I...";
+        else if (t == 4) str = str + "saw the sun directing a haze of floating orange dust soaked light towards me. Then I...";
+        else if (t == 5) str = str + "saw the street lights buzzing with electric delight over the abandoned and empty streets. I walked through thick darkness broken by cones of yellow. I walked through the futility of it all. Then  I...";
         op1 = "... sat on a dusty old sofa.";
         op2 = "... looked around for clues.";
         op3 = "... fed some cats.";
@@ -506,12 +506,12 @@ public class GameController : MonoBehaviour
                     if (t == 5)
                     {
                         lastText = "002";       //  Abocador < 002 >
-                        str = "... sat on this dusty old sofa and did nothing till the moon peeked through the clouds.\nThe world seemed to be turning just fine.";
+                        str = "... sat on a dusty old sofa and did nothing till the moon peeked through the clouds.\nThe world seemed to be turning just fine.";
                     }
                     if (t != 5)
                     {
                         lastText = "002";
-                        str = "... sat on this dusty old sofa and did nothing for a while til the shadows moved.//\nThe world seemed to be turning just fine.";
+                        str = "... sat on this dusty old sofa and did nothing for a while til the shadows moved.\nThe world seemed to be turning just fine.";
                     }
 
                     pm.UpdateOptions(continueText);
