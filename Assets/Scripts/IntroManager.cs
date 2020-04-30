@@ -40,7 +40,6 @@ public class IntroManager : MonoBehaviour
     {
         lastText = "";
         HideButton();
-        //am.IntroEnding();   // Changes music
         SoundManager.PlayMusic(SoundManager.Music.opening);
         // Debug.Log("Showing Intro " + l);
         background.SetActive(true);
@@ -100,13 +99,31 @@ public class IntroManager : MonoBehaviour
             }
             else
             {
-                lastText = "victory";    // victory Ending    (part1)
-                intS.Write(victory);
-                intS.Write(victory2);
-                intS.Write(victory3);
                 Debug.Log("YOU WIN! Contratulations :)");
+                lastText = "victory";       // victory Ending    (part1)
+                intS.Write(victory);
             }
         }
+        else if (lastText == "victory")
+        {
+            lastText = "victory2";          // victory Ending    (part2)
+            intS.Clear();
+            HideButton();
+            intS.Write(victory2);
+        }
+        else if (lastText == "victory2")
+        {
+            lastText = "victory3";          // victory Ending    (part3)
+            intS.Clear();
+            HideButton();
+            intS.Write(victory3);
+        }
+        else if (lastText == "victory3")
+        {
+            Debug.Log("GAME OVER");
+            // GAME OVER :D          <--- Aquí se suposa que ja s'ha completat el joc i s'ha mostrat el text de victoria. What's next?
+        }
+
         else if (lastText == "noEvil")
         {
             lastText = "noEvil2";    // noEvil Ending    (part2)
@@ -148,7 +165,7 @@ public class IntroManager : MonoBehaviour
 
     public void Faster()    // Makes the UI interaction go faster
     {
-        am.Click();
+        // SoundManager.PlaySound´(SoundManager.Sound.click);
         if (visible)
         {
             if (intS.writing) // Accelerates text showing
