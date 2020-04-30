@@ -54,7 +54,6 @@ public class GameController : MonoBehaviour
         inv = FindObjectOfType<InventoryScript>();
 
         im.ShowIntro(loop);     //      < FIRST LOOP >
-        am.IntroEnding();
 
 
         hobo = Random.value > 0.5f; // Mou el hobo
@@ -71,7 +70,8 @@ public class GameController : MonoBehaviour
     public void GotoCasa()
     {
         Debug.Log("Going to CASA");
-        am.Click();
+        SoundManager.PlaySound(SoundManager.Sound.click);
+        SoundManager.PlayMusic(SoundManager.Music.home);
         place = 1;
         op1 = op2 = op3 = op4 = "";
         lastText = "001";       //      CASA < 001 >
@@ -85,7 +85,8 @@ public class GameController : MonoBehaviour
     }
     public void GotoParque()
     {
-        am.Click();
+        SoundManager.PlaySound(SoundManager.Sound.click);
+        SoundManager.PlayMusic(SoundManager.Music.park);
         Debug.Log("Going to PARQUE");
         place = 2;
         lastText = "001";       //      PARK < 001 >
@@ -101,7 +102,8 @@ public class GameController : MonoBehaviour
     }
     public void GotoAbocador()
     {
-        am.Click();
+        SoundManager.PlaySound(SoundManager.Sound.click);
+        SoundManager.PlayMusic(SoundManager.Music.dumpster);
         Debug.Log("Going to ABOCADOR");
         place = 3;
         op1 = op2 = op3 = op4 = "";
@@ -117,7 +119,8 @@ public class GameController : MonoBehaviour
     }
     public void GotoAlmacen()
     {
-        am.Click();
+        SoundManager.PlaySound(SoundManager.Sound.click);
+        SoundManager.PlayMusic(SoundManager.Music.wharehouse);
         Debug.Log("Going to ALMACEN");
         place = 4;
         op1 = op2 = op3 = op4 = "";
@@ -137,7 +140,8 @@ public class GameController : MonoBehaviour
     }
     public void GotoPizza()
     {
-        am.Click();
+        SoundManager.PlaySound(SoundManager.Sound.click);
+        SoundManager.PlayMusic(SoundManager.Music.pizza);
         Debug.Log("Going to PIZZA");
         place = 5;
         op1 = op2 = op3 = op4 = "";
@@ -153,7 +157,8 @@ public class GameController : MonoBehaviour
     }
     public void GotoAigua()
     {
-        am.Click();
+        SoundManager.PlaySound(SoundManager.Sound.click);
+        SoundManager.PlayMusic(SoundManager.Music.waterplant);
         Debug.Log("Going to AIGUA");
         place = 6;
         op1 = ">" ;
@@ -165,7 +170,8 @@ public class GameController : MonoBehaviour
     }
     public void GotoPasseig()                   
     {
-        am.Click();
+        SoundManager.PlaySound(SoundManager.Sound.click);
+        SoundManager.PlayMusic(SoundManager.Music.avenue);
         Debug.Log("Going to PASSEIG");
         place = 7;
         lastText = "001";       //      PASSEIG < 001 >
@@ -192,7 +198,8 @@ public class GameController : MonoBehaviour
     }
     public void GotoEscola()
     {
-        am.Click();
+        SoundManager.PlaySound(SoundManager.Sound.click);
+        SoundManager.PlayMusic(SoundManager.Music.school);
         Debug.Log("Going to ESCOLA");
         place = 8;
         op1 = op2 = op3 = op4 = "";
@@ -208,6 +215,7 @@ public class GameController : MonoBehaviour
     public void GotoMapa()
     {
         Debug.Log("Going to MAPA");
+        SoundManager.PlayMusic(SoundManager.Music.map);
         place = 0;
         ++t;
         if (t > 5) TimeTravel();
@@ -218,7 +226,7 @@ public class GameController : MonoBehaviour
     // OPCIONES
     public void Option1()   //--------------------------------------------------------------------  1   ---
     {
-        am.Click();
+        SoundManager.PlaySound(SoundManager.Sound.click);
         op1 = op2 = op3 = op4 = "";     // buida noms d'opcions
         Debug.Log("Option 1 - from: "+ lastText );
         switch (place)
@@ -1207,7 +1215,7 @@ public class GameController : MonoBehaviour
     }
     public void Option2()   //--------------------------------------------------------------------  2   ---
     {
-        am.Click();
+        SoundManager.PlaySound(SoundManager.Sound.click);
         op1 = op2 = op3 = op4 = "";     // buida noms d'opcions
         Debug.Log("Option 2 - from: " + lastText);
         switch (place)
@@ -1841,7 +1849,7 @@ public class GameController : MonoBehaviour
     }
     public void Option3()   //--------------------------------------------------------------------  3   ---
     {
-        am.Click();
+        SoundManager.PlaySound(SoundManager.Sound.click);
         op1 = op2 = op3 = op4 = "";     // buida noms d'opcions
         Debug.Log("Option 3 - from: " + lastText);
         switch (place)
@@ -2168,7 +2176,7 @@ public class GameController : MonoBehaviour
     }
     public void Option4()    //--------------------------------------------------------------------  4   ---
     {
-        am.Click();
+        SoundManager.PlaySound(SoundManager.Sound.click);
         op1 = op2 = op3 = op4 = "";     // buida noms d'opcions
         Debug.Log("Option 4 - from: " + lastText);
         switch (place)
@@ -2319,7 +2327,7 @@ public class GameController : MonoBehaviour
     // ------------------------------------------------- SPECIAL OPTIONS (text)------
     public void TextOption(string ans)      
     {
-        am.Click();
+        SoundManager.PlaySound(SoundManager.Sound.click);
         Debug.Log("Text answer: " + ans);
         
         switch (place)

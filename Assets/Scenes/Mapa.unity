@@ -171,9 +171,11 @@ MonoBehaviour:
   itemWater: 0
   itemFlowers: 0
   itemLove: 0
+  itemGardenerIsGone: 0
   itemKillLady: 0
   itemBarricade: 0
   itemSandWich: 0
+  itemWeirdArtifact: 0
   itemCrowbar: 0
   v7_001: 0
   v7_009: 0

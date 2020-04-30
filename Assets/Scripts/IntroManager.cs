@@ -40,8 +40,9 @@ public class IntroManager : MonoBehaviour
     {
         lastText = "";
         HideButton();
-        am.IntroEnding();   // Changes music
-        Debug.Log("Showing Intro " + l);
+        //am.IntroEnding();   // Changes music
+        SoundManager.PlayMusic(SoundManager.Music.opening);
+        // Debug.Log("Showing Intro " + l);
         background.SetActive(true);
         if (l > 1) pm.HideMap();
         if (l == 1)
@@ -66,8 +67,8 @@ public class IntroManager : MonoBehaviour
 
     public void Next()
     {
-        am.Click();
-        Debug.Log("Lastext: " + lastText);
+        SoundManager.PlaySound(SoundManager.Sound.click);
+        // Debug.Log("Lastext: " + lastText);
         if (lastText == "endIntro1" | lastText == "endIntro2")
         {
             // ------------------------------------   COSSOS   ------------------------------------------------
@@ -125,10 +126,9 @@ public class IntroManager : MonoBehaviour
 
     public void HideIntro()     // RESETEJAR VARIABLES DE LOOP AQUI
     {
-        am.InGame();    //  Changes music
-                        //
+        SoundManager.PlayMusic(SoundManager.Music.map);
 
-        Debug.Log("Hiding Intro ");
+        // Debug.Log("Hiding Intro ");
         background.SetActive(false);
         pm.ShowMap();
         intS.Clear();
