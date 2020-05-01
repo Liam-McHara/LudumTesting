@@ -11,7 +11,6 @@ public class AudioManager : MonoBehaviour
     // sonidos
     public AudioSource sonidoClic;
 
-
     public void InGame()
     {
         musicaJuego.Play();

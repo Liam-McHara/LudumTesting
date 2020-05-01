@@ -69,7 +69,7 @@ public class PanelManager : MonoBehaviour
 
     public void ShowOptions()
     {
-        Debug.Log("SHOW OPTIONS");
+        //Debug.Log("SHOW OPTIONS");
 
         if (textInputOption)    // Si es un dels casos especials, mostra un text input en comptes de botons
         {
@@ -85,7 +85,7 @@ public class PanelManager : MonoBehaviour
                 {
                     if (options[i - 1] != "")
                     {
-                        Debug.Log("Showing " + i);
+                        //Debug.Log("Showing " + i);
                         optionButtons[i - 1].GetComponent<Text>().text = options[i - 1];    // Canvia el nom de la opció
                         optionButtons[i - 1].SetActive(true);   // Mostra la opció
                     }
