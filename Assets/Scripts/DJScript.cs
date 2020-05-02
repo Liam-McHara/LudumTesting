@@ -5,7 +5,7 @@ using UnityEngine;
 public class DJScript : MonoBehaviour
 {
     [SerializeField]
-    static float fadeStep = .1f;
+    float fadeStep = .1f;
     AudioSource audioSource;
 
     private void Awake()
