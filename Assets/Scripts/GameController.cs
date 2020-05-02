@@ -19,7 +19,6 @@ public class GameController : MonoBehaviour
     // Hobo
     bool hobo = false;
 
-    AudioManager am;
     PanelManager pm;
     IntroManager im;
     InventoryScript inv;
@@ -48,7 +47,6 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        am = this.GetComponentInChildren<AudioManager>();
         pm = FindObjectOfType<PanelManager>();
         im = FindObjectOfType<IntroManager>();
         inv = FindObjectOfType<InventoryScript>();
@@ -70,8 +68,8 @@ public class GameController : MonoBehaviour
     public void GotoCasa()
     {
         Debug.Log("Going to CASA");
-        SoundManager.PlaySound(SoundManager.Sound.click);
-        SoundManager.PlayMusic(SoundManager.Music.home);
+        AudioManager.PlaySound(AudioManager.Sound.click);
+        AudioManager.PlayMusic(AudioManager.Music.home);
         place = 1;
         op1 = op2 = op3 = op4 = "";
         lastText = "001";       //      CASA < 001 >
@@ -85,8 +83,8 @@ public class GameController : MonoBehaviour
     }
     public void GotoParque()
     {
-        SoundManager.PlaySound(SoundManager.Sound.click);
-        SoundManager.PlayMusic(SoundManager.Music.park);
+        AudioManager.PlaySound(AudioManager.Sound.click);
+        AudioManager.PlayMusic(AudioManager.Music.park);
         Debug.Log("Going to PARQUE");
         place = 2;
         lastText = "001";       //      PARK < 001 >
@@ -102,8 +100,8 @@ public class GameController : MonoBehaviour
     }
     public void GotoAbocador()
     {
-        SoundManager.PlaySound(SoundManager.Sound.click);
-        SoundManager.PlayMusic(SoundManager.Music.dumpster);
+        AudioManager.PlaySound(AudioManager.Sound.click);
+        AudioManager.PlayMusic(AudioManager.Music.dumpster);
         Debug.Log("Going to ABOCADOR");
         place = 3;
         op1 = op2 = op3 = op4 = "";
@@ -119,8 +117,8 @@ public class GameController : MonoBehaviour
     }
     public void GotoAlmacen()
     {
-        SoundManager.PlaySound(SoundManager.Sound.click);
-        SoundManager.PlayMusic(SoundManager.Music.wharehouse);
+        AudioManager.PlaySound(AudioManager.Sound.click);
+        AudioManager.PlayMusic(AudioManager.Music.wharehouse);
         Debug.Log("Going to ALMACEN");
         place = 4;
         op1 = op2 = op3 = op4 = "";
@@ -140,8 +138,8 @@ public class GameController : MonoBehaviour
     }
     public void GotoPizza()
     {
-        SoundManager.PlaySound(SoundManager.Sound.click);
-        SoundManager.PlayMusic(SoundManager.Music.pizza);
+        AudioManager.PlaySound(AudioManager.Sound.click);
+        AudioManager.PlayMusic(AudioManager.Music.pizza);
         Debug.Log("Going to PIZZA");
         place = 5;
         op1 = op2 = op3 = op4 = "";
@@ -157,8 +155,8 @@ public class GameController : MonoBehaviour
     }
     public void GotoAigua()
     {
-        SoundManager.PlaySound(SoundManager.Sound.click);
-        SoundManager.PlayMusic(SoundManager.Music.waterplant);
+        AudioManager.PlaySound(AudioManager.Sound.click);
+        AudioManager.PlayMusic(AudioManager.Music.waterplant);
         Debug.Log("Going to AIGUA");
         place = 6;
         op1 = ">" ;
@@ -170,8 +168,8 @@ public class GameController : MonoBehaviour
     }
     public void GotoPasseig()                   
     {
-        SoundManager.PlaySound(SoundManager.Sound.click);
-        SoundManager.PlayMusic(SoundManager.Music.avenue);
+        AudioManager.PlaySound(AudioManager.Sound.click);
+        AudioManager.PlayMusic(AudioManager.Music.avenue);
         Debug.Log("Going to PASSEIG");
         place = 7;
         lastText = "001";       //      PASSEIG < 001 >
@@ -198,8 +196,8 @@ public class GameController : MonoBehaviour
     }
     public void GotoEscola()
     {
-        SoundManager.PlaySound(SoundManager.Sound.click);
-        SoundManager.PlayMusic(SoundManager.Music.school);
+        AudioManager.PlaySound(AudioManager.Sound.click);
+        AudioManager.PlayMusic(AudioManager.Music.school);
         Debug.Log("Going to ESCOLA");
         place = 8;
         op1 = op2 = op3 = op4 = "";
@@ -215,7 +213,7 @@ public class GameController : MonoBehaviour
     public void GotoMapa()
     {
         Debug.Log("Going to MAPA");
-        SoundManager.PlayMusic(SoundManager.Music.map);
+        AudioManager.PlayMusic(AudioManager.Music.map);
         place = 0;
         ++t;
         if (t > 5) TimeTravel();
@@ -226,7 +224,7 @@ public class GameController : MonoBehaviour
     // OPCIONES
     public void Option1()   //--------------------------------------------------------------------  1   ---
     {
-        SoundManager.PlaySound(SoundManager.Sound.click);
+        AudioManager.PlaySound(AudioManager.Sound.click);
         op1 = op2 = op3 = op4 = "";     // buida noms d'opcions
         Debug.Log("Option 1 - from: "+ lastText );
         switch (place)
@@ -1215,7 +1213,7 @@ public class GameController : MonoBehaviour
     }
     public void Option2()   //--------------------------------------------------------------------  2   ---
     {
-        SoundManager.PlaySound(SoundManager.Sound.click);
+        AudioManager.PlaySound(AudioManager.Sound.click);
         op1 = op2 = op3 = op4 = "";     // buida noms d'opcions
         Debug.Log("Option 2 - from: " + lastText);
         switch (place)
@@ -1849,7 +1847,7 @@ public class GameController : MonoBehaviour
     }
     public void Option3()   //--------------------------------------------------------------------  3   ---
     {
-        SoundManager.PlaySound(SoundManager.Sound.click);
+        AudioManager.PlaySound(AudioManager.Sound.click);
         op1 = op2 = op3 = op4 = "";     // buida noms d'opcions
         Debug.Log("Option 3 - from: " + lastText);
         switch (place)
@@ -2176,7 +2174,7 @@ public class GameController : MonoBehaviour
     }
     public void Option4()    //--------------------------------------------------------------------  4   ---
     {
-        SoundManager.PlaySound(SoundManager.Sound.click);
+        AudioManager.PlaySound(AudioManager.Sound.click);
         op1 = op2 = op3 = op4 = "";     // buida noms d'opcions
         Debug.Log("Option 4 - from: " + lastText);
         switch (place)
@@ -2327,7 +2325,7 @@ public class GameController : MonoBehaviour
     // ------------------------------------------------- SPECIAL OPTIONS (text)------
     public void TextOption(string ans)      
     {
-        SoundManager.PlaySound(SoundManager.Sound.click);
+        AudioManager.PlaySound(AudioManager.Sound.click);
         Debug.Log("Text answer: " + ans);
         
         switch (place)

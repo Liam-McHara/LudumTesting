@@ -6,7 +6,6 @@ public class IntroManager : MonoBehaviour
 {
     GameController gc;
     PanelManager pm;
-    public AudioManager am;
     public IntroScript intS;
     public GameObject background;
     public GameObject beginButton;
@@ -40,7 +39,7 @@ public class IntroManager : MonoBehaviour
     {
         lastText = "";
         HideButton();
-        SoundManager.PlayMusic(SoundManager.Music.opening);
+        AudioManager.PlayMusic(AudioManager.Music.opening);
         // Debug.Log("Showing Intro " + l);
         background.SetActive(true);
         if (l > 1) pm.HideMap();
@@ -66,7 +65,7 @@ public class IntroManager : MonoBehaviour
 
     public void Next()
     {
-        SoundManager.PlaySound(SoundManager.Sound.click);
+        AudioManager.PlaySound(AudioManager.Sound.click);
         // Debug.Log("Lastext: " + lastText);
         if (lastText == "endIntro1" | lastText == "endIntro2")
         {
@@ -143,7 +142,7 @@ public class IntroManager : MonoBehaviour
 
     public void HideIntro()     // RESETEJAR VARIABLES DE LOOP AQUI
     {
-        SoundManager.PlayMusic(SoundManager.Music.map);
+        AudioManager.PlayMusic(AudioManager.Music.map);
 
         // Debug.Log("Hiding Intro ");
         background.SetActive(false);

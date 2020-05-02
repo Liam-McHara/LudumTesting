@@ -16,15 +16,23 @@ public class AudioResources : MonoBehaviour
     }
 
     [Header("Sounds")]
-    public AudioClip click;
+    public SoundAudioClip[] soundAudioClips;
 
     [Header("Music")]
     public MusicAudioClip[] musicAudioClips;
-    
+
+
+    [System.Serializable]
+    public class SoundAudioClip
+    {
+        public AudioManager.Sound sound;
+        public AudioClip audioClip;
+    }
+
     [System.Serializable]
     public class MusicAudioClip
     {
-        public SoundManager.Music music;
+        public AudioManager.Music music;
         public AudioClip audioClip;
     }
 }
