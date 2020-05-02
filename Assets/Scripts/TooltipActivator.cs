@@ -9,7 +9,7 @@ public class TooltipActivator : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     void Awake()
     {
-        tooltip = FindObjectOfType<Tooltip>().GetComponent<Tooltip>();
+        tooltip = GameObject.FindGameObjectWithTag("Tooltip").GetComponentInChildren<Tooltip>();
     }
 
     // PointerEventData eventData
