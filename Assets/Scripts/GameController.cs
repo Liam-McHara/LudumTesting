@@ -1554,7 +1554,7 @@ public class GameController : MonoBehaviour
                     str = "I kept listening, and he started vomiting words all over, shouting and moving his arms around. \n''will come the time and surely this time has come and past and come AGAIN till it passes away if only no one would PASS AWAY, y’know??\nplay would stop reap shot poison bomb the one we could keep doin keep gofin, keep moving forward! y'know? save it if you can save it yourself and don't waste my time, hey dude don’t waste my time, yesterday is gone tomorrow won't come just shut up SHUT UP and bend low bend down!!''";
                     op1 = "I bend down.";
                     op2 = "I went home.";
-                    pm.UpdateOptions(op1,op2);
+                    pm.UpdateOptions(op1, op2);
                     pm.UpdateText(str);
                 }
                 else if (lastText == "013")
@@ -1612,7 +1612,11 @@ public class GameController : MonoBehaviour
                     pm.UpdateOptions(continueText);
                     pm.UpdateText(str);
                 }
-
+                else
+                {
+                    Debug.Log("Default caseA: Going to MAPA");
+                    GotoMapa();  //  [ RETURN ]
+                }
                 break;
             case 6:                         //  >> AIGUA <<
                 if (lastText == "001")
@@ -1973,13 +1977,9 @@ public class GameController : MonoBehaviour
                     pm.UpdateOptions(op1, op2, op3, op4);
                     pm.UpdateText(str);
                 }
-
-               
-
-
                 else if (lastText == "005")
                 {
-                    lastText = "30";       //  < 30 >
+                    lastText = "30";       //  WH < 30 >
                     str = " I tried to open it with my crowbar. I managed to injure myself with it and, much to my surprise, it worked. Inside the room I easily found the sniper’s gun hidden under a box. I picked it up and tossed it on a random potato field. Let the plants deal with it. My sunflower would be safe today.";
                     itemGun = true;
                     pm.UpdateOptions(continueText);

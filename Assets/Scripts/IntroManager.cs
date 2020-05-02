@@ -164,7 +164,7 @@ public class IntroManager : MonoBehaviour
 
     public void Faster()    // Makes the UI interaction go faster
     {
-        // SoundManager.PlaySound´(SoundManager.Sound.click);
+        // SoundManager.PlaySound(SoundManager.Sound.click);
         if (visible)
         {
             if (intS.writing) // Accelerates text showing

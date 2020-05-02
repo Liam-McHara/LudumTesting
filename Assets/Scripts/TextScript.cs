@@ -7,7 +7,7 @@ public class TextScript : MonoBehaviour
 {
     Text textComponent;
     PanelManager pm;
-    public string text;
+    public string textToWrite;
     [Range(0.01f, 0.03f)]
     public float timeLapse;
     float lastUpdate;
@@ -17,9 +17,6 @@ public class TextScript : MonoBehaviour
     {
         textComponent = this.GetComponent<Text>();
         pm = FindObjectOfType<PanelManager>();
-        
-        //TESTING
-        textComponent.text = "";
     }
 
     private IEnumerator BuildText()
@@ -27,20 +24,22 @@ public class TextScript : MonoBehaviour
         pm.HideOptions();   // oculta les opcions mentre s'escriu
         writing = true;
         int i = 0;
-        while (i < text.Length & writing)
+        while (i < textToWrite.Length & writing)
         {
-            textComponent.text = string.Concat(textComponent.text, text[i]);
+            i++;
+            string text = textToWrite.Substring(0, i);
+            if (i <= textToWrite.Length)    // Escriu els carácters restants invisibles, perque mantinguin l'espai que ocuparan
+            {
+                text += "<color=#00000000>" + textToWrite.Substring(i) + "</color>";
+            }
+            textComponent.text = text;
             //Wait a certain amount of time, then continue with the for loop
             yield return new WaitForSeconds(timeLapse);
-            i++;
+            
         }
         if (!writing)   // si es cancela a mitja operació, escriu el que falta
         {
-            while (i < text.Length)
-            {
-                textComponent.text = string.Concat(textComponent.text, text[i]);
-                i++;
-            }
+            textComponent.text = textToWrite;
         }
         pm.ShowOptions();   // mostra les opcions un cop acaba d'escriure
         writing = false;
@@ -54,7 +53,7 @@ public class TextScript : MonoBehaviour
     public void Write(string newText)
     {
         
-        text = newText;
+        textToWrite = newText;
         StartCoroutine(BuildText());
     }
     public void Clear()

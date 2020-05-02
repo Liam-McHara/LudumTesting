@@ -23,7 +23,7 @@ public class DJScript : MonoBehaviour
             // Mira si lo que está sonando es diferente...
             if (audioSource.clip != music)
             {
-                Debug.Log("Cambiando de " + audioSource.clip + " a " + music);
+                //Debug.Log("Cambiando de " + audioSource.clip + " a " + music);
                 StartCoroutine(FadeOutFadeIn(music, vol));
             }
             else
@@ -33,7 +33,7 @@ public class DJScript : MonoBehaviour
         }
         else
         {   // Si es la primera canción de la noche...
-            Debug.Log("DJ: Playing track " + music);
+            //Debug.Log("DJ: Playing track " + music);
             StartCoroutine(FadeIn(music));
         }
     }
@@ -60,10 +60,10 @@ public class DJScript : MonoBehaviour
     {
         audioSource.clip = music;
         audioSource.Play();
-        Debug.Log("Target Volume: " + targetVol);
+        //Debug.Log("Target Volume: " + targetVol);
         for (float ft = 0; ft < targetVol; ft += 0.1f)
         {
-            Debug.Log("DJ: Playing at volume: " + ft);
+            //Debug.Log("DJ: Playing at volume: " + ft);
             audioSource.volume = ft;
             yield return new WaitForSeconds(fadeStep);
         }
