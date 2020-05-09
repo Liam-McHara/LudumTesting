@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    #region Declaración de variables
     // Variables de coneixement (permanents)
     public bool infoCrash, infoVistNena, infoGorra, infoWarehouse, infoLoop, infoNeighbour, infoSniper, infoEvilGirl, 
         infoFinalboss, infoFermat, infoTakeSandwich, infoHoboSandwich, infoAllergy, infoPoison, infoWeapon, infoGirlParents, infoSchoolNeighbour = false;
@@ -43,7 +44,7 @@ public class GameController : MonoBehaviour
     
     public string lastText;  // Ultima part de narracio mostrada
     string str, op1, op2, op3, op4;
-
+    #endregion
 
     void Start()
     {
@@ -52,17 +53,8 @@ public class GameController : MonoBehaviour
         inv = FindObjectOfType<InventoryScript>();
 
         im.ShowIntro(loop);     //      < FIRST LOOP >
-
-
         hobo = Random.value > 0.5f; // Mou el hobo
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown("space")) pm.Faster(); // accelera la UI (text, opcions predefinides...)
-    }
-
 
     // MAPA
     public void GotoCasa()
@@ -166,7 +158,7 @@ public class GameController : MonoBehaviour
         pm.UpdateOptions(op1);
         pm.ShowPanel(str);
     }
-    public void GotoPasseig()                   
+    public void GotoPasseig()
     {
         AudioManager.PlaySound(AudioManager.Sound.click);
         AudioManager.PlayMusic(AudioManager.Music.avenue);
@@ -209,7 +201,6 @@ public class GameController : MonoBehaviour
         pm.UpdateOptions(op1, op2, op3);
         pm.ShowPanel(str);
     }
-
     public void GotoMapa()
     {
         Debug.Log("Going to MAPA");
@@ -220,9 +211,8 @@ public class GameController : MonoBehaviour
         pm.HidePanel();
     }
 
-
     // OPCIONES
-    public void Option1()   //--------------------------------------------------------------------  1   ---
+    public void Option1()   //--------------------------------------------------------------------  1  ---
     {
         AudioManager.PlaySound(AudioManager.Sound.click);
         op1 = op2 = op3 = op4 = "";     // buida noms d'opcions
@@ -1211,7 +1201,7 @@ public class GameController : MonoBehaviour
         }
 
     }
-    public void Option2()   //--------------------------------------------------------------------  2   ---
+    public void Option2()   //--------------------------------------------------------------------  2  ---
     {
         AudioManager.PlaySound(AudioManager.Sound.click);
         op1 = op2 = op3 = op4 = "";     // buida noms d'opcions
@@ -1843,7 +1833,7 @@ public class GameController : MonoBehaviour
                 break;
         }
     }
-    public void Option3()   //--------------------------------------------------------------------  3   ---
+    public void Option3()   //--------------------------------------------------------------------  3  ---
     {
         AudioManager.PlaySound(AudioManager.Sound.click);
         op1 = op2 = op3 = op4 = "";     // buida noms d'opcions
@@ -2173,7 +2163,7 @@ public class GameController : MonoBehaviour
         }
 
     }
-    public void Option4()    //--------------------------------------------------------------------  4   ---
+    public void Option4()   //--------------------------------------------------------------------  4  ---
     {
         AudioManager.PlaySound(AudioManager.Sound.click);
         op1 = op2 = op3 = op4 = "";     // buida noms d'opcions
@@ -2401,7 +2391,6 @@ public class GameController : MonoBehaviour
         }
 
     }
-
 
     public void TimeTravel()
     {
