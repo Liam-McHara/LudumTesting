@@ -28,7 +28,7 @@ public class GameController : MonoBehaviour
     public int t;    // turno del día (1 - 5)
     public int loop = 1;
 
-    public string continueText = ">";
+    public string continueText = "< Continue >";
 
     /*  0 - mapa
      *  1 - casa
